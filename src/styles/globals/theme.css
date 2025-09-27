@@ -1,0 +1,275 @@
+/* Custom Theme Variables and Global Styles */
+
+@import 'tailwindcss';
+
+/* Custom CSS Variables */
+:root {
+  /* PCCS Brand Colors - From Brand Guidelines */
+  --pccs-blue-primary: #1E1E8C;
+  --pccs-green-tropical: #2ECC40;
+  --pccs-brown-earth: #8B4513;
+  --pccs-white: #FFFFFF;
+  --pccs-blue-light: #4A90E2;
+  --pccs-gray-neutral: #6C757D;
+  --pccs-green-light: #D4F4DD;
+
+  /* Primary Colors - Updated to PCCS brand */
+  --color-primary: #1E1E8C;
+  --color-primary-rgb: 30, 30, 140;
+  --color-primary-hover: #161675;
+  --color-primary-hover-rgb: 22, 22, 117;
+
+  /* Secondary Colors */
+  --color-secondary: #2ECC40;
+  --color-secondary-rgb: 46, 204, 64;
+
+  /* Body Colors */
+  --body-color: #212327;
+  --body-color-rgb: 33, 35, 39;
+
+  /* Border Colors */
+  --border-color: #E3E5EB;
+  --border-color-rgb: 227, 229, 235;
+
+  /* Gray Colors */
+  --color-gray: #CDCFD5;
+  --color-gray-rgb: 205, 207, 213;
+
+  /* Gradients */
+  --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+
+  /* Shadows */
+  --shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 5px 25px rgba(0, 0, 0, 0.15);
+  --shadow-strong: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+  /* Transitions */
+  --transition-base: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+  --transition-slow: all 0.5s ease;
+}
+
+/* Global Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--body-color);
+  background-color: #ffffff;
+}
+
+/* Custom Gradient Classes */
+.bg-gradient-1 {
+  background: var(--gradient-1);
+}
+
+.bg-gradient-2 {
+  background: var(--gradient-2);
+}
+
+.bg-gradient-3 {
+  background: var(--gradient-3);
+}
+
+.bg-gradient-4 {
+  background: var(--gradient-4);
+}
+
+/* Typography Enhancements */
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced Shadows */
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-medium {
+  box-shadow: var(--shadow-medium);
+}
+
+.shadow-strong {
+  box-shadow: var(--shadow-strong);
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.8s ease-out;
+}
+
+.animate-slide-in-down {
+  animation: slideInDown 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Custom Component Styles */
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+  max-width: 1320px;
+}
+
+/* Button Hover Effects */
+.btn-hover-lift {
+  transition: var(--transition-base);
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Card Hover Effects */
+.card-hover {
+  transition: var(--transition-base);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Loading States */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Focus States for Accessibility */
+.focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 5px 25px rgba(0, 0, 0, 0.4);
+    --shadow-strong: 0 10px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* PCCS Brand Utility Classes */
+/* Text Colors */
+.text-pccs-primary { color: var(--pccs-blue-primary); }
+.text-pccs-tropical { color: var(--pccs-green-tropical); }
+.text-pccs-earth { color: var(--pccs-brown-earth); }
+.text-pccs-accent { color: var(--pccs-blue-light); }
+.text-pccs-neutral { color: var(--pccs-gray-neutral); }
+
+/* Background Colors */
+.bg-pccs-primary { background-color: var(--pccs-blue-primary); }
+.bg-pccs-tropical { background-color: var(--pccs-green-tropical); }
+.bg-pccs-earth { background-color: var(--pccs-brown-earth); }
+.bg-pccs-light { background-color: var(--pccs-green-light); }
+.bg-pccs-white { background-color: var(--pccs-white); }
+.bg-pccs-accent { background-color: var(--pccs-blue-light); }

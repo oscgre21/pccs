@@ -1,0 +1,318 @@
+.cb-addons-breadcrumbs {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.cb-addons-breadcrumbs li {
+    display: inline-block;
+}
+
+.cb-addons-breadcrumbs li span,
+.cb-addons-breadcrumbs li a span {
+    transition: .3s;
+}
+
+.cb-addons-breadcrumbs li:hover span,
+.cb-addons-breadcrumbs li a:hover span {
+    transition: .3s;
+}
+
+#wp-admin-bar-elementor_edit_page span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    display: inline;
+}
+
+.kidba-header-inner-login {
+    position: relative;
+}
+
+.top-bar-right .register-box .icon,
+.kidba-header-inner-login.kidba-header-user-hover,
+.kidba-user-menu-toggle {
+    display: inline-block;
+}
+
+.top-bar-right .register-box .icon i {
+    color: #fff;
+}
+
+.kidba-header-user-box {
+    background-color: #fff;
+    width: 280px;
+    padding: 0;
+    box-shadow: 0px 50px 100px rgba(64, 1, 4, 0.1), 0px -6px 0px rgba(248, 99, 107, 0.004);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 999;
+}
+
+.kidba-header-user-box.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(12px);
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+.kidba-header-user-content {
+    position: relative;
+    z-index: 4;
+    transition: all 0.3s ease-in-out;
+}
+
+.kidba-header-user-profile-content h4 {
+    margin-bottom: 0;
+}
+
+.kidba-header-user-profile {
+    padding: 20px 30px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e9e9e9;
+    transition: all 0.3s ease-in-out;
+}
+
+.kidba-header-user-profile-thumb {
+    margin-right: 20px;
+}
+
+.kidba-header-user-profile-thumb img {
+    border-radius: 50px!important;
+    width: 50px;
+    max-width: 60px !important;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li {
+    list-style: none;
+    border-bottom: 1px dashed #e9e9e9;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li span {
+    margin-right: 10px;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li a {
+    padding: 10px 30px;
+    color: #00394F;
+    display: block;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    transition: all 0.3s ease-in-out;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li:hover {
+    background-color: #23cc88;
+    border-bottom: 1px dashed #23cc88;
+    padding-left: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li:hover a {
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+button.kidba-user-menu-toggle {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.top-bar-right .register-box .icon i {
+    margin-right: 5px;
+}
+
+.kidba-tutor-button {
+    display: block;
+    border-radius: 4px;
+}
+
+.kidba-tutor-button:hover {
+    background-color: #23cc88;
+}
+
+.kidba-tutor-button.tutor-btn {
+    border: none;
+}
+
+.top-bar-right .register-box>a,
+.top-bar-right .register-box .header-login-separator {
+    color: #fff;
+}
+
+.cb-addons-breadcrumbs {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.cb-addons-breadcrumbs li {
+    display: inline-block;
+}
+
+.cb-addons-breadcrumbs li span,
+.cb-addons-breadcrumbs li a span {
+    transition: .3s;
+}
+
+.cb-addons-breadcrumbs li:hover span,
+.cb-addons-breadcrumbs li a:hover span {
+    transition: .3s;
+}
+
+#wp-admin-bar-elementor_edit_page span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    display: inline;
+}
+
+
+/*LMS Login*/
+
+.kidba-header-inner-login {
+    position: relative;
+}
+
+.top-bar-right .register-box .icon,
+.kidba-header-inner-login.kidba-header-user-hover,
+.kidba-user-menu-toggle {
+    display: inline-block;
+}
+
+.top-bar-right .register-box .icon i {
+    color: #fff;
+}
+
+.kidba-header-user-box {
+    background-color: #fff;
+    width: 280px;
+    padding: 0;
+    box-shadow: 0px 50px 100px rgba(64, 1, 4, 0.1), 0px -6px 0px rgba(248, 99, 107, 0.004);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 999;
+}
+
+.kidba-header-user-box.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(12px);
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+.kidba-header-user-content {
+    position: relative;
+    z-index: 4;
+    transition: all 0.3s ease-in-out;
+}
+
+.kidba-header-user-profile-content h4 {
+    margin-bottom: 0;
+}
+
+.kidba-header-user-profile {
+    padding: 20px 30px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e9e9e9;
+    transition: all 0.3s ease-in-out;
+}
+
+.kidba-header-user-profile-thumb {
+    margin-right: 20px;
+}
+
+.kidba-header-user-profile-thumb img {
+    border-radius: 50px!important;
+    width: 50px;
+    max-width: 60px !important;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li {
+    list-style: none;
+    border-bottom: 1px dashed #e9e9e9;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li span {
+    margin-right: 10px;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li a {
+    padding: 10px 30px;
+    color: #00394F;
+    display: block;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    transition: all 0.3s ease-in-out;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li:hover {
+    background-color: #23cc88;
+    border-bottom: 1px dashed #23cc88;
+    padding-left: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.top-bar-right .register-box .kidba-header-user-list ul li:hover a {
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+button.kidba-user-menu-toggle {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.top-bar-right .register-box .icon i {
+    margin-right: 5px;
+}
+
+.kidba-tutor-button {
+    display: block;
+    border-radius: 4px;
+}
+
+.kidba-tutor-button:hover {
+    background-color: #23cc88;
+}
+
+.kidba-tutor-button.tutor-btn {
+    border: none;
+}
+
+.top-bar-right .register-box>a,
+.top-bar-right .register-box .header-login-separator {
+    color: #fff;
+}
+
+.kidba-header-user-list ul {
+    margin: 0;
+}

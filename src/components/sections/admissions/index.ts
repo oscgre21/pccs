@@ -1,0 +1,1 @@
+export { AdmissionsSection } from './AdmissionsSection';
