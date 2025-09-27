@@ -122,7 +122,7 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                 ADMISIÓN AHORA
               </a>
               <a
-                href="/courses"
+                href="/#"
                 className="def-btn btn-3 inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center focus:outline-none focus:ring-2 focus:ring-offset-2"
                 style={{ backgroundColor: '#2ECC40' }}
                 onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#26A235'}
