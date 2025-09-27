@@ -9,9 +9,7 @@ export const metadata: Metadata = {
 
 export default function GaleriaPage() {
   return (
-    <main className="min-h-screen">
-      {/* Hero Section for Gallery */}
- 
+    <main className="min-h-screen"> 
 
       {/* Gallery Section */}
       <GallerySection />

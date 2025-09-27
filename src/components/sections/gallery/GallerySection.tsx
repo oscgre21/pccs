@@ -131,11 +131,11 @@ export function GallerySection({ className = '' }: GallerySectionProps) {
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}
           onClick={closeModal}
         >
-          <div className="relative max-w-4xl max-h-full">
+          <div className="relative flex items-center justify-center max-w-full max-h-full">
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute -top-4 -right-4 z-10 w-10 h-10 rounded-full text-white hover:bg-white hover:text-black transition-colors"
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full text-white hover:bg-white hover:text-black transition-colors"
               style={{ backgroundColor: '#1E1E8C' }}
             >
               <svg className="w-6 h-6 mx-auto" fill="currentColor" viewBox="0 0 24 24">
