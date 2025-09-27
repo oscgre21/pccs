@@ -18,8 +18,8 @@ export default function HomePage() {
       {/* Features Section */}
       <FeaturesSection />
 
-      {/* About Section */}
-      <AboutSection />
+      {/* About Section       <AboutSection /> */}
+
 
       {/* Mission Section */}
       <MissionSection />
