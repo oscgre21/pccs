@@ -112,7 +112,7 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
             {/* Buttons */}
             <div className="btn-box flex flex-col sm:flex-row gap-4 sm:gap-6" role="navigation" aria-label="Main call-to-action buttons">
               <a
-                href="/admissions"
+                href="/admisiones"
                 className="def-btn btn-2 inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center focus:outline-none focus:ring-2 focus:ring-offset-2"
                 style={{ backgroundColor: '#1E1E8C' }}
                 onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#161671'}
