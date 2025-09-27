@@ -70,39 +70,7 @@ export function FeaturesSection({ className = '' }: FeaturesSectionProps) {
             </div>
 
             {/* Features Grid */}
-            <div className="features-grid grid grid-cols-1 md:grid-cols-2 gap-6">
-              {features.map((feature) => (
-                <div key={feature.id} className="feature-box flex items-start space-x-4 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                  {/* Icon */}
-                  <div className="feature-part-icon flex-shrink-0">
-                    <div
-                      className="w-16 h-16 flex items-center justify-center rounded-lg shadow-lg"
-                      style={{ backgroundColor: '#1E1E8C' }}
-                    >
-                      <img
-                        src={feature.icon}
-                        alt={feature.title}
-                        className="w-8 h-8 filter brightness-0 invert"
-                      />
-                    </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="feature-txt flex-1">
-                    <h3 className="feature-sub-title text-xl font-semibold text-gray-900 mb-3">
-                      {feature.title}
-                    </h3>
-
-                    {/* Divider */}
-                    <div className="divider w-12 h-1 rounded-full mb-4" style={{ backgroundColor: '#2ECC40' }}></div>
-
-                    <p className="text-gray-600">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Image Side */}
