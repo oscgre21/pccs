@@ -89,6 +89,11 @@ const config: Config = {
         'scale-in': 'scaleIn 0.5s ease-out',
         'bounce-slow': 'bounce 2s infinite',
         'pulse-slow': 'pulse 3s infinite',
+        'pulse-scale': 'pulseScale 2s ease-in-out infinite',
+        'gentle-pulse': 'gentlePulse 2s ease-in-out infinite',
+        'rotate-glow': 'rotateGlow 3s linear infinite',
+        'float-rotate': 'floatRotate 3s ease-in-out infinite',
+        'bounce-rotate': 'bounceRotate 2s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -106,6 +111,31 @@ const config: Config = {
         scaleIn: {
           'from': { transform: 'scale(0.8)', opacity: '0' },
           'to': { transform: 'scale(1)', opacity: '1' },
+        },
+        pulseScale: {
+          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(1.05)', opacity: '0.8' },
+        },
+        gentlePulse: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.15)' },
+        },
+        rotateGlow: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        floatRotate: {
+          '0%': { transform: 'translateY(0px) rotate(0deg) scale(1)' },
+          '25%': { transform: 'translateY(-10px) rotate(90deg) scale(1.05)' },
+          '50%': { transform: 'translateY(0px) rotate(180deg) scale(1.1)' },
+          '75%': { transform: 'translateY(10px) rotate(270deg) scale(1.05)' },
+          '100%': { transform: 'translateY(0px) rotate(360deg) scale(1)' },
+        },
+        bounceRotate: {
+          '0%, 100%': { transform: 'translateY(0px) rotate(0deg) scale(1)' },
+          '25%': { transform: 'translateY(-15px) rotate(5deg) scale(1.1)' },
+          '50%': { transform: 'translateY(-20px) rotate(0deg) scale(1.15)' },
+          '75%': { transform: 'translateY(-10px) rotate(-5deg) scale(1.1)' },
         },
       },
       boxShadow: {
