@@ -3,8 +3,8 @@ import { DonationsSection } from '@/components/sections';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Donaciones - PCCS',
-  description: 'Tu donación hace la diferencia en la vida de nuestros estudiantes. Conoce las diferentes formas en que puedes contribuir al futuro de la educación cristiana en Punta Cana.',
+  title: 'Donations - PCCS',
+  description: 'Your donation makes a difference in the lives of our students. Learn about the different ways you can contribute to the future of Christian education in Punta Cana.',
 };
 
 export default function DonacionesPage() {
@@ -14,11 +14,11 @@ export default function DonacionesPage() {
       <section className="bg-gradient-to-r from-green-600 to-green-700 text-white py-16 lg:py-24">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-            Donaciones
+            Donations
           </h1>
           <p className="text-xl text-green-100 max-w-4xl mx-auto">
-            Tu generosidad transforma vidas. Cada donación contribuye directamente
-            a brindar educación cristiana de calidad y oportunidades a niños que lo necesitan.
+            Your generosity transforms lives. Each donation contributes directly
+            to providing quality Christian education and opportunities for children in need.
           </p>
 
  
@@ -35,11 +35,11 @@ export default function DonacionesPage() {
             {/* Content */}
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                El Impacto de Tu Donación
+                The Impact of Your Donation
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                En PCCS, cada donación se utiliza de manera responsable y transparente
-                para maximizar el impacto en la vida de nuestros estudiantes.
+                At PCCS, every donation is used responsibly and transparently
+                to maximize the impact on our students' lives.
               </p>
 
               <div className="space-y-4">
@@ -50,8 +50,8 @@ export default function DonacionesPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Educación de Calidad</h3>
-                    <p className="text-gray-600">Financiamos programas educativos innovadores y recursos de aprendizaje.</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">Quality Education</h3>
+                    <p className="text-gray-600">We fund innovative educational programs and learning resources.</p>
                   </div>
                 </div>
 
@@ -62,8 +62,8 @@ export default function DonacionesPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Becas de Estudio</h3>
-                    <p className="text-gray-600">Proporcionamos oportunidades educativas a familias con necesidades económicas.</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">Study Scholarships</h3>
+                    <p className="text-gray-600">We provide educational opportunities to families with financial needs.</p>
                   </div>
                 </div>
 
@@ -74,8 +74,8 @@ export default function DonacionesPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Desarrollo Integral</h3>
-                    <p className="text-gray-600">Apoyamos el crecimiento espiritual, académico y social de cada estudiante.</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">Comprehensive Development</h3>
+                    <p className="text-gray-600">We support the spiritual, academic and social growth of each student.</p>
                   </div>
                 </div>
               </div>
@@ -85,13 +85,13 @@ export default function DonacionesPage() {
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-2xl p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                  Distribución de Fondos
+                  Fund Distribution
                 </h3>
 
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-700">Educación y Recursos</span>
+                      <span className="text-gray-700">Education and Resources</span>
                       <span className="font-semibold">60%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-3">
@@ -101,7 +101,7 @@ export default function DonacionesPage() {
 
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-700">Becas de Estudio</span>
+                      <span className="text-gray-700">Study Scholarships</span>
                       <span className="font-semibold">25%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-3">
@@ -111,7 +111,7 @@ export default function DonacionesPage() {
 
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-700">Infraestructura</span>
+                      <span className="text-gray-700">Infrastructure</span>
                       <span className="font-semibold">15%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-3">
@@ -121,7 +121,7 @@ export default function DonacionesPage() {
                 </div>
 
                 <p className="text-sm text-gray-500 mt-6 text-center">
-                  Transparencia total en el uso de fondos
+                  Complete transparency in the use of funds
                 </p>
               </div>
             </div>

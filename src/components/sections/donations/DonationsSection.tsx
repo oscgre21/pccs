@@ -22,51 +22,51 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
     {
       id: 'donation-1',
       src: '/images/donations/1.jpg',
-      alt: 'Donación PCCS 1',
-      title: 'Apoyo Educativo',
-      description: 'Tu donación ayuda a brindar educación de calidad a niños que lo necesitan.'
+      alt: 'PCCS Donation 1',
+      title: 'Educational Support',
+      description: 'Your donation helps provide quality education to children in need.'
     },
     {
       id: 'donation-2',
       src: '/images/donations/2.jpg',
-      alt: 'Donación PCCS 2',
-      title: 'Becas de Estudio',
-      description: 'Programa de becas para estudiantes con necesidades económicas.'
+      alt: 'PCCS Donation 2',
+      title: 'Study Scholarships',
+      description: 'Scholarship program for students with financial needs.'
     },
     {
       id: 'donation-3',
       src: '/images/donations/3.jpg',
-      alt: 'Donación PCCS 3',
-      title: 'Infraestructura',
-      description: 'Mejoras en las instalaciones escolares para un mejor ambiente de aprendizaje.'
+      alt: 'PCCS Donation 3',
+      title: 'Infrastructure',
+      description: 'Improvements to school facilities for a better learning environment.'
     },
     {
       id: 'donation-4',
       src: '/images/donations/4.jpg',
-      alt: 'Donación PCCS 4',
-      title: 'Recursos Educativos',
-      description: 'Libros, materiales y tecnología para enriquecer la experiencia educativa.'
+      alt: 'PCCS Donation 4',
+      title: 'Educational Resources',
+      description: 'Books, materials and technology to enrich the educational experience.'
     },
     {
       id: 'donation-5',
       src: '/images/donations/5.jpg',
-      alt: 'Donación PCCS 5',
-      title: 'Programas Especiales',
-      description: 'Actividades extracurriculares y programas de desarrollo integral.'
+      alt: 'PCCS Donation 5',
+      title: 'Special Programs',
+      description: 'Extracurricular activities and comprehensive development programs.'
     },
     {
       id: 'donation-6',
       src: '/images/donations/6.jpg',
-      alt: 'Donación PCCS 6',
-      title: 'Alimentación Escolar',
-      description: 'Programa de alimentación para garantizar la nutrición de nuestros estudiantes.'
+      alt: 'PCCS Donation 6',
+      title: 'School Nutrition',
+      description: 'Nutrition program to ensure the health of our students.'
     },
     {
       id: 'sponsor-child',
       src: '/images/donations/Apadrina un niño - Ingles.PNG',
-      alt: 'Apadrina un niño',
-      title: 'Apadrina un Niño',
-      description: 'Programa especial de apadrinamiento para transformar vidas a través de la educación.'
+      alt: 'Sponsor a Child',
+      title: 'Sponsor a Child',
+      description: 'Special sponsorship program to transform lives through education.'
     }
   ];
 
@@ -87,11 +87,11 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
           {/* Section Heading */}
           <div className="section-heading text-center mb-12">
             <h2 className="section-title text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">
-              Cómo Puedes Ayudar
+              How You Can Help
             </h2>
             <p className="heading-sub-txt text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
-              Tu donación hace la diferencia en la vida de nuestros estudiantes. Conoce las diferentes formas
-              en que puedes contribuir al futuro de la educación cristiana en Punta Cana.
+              Your donation makes a difference in the lives of our students. Learn about the different ways
+              you can contribute to the future of Christian education in Punta Cana.
             </p>
           </div>
 
@@ -151,11 +151,11 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
           <div className="text-center">
             <div className="bg-gray-50 rounded-2xl p-8 mb-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                ¿Listo para Hacer la Diferencia?
+                Ready to Make a Difference?
               </h3>
               <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                Cada donación, sin importar su tamaño, contribuye directamente al futuro
-                de nuestros estudiantes y fortalece nuestra misión educativa.
+                Every donation, regardless of size, contributes directly to the future
+                of our students and strengthens our educational mission.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
@@ -163,7 +163,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                   className="inline-flex items-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   style={{ backgroundColor: '#1E1E8C' }}
                 >
-                  Donar Ahora
+                  Donate Now
                   <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
@@ -176,7 +176,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                     color: '#1E1E8C'
                   }}
                 >
-                  Más Información
+                  More Information
                   <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
