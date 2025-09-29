@@ -26,7 +26,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: 'PCCS - A New Approach to Study Of Kids Child Youth',
-  description: 'We provide best solutions for a Clean Environment. PCCS offers innovative educational approaches for children and youth development with expert teachers, active learning, and safe environment.',
+  description: 'PCCS offers innovative educational approaches for children and youth development with expert teachers, active learning, and a safe environment. We provide academic excellence with Christian values.',
   keywords: [
     'kindergarten',
     'education',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://pccs.edu.do',
     title: 'PCCS - A New Approach to Study Of Kids Child Youth',
-    description: 'We provide best solutions for a Clean Environment. PCCS offers innovative educational approaches for children and youth development.',
+    description: 'PCCS offers innovative educational approaches for children and youth development with academic excellence and Christian values.',
     siteName: 'PCCS Education',
     images: [
       {
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'PCCS - A New Approach to Study Of Kids Child Youth',
-    description: 'We provide best solutions for a Clean Environment. PCCS offers innovative educational approaches for children and youth development.',
+    description: 'PCCS offers innovative educational approaches for children and youth development with academic excellence and Christian values.',
     images: ['/logos/logo_land.png'],
   },
   robots: {
@@ -148,7 +148,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               '@context': 'https://schema.org',
               '@type': 'EducationalOrganization',
               name: 'PCCS Education',
-              description: 'A New Approach to Study Of Kids Child Youth. We provide best solutions for a Clean Environment.',
+              description: 'A New Approach to Study Of Kids Child Youth. We provide innovative educational approaches with academic excellence and Christian values.',
               url: 'https://pccs.edu.do',
               logo: 'https://pccs.edu.do/logos/logo_land.png',
               image: 'https://pccs.edu.do/logos/logo_land.png',
