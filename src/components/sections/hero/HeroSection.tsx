@@ -106,7 +106,7 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
 
             {/* Description */}
             <p className="banner-paragraph text-lg md:text-xl lg:text-2xl mb-8 lg:mb-12 leading-relaxed text-gray-100 max-w-2xl">
-              Formamos estudiantes con excelencia académica, educación bilingüe, fe cristiana y valores que transforman vidas.
+              We educate students with academic excellence, bilingual education, Christian faith and values that transform lives.
             </p>
 
             {/* Buttons */}
@@ -119,7 +119,7 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                 onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#1E1E8C'}
                 aria-label="Apply for admission to PCCS Education"
               >
-                ADMISIÓN AHORA
+                APPLY NOW
               </a>
               <a
                 href="/#"
@@ -129,7 +129,7 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                 onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#2ECC40'}
                 aria-label="View our available classes and courses"
               >
-                NUESTRAS CLASES
+                OUR CLASSES
               </a>
             </div>
           </div>
