@@ -6,10 +6,10 @@ interface MissionSectionProps {
 
 export function MissionSection({ className = '' }: MissionSectionProps) {
   const missionPoints = [
-    "La formación de jóvenes a través de una educación integral basada en la palabra de Dios.",
-    "Crear un ambiente cristiano, donde los jóvenes adquieran las herramientas espirituales e intelectuales que les garanticen su superación permanente.",
-    "Proporcionar una educación cristiana bilingüe de alta calidad a precios accesibles, comprometida con el desarrollo integral de cada estudiante.",
-    "Cultivar un ambiente de aprendizaje de excelencia y amoroso, donde se promueva el crecimiento espiritual, intelectual y emocional, con valores cristianos en amor, compasión y servicio."
+    "The formation of young people through comprehensive education based on the word of God.",
+    "Create a Christian environment, where young people acquire the spiritual and intellectual tools that guarantee their permanent improvement.",
+    "Provide high-quality bilingual Christian education at affordable prices, committed to the comprehensive development of each student.",
+    "Cultivate an excellent and loving learning environment, where spiritual, intellectual and emotional growth is promoted, with Christian values in love, compassion and service."
   ];
 
   return (
@@ -21,11 +21,11 @@ export function MissionSection({ className = '' }: MissionSectionProps) {
             <div className="mission-content">
               <div className="section-heading mb-8">
                 <h2 className="tp-el-title mission-title text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Nuestra Misión
+                  Our Mission
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  En PCCS, nos dedicamos a formar jóvenes íntegros a través de una educación cristiana de excelencia,
-                  comprometida con el desarrollo espiritual, académico y personal de cada estudiante.
+                  At PCCS, we are dedicated to forming young people of integrity through excellent Christian education,
+                  committed to the spiritual, academic and personal development of each student.
                 </p>
               </div>
 
@@ -49,7 +49,7 @@ export function MissionSection({ className = '' }: MissionSectionProps) {
               <div className="mission-img relative">
                 <img
                   src="/images/pic/PCCS-35.JPG"
-                  alt="Misión PCCS - Formación integral cristiana"
+                  alt="PCCS Mission - Comprehensive Christian education"
                   className="w-full h-auto rounded-2xl shadow-2xl"
                 />
 
@@ -66,8 +66,8 @@ export function MissionSection({ className = '' }: MissionSectionProps) {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Educación Integral</h4>
-                      <p className="text-sm text-gray-600">Cristiana y Bilingüe</p>
+                      <h4 className="font-bold text-gray-900">Comprehensive Education</h4>
+                      <p className="text-sm text-gray-600">Christian and Bilingual</p>
                     </div>
                   </div>
                 </div>
