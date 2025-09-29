@@ -13,7 +13,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     id: 'inicio',
-    title: 'INICIO',
+    title: 'HOME',
     href: '/',
     /*
     children: [
@@ -26,28 +26,28 @@ const menuItems: MenuItem[] = [
   },
   {
     id: 'nosotros',
-    title: 'NOSOTROS',
+    title: 'ABOUT US',
     href: '/nosotros',
     children: [
-      { id: 'mision', title: 'Misión', href: '/#mision' },
-      { id: 'vision', title: 'Visión', href: '/#vision' },
-      { id: 'valores', title: 'Valores', href: '/#valores' },
-      { id: 'proposito', title: 'Propósito', href: '/#proposito' }
+      { id: 'mision', title: 'Mission', href: '/#mision' },
+      { id: 'vision', title: 'Vision', href: '/#vision' },
+      { id: 'valores', title: 'Values', href: '/#valores' },
+      { id: 'proposito', title: 'Purpose', href: '/#proposito' }
     ]
   },
   {
     id: 'admisiones',
-    title: 'ADMISIONES',
-    href: '/admisiones', 
+    title: 'ADMISSIONS',
+    href: '/admisiones',
   },
   {
     id: 'galeria',
-    title: 'GALERÍA',
+    title: 'GALLERY',
     href: '/galeria',
   },
   {
     id: 'contacto',
-    title: 'CONTACTANOS',
+    title: 'CONTACT US',
     href: '/contact'
   }
 ];

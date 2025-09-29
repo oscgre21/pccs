@@ -14,7 +14,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     id: 'inicio',
-    title: 'Inicio',
+    title: 'Home',
     href: '/',
     children: [
       { id: 'home-1', title: 'Home 01', href: '/' },
@@ -26,7 +26,7 @@ const menuItems: MenuItem[] = [
   },
   {
     id: 'nosotros',
-    title: 'Nosotros',
+    title: 'About Us',
     href: '/nosotros',
     children: [
       { id: 'courses', title: 'Courses Default', href: '/courses' },
@@ -35,7 +35,7 @@ const menuItems: MenuItem[] = [
   },
   {
     id: 'admisiones',
-    title: 'Admisiones',
+    title: 'Admissions',
     href: '/admisiones',
     children: [
       { id: 'shop', title: 'Shop', href: '/shop' }
@@ -43,7 +43,7 @@ const menuItems: MenuItem[] = [
   },
   {
     id: 'contacto',
-    title: 'Contactanos',
+    title: 'Contact Us',
     href: '/contact'
   }
 ];

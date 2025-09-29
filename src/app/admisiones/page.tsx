@@ -2,9 +2,9 @@ import React from 'react';
 import { AdmissionsSection } from '@/components/sections';
 
 export const metadata = {
-  title: 'Admisiones - PCCS',
-  description: 'Documentos y requisitos para admisiones en Punta Cana Christian School. Conoce todo lo que necesitas para el proceso de inscripción.',
-  keywords: ['admisiones', 'inscripción', 'PCCS', 'documentos', 'requisitos', 'Punta Cana Christian School'],
+  title: 'Admissions - PCCS',
+  description: 'Documents and requirements for admissions at Punta Cana Christian School. Learn everything you need for the enrollment process.',
+  keywords: ['admissions', 'enrollment', 'PCCS', 'documents', 'requirements', 'Punta Cana Christian School'],
 };
 
 export default function AdmissionsPage() {

@@ -51,7 +51,7 @@ export function Header({ className = '' }: HeaderProps) {
                 href="/donaciones"
                 className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-semibold transition-colors"
               >
-               DONACIONES
+               Sponsor
               </a>
             </div>
 

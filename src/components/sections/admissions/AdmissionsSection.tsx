@@ -6,18 +6,18 @@ interface AdmissionsSectionProps {
 
 export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
   const documents = [
-    '4 fotos 2x2',
-    'Acta de Nacimiento',
-    'Copia Carnet seguro médico',
-    'Copia Cédula o Pasaporte de los Padres',
-    'Cartilla de Vacunación',
-    'Certificado Médico',
-    'Informe de Aprendizaje',
-    'Carta de Saldo',
-    'Carta de Conducta',
-    'Record de Calificaciones',
-    'Copia del registro de los años de primaria ya cursados (desde 1grado en adelante)',
-    'Verificación de Oftalmología'
+    '4 photos 2x2',
+    'Birth Certificate',
+    'Copy of Medical Insurance Card',
+    'Copy of Parents\' ID or Passport',
+    'Vaccination Record',
+    'Medical Certificate',
+    'Learning Report',
+    'Balance Letter',
+    'Conduct Letter',
+    'Grade Report',
+    'Copy of primary school years completed records (from 1st grade onwards)',
+    'Ophthalmology Verification'
   ];
 
   return (
@@ -26,7 +26,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
       <section className="relative w-full h-[120vh] min-h-[900px] sm:min-h-[1000px] md:min-h-[1100px] lg:min-h-[1200px] overflow-hidden">
         <img
           src="/images/pic/PCCS-15.JPG"
-          alt="Estudiantes de PCCS"
+          alt="PCCS Students"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
@@ -46,7 +46,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                 <span className="drop-shadow-xl" style={{
                   textShadow: '0 0 20px rgba(0,0,0,0.9), 0 0 40px rgba(30,30,140,0.3)'
                 }}>
-                 ADMISIONES
+                 ADMISSIONS
                 </span>
               </p>
 
@@ -54,7 +54,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                 <span className="drop-shadow-lg" style={{
                   textShadow: '0 0 15px rgba(0,0,0,0.8)'
                 }}>
-                  Descubre una educación de excelencia que prepara a nuestros estudiantes para un futuro brillante
+                  Discover excellence in education that prepares our students for a bright future
                 </span>
               </p>
             </div>
@@ -65,7 +65,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                 href="#formularios"
                 className="inline-flex items-center justify-center px-8 py-4 text-pccs-primary font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-2xl bg-white hover:bg-gray-100 text-lg"
               >
-                Ver Formularios
+                View Forms
                 <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
@@ -78,7 +78,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
-                Llamar Ahora
+                Call Now
               </a>
             </div>
           </div>
@@ -100,7 +100,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
               <div className="relative">
                 <img
                   src="/images/pic/PCCS-25.JPG"
-                  alt="Estudiantes en clase"
+                  alt="Students in class"
                   className="w-full h-48 object-cover rounded-xl shadow-lg"
                 />
                 {/* Natural element accent using earth color */}
@@ -109,7 +109,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
               <div className="relative">
                 <img
                   src="/images/pic/PCCS-30.JPG"
-                  alt="Actividades escolares"
+                  alt="School activities"
                   className="w-full h-48 object-cover rounded-xl shadow-lg"
                 />
                 {/* Tropical accent for nature-related activities */}
@@ -124,7 +124,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
               />
               {/* Campus accent with primary brand color */}
               <div className="absolute bottom-4 left-4 px-4 py-2 bg-pccs-primary rounded-full">
-                <span className="text-pccs-white text-sm font-medium">Campus PCCS</span>
+                <span className="text-pccs-white text-sm font-medium">PCCS Campus</span>
               </div>
             </div>
 
@@ -141,19 +141,19 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
               <div className="section-heading mb-8">
                 {/* Primary brand color for main heading */}
                 <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight text-pccs-primary">
-                  Listado de Documentos para Admisiones
+                  Documents List for Admissions
                 </h2>
                 {/* Neutral gray for descriptive text */}
                 <p className="text-lg leading-relaxed mb-6 text-pccs-neutral">
-                  Para completar el proceso de admisión en PCCS, necesitarás reunir los siguientes documentos.
-                  Nuestro equipo estará disponible para ayudarte en cada paso del proceso.
+                  To complete the admission process at PCCS, you will need to gather the following documents.
+                  Our team will be available to help you every step of the way.
                 </p>
               </div>
 
               {/* Documents List - Minimalist Design */}
               <div className="documents-list mb-8">
                 <h3 className="text-xl font-semibold text-pccs-primary mb-6">
-                  DOCUMENTOS REQUERIDOS
+                  REQUIRED DOCUMENTS
                 </h3>
 
                 <ul className="space-y-3 list-disc list-inside pl-4">
@@ -172,10 +172,10 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
               <div id="formularios" className="admission-actions">
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-semibold text-pccs-primary mb-2">
-                    Procesos de Admisión
+                    Admission Processes
                   </h3>
                   <p className="text-pccs-neutral text-sm">
-                    Accede directamente a nuestros formularios y servicios
+                    Access our forms and services directly
                   </p>
                 </div>
 
@@ -190,7 +190,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                     </svg>
-                    Agenda tu cita
+                    Schedule Your Appointment
                   </a>
 
                   {/* Formulario de Admisión */}
@@ -204,7 +204,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                       <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
                       <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
                     </svg>
-                    Formulario de Admisión
+                    Admission Form
                   </a>
 
                   {/* Formulario Solicitud a Beca */}
@@ -217,7 +217,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
                     </svg>
-                    Solicitud a Beca
+                    Scholarship Application
                   </a>
 
                   {/* Formulario de contacto para consultas */}
@@ -231,14 +231,14 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                     </svg>
-                    Consultas
+                    Inquiries
                   </a>
                 </div>
 
                 {/* Quick Contact */}
                 <div className="text-center pt-4 border-t border-pccs-light">
                   <p className="text-sm text-pccs-neutral mb-3">
-                    ¿Necesitas ayuda inmediata?
+                    Need immediate help?
                   </p>
                   <a
                     href="tel:+1-484-298-9317"
@@ -247,7 +247,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
-                    Llamar Ahora
+                    Call Now
                   </a>
                 </div>
               </div>
