@@ -13,30 +13,30 @@ interface FooterSection {
 
 const footerSections: FooterSection[] = [
   {
-    title: 'Navegación',
+    title: 'Navigation',
     links: [
-      { title: 'Inicio', href: '/' },
-      { title: 'Nosotros', href: '/about' },
-      { title: 'Cursos', href: '/courses' },
-      { title: 'Contacto', href: '/contact' }
+      { title: 'Home', href: '/' },
+      { title: 'About Us', href: '/about' },
+      { title: 'Courses', href: '/courses' },
+      { title: 'Contact', href: '/contact' }
     ]
   },
   {
-    title: 'Servicios',
+    title: 'Services',
     links: [
-      { title: 'Educación Infantil', href: '/services/educacion-infantil' },
-      { title: 'Actividades Extracurriculares', href: '/services/actividades' },
-      { title: 'Apoyo Familiar', href: '/services/apoyo-familiar' },
-      { title: 'Talleres', href: '/services/talleres' }
+      { title: 'Early Childhood Education', href: '/services/educacion-infantil' },
+      { title: 'Extracurricular Activities', href: '/services/actividades' },
+      { title: 'Family Support', href: '/services/apoyo-familiar' },
+      { title: 'Workshops', href: '/services/talleres' }
     ]
   },
   {
-    title: 'Recursos',
+    title: 'Resources',
     links: [
       { title: 'Blog', href: '/blog' },
-      { title: 'Eventos', href: '/events' },
-      { title: 'Galería', href: '/gallery' },
-      { title: 'Descargas', href: '/downloads' }
+      { title: 'Events', href: '/events' },
+      { title: 'Gallery', href: '/gallery' },
+      { title: 'Downloads', href: '/downloads' }
     ]
   }
 ];
@@ -60,11 +60,11 @@ export function Footer() {
                 />
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                PCCS ofrece un enfoque innovador para el estudio y desarrollo de niños y jóvenes,
-                proporcionando las mejores soluciones educativas en un ambiente limpio y seguro.
+                PCCS offers an innovative approach to the study and development of children and youth,
+                providing the best educational solutions in a clean and safe environment.
               </p>
               <div className="mb-6">
-                <h4 className="text-white font-semibold mb-4">Síguenos</h4>
+                <h4 className="text-white font-semibold mb-4">Follow Us</h4>
                 <SocialLinks />
               </div>
             </div>
@@ -107,7 +107,7 @@ export function Footer() {
                 </svg>
               </div>
               <div>
-                <p className="text-purple-200 text-sm">Llámanos</p>
+                <p className="text-purple-200 text-sm">Call Us</p>
                 <a
                   href="tel:+18498551635"
                   className="text-white hover:text-purple-300 transition-colors"
@@ -151,7 +151,7 @@ export function Footer() {
                 </svg>
               </div>
               <div>
-                <p className="text-purple-200 text-sm">Ubicación</p>
+                <p className="text-purple-200 text-sm">Location</p>
                 <p className="text-white">
                   Av. Barcelo, Punta Cana, C. Edgar Allan Poe, No. 1
                 </p>
@@ -166,14 +166,14 @@ export function Footer() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-purple-200 text-sm">
-              © {currentYear} PCCS. Todos los derechos reservados.
+              © {currentYear} PCCS. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="/privacy" className="text-purple-200 hover:text-white text-sm transition-colors">
-                Política de Privacidad
+                Privacy Policy
               </a>
               <a href="/terms" className="text-purple-200 hover:text-white text-sm transition-colors">
-                Términos de Uso
+                Terms of Use
               </a>
             </div>
           </div>
