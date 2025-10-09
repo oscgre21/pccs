@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { AzulPaymentButton } from '@/components/payment';
 
 interface DonationImage {
   id: string;
@@ -12,6 +13,37 @@ interface DonationImage {
 
 interface DonationsSectionProps {
   className?: string;
+}
+
+interface DonationAmountButtonProps {
+  amount: number;
+  description: string;
+}
+
+function DonationAmountButton({ amount, description }: DonationAmountButtonProps) {
+  return (
+    <div className="flex flex-col">
+      <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+        <div className="text-center mb-3">
+          <div className="text-3xl font-bold" style={{ color: '#1E1E8C' }}>
+            ${amount}
+          </div>
+          <div className="text-sm text-gray-600 mt-1">{description}</div>
+        </div>
+        <AzulPaymentButton
+          amount={amount}
+          description={`Donation - ${description}`}
+          customField1={{
+            label: 'Donation Type',
+            value: description,
+          }}
+          className="w-full text-sm py-3"
+        >
+          Donate ${amount}
+        </AzulPaymentButton>
+      </div>
+    </div>
+  );
 }
 
 export function DonationsSection({ className = '' }: DonationsSectionProps) {
@@ -157,17 +189,16 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                 Every donation, regardless of size, contributes directly to the future
                 of our students and strengthens our educational mission.
               </p>
+
+              {/* Quick Donation Amounts */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
+                <DonationAmountButton amount={25} description="School Supplies" />
+                <DonationAmountButton amount={50} description="Monthly Support" />
+                <DonationAmountButton amount={100} description="Student Scholarship" />
+                <DonationAmountButton amount={250} description="Major Donor" />
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  style={{ backgroundColor: '#1E1E8C' }}
-                >
-                  Donate Now
-                  <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </a>
                 <a
                   href="#contact"
                   className="inline-flex items-center px-8 py-4 border-2 font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
