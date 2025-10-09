@@ -3,8 +3,6 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AzulPaymentResponse } from '@/lib/azul/types';
-import { parseCallbackParams, validatePaymentResponse, formatResponseForDisplay } from '@/lib/azul/validator';
-import { getAzulConfig } from '@/lib/azul/config';
 
 function ApprovedContent() {
   const searchParams = useSearchParams();
@@ -16,18 +14,36 @@ function ApprovedContent() {
   useEffect(() => {
     const validateResponse = async () => {
       try {
-        // Parse callback parameters
-        const paymentResponse = parseCallbackParams(searchParams);
-        setResponse(paymentResponse);
+        // Get query string
+        const queryString = searchParams.toString();
 
-        // Validate response
-        const config = getAzulConfig();
-        const validation = await validatePaymentResponse(paymentResponse, config.authKey);
+        console.log('[Approved] Validating response via API');
 
-        setIsValid(validation.isValid && validation.isApproved);
-        setValidationErrors(validation.errors);
+        // Call server API to validate
+        const res = await fetch('/api/azul/validate-response', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ queryString }),
+        });
+
+        const data = await res.json();
+
+        if (!data.success) {
+          throw new Error(data.error || 'Validation failed');
+        }
+
+        setResponse(data.response);
+        setIsValid(data.validation.isValid && data.validation.isApproved);
+        setValidationErrors(data.validation.errors || []);
+
+        console.log('[Approved] Validation result:', {
+          isValid: data.validation.isValid,
+          isApproved: data.validation.isApproved,
+        });
       } catch (error) {
-        console.error('Validation error:', error);
+        console.error('[Approved] Validation error:', error);
         setValidationErrors(['Failed to validate payment response']);
       } finally {
         setIsValidating(false);
@@ -42,13 +58,14 @@ function ApprovedContent() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 mx-auto mb-4" style={{ borderColor: '#1E1E8C' }}></div>
-          <p className="text-gray-600">Validating payment...</p>
+          <p className="text-gray-600">Validating donation...</p>
         </div>
       </div>
     );
   }
 
-  const displayData = response ? formatResponseForDisplay(response) : null;
+  // Format amount for display (convert from cents to dollars)
+  const displayAmount = response?.Amount ? (parseInt(response.Amount) / 100).toFixed(2) : '0.00';
 
   return (
     <div className="min-h-screen bg-gray-50 py-16 px-4">
@@ -80,12 +97,12 @@ function ApprovedContent() {
             </svg>
           </div>
           <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            {isValid ? 'Payment Successful!' : 'Payment Received'}
+            {isValid ? 'Donation Received!' : 'Donation Received'}
           </h1>
           <p className="text-lg text-gray-600">
             {isValid
-              ? 'Thank you for your donation to Punta Cana Christian School'
-              : 'Your payment is being verified'}
+              ? 'Thank you for your generous donation to Punta Cana Christian School'
+              : 'Your donation is being verified'}
           </p>
         </div>
 
@@ -117,25 +134,25 @@ function ApprovedContent() {
         )}
 
         {/* Payment Details */}
-        {displayData && (
+        {response && (
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Payment Details</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-6">Donation Details</h2>
             <div className="space-y-4">
               <div className="flex justify-between py-3 border-b border-gray-200">
                 <span className="text-gray-600">Order Number</span>
-                <span className="font-semibold text-gray-900">{displayData.orderNumber}</span>
+                <span className="font-semibold text-gray-900">{response.OrderNumber}</span>
               </div>
               <div className="flex justify-between py-3 border-b border-gray-200">
                 <span className="text-gray-600">Amount</span>
-                <span className="font-semibold text-gray-900 text-lg">${displayData.amount}</span>
+                <span className="font-semibold text-gray-900 text-lg">${displayAmount}</span>
               </div>
               <div className="flex justify-between py-3 border-b border-gray-200">
                 <span className="text-gray-600">Date & Time</span>
-                <span className="font-semibold text-gray-900">{displayData.date}</span>
+                <span className="font-semibold text-gray-900">{response.DateTime}</span>
               </div>
               <div className="flex justify-between py-3 border-b border-gray-200">
                 <span className="text-gray-600">Authorization Code</span>
-                <span className="font-semibold text-gray-900">{displayData.authorizationCode}</span>
+                <span className="font-semibold text-gray-900">{response.AuthorizationCode}</span>
               </div>
               <div className="flex justify-between py-3">
                 <span className="text-gray-600">Status</span>
@@ -146,7 +163,7 @@ function ApprovedContent() {
                     color: isValid ? '#065F46' : '#92400E',
                   }}
                 >
-                  {displayData.status}
+                  {response.ResponseMessage}
                 </span>
               </div>
             </div>

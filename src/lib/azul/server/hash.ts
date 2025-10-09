@@ -8,14 +8,18 @@ import { AzulPaymentRequest } from '../types';
 
 /**
  * Generates HMAC SHA-512 hash (SERVER-SIDE ONLY)
+ * IMPORTANT: Data must be encoded as UTF-16LE (UNICODE) as per AZUL documentation
  */
 export function generateHmacSha512(data: string, key: string): string {
   if (!key || key.trim() === '') {
     throw new Error('HMAC key cannot be empty');
   }
 
+  // Convert string to UTF-16LE encoding (UNICODE) as required by AZUL
+  const dataUtf16le = Buffer.from(data, 'utf16le');
+
   const hmac = createHmac('sha512', key);
-  hmac.update(data);
+  hmac.update(dataUtf16le);
   return hmac.digest('hex');
 }
 
