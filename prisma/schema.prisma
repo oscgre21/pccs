@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Donation Types - Catalog of donation categories
+model DonationType {
+  id          String     @id @default(uuid())
+  name        String     @unique
+  description String?
+  amount      Decimal    @default(25.00) @db.Decimal(10, 2) // Fixed amount for this donation type
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  donations   Donation[]
+}
+
+// Main Donation Record
+model Donation {
+  id        String   @id @default(uuid())
+
+  // Donor Information
+  donorName  String
+  donorEmail String
+  donorPhone String?
+  comment    String?
+
+  // Payment Information
+  amount            Decimal  @db.Decimal(10, 2)
+  orderNumber       String   @unique
+  authorizationCode String?
+  azulOrderId       String?
+  rrn               String?
+  isoCode           String?
+
+  // Transaction Status
+  status           PaymentStatus @default(PENDING)
+  responseCode     String?
+  responseMessage  String?
+  errorDescription String?
+  validationErrors String[] // Array of validation error messages
+
+  // Donation Type
+  donationType   DonationType @relation(fields: [donationTypeId], references: [id])
+  donationTypeId String
+
+  // Metadata
+  rawAzulResponse Json? // Store complete AZUL response
+
+  // Timestamps
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  approvedAt  DateTime?
+  declinedAt  DateTime?
+  cancelledAt DateTime?
+
+  // Relations
+  statusHistory PaymentStatusHistory[]
+
+  @@index([status])
+  @@index([donorEmail])
+  @@index([orderNumber])
+  @@index([createdAt])
+}
+
+// Payment Status History - Track all status changes
+model PaymentStatusHistory {
+  id             String        @id @default(uuid())
+  donation       Donation      @relation(fields: [donationId], references: [id], onDelete: Cascade)
+  donationId     String
+  previousStatus PaymentStatus?
+  newStatus      PaymentStatus
+  reason         String? // Error message or reason for status change
+  metadata       Json? // Additional context
+  createdAt      DateTime      @default(now())
+
+  @@index([donationId])
+  @@index([createdAt])
+}
+
+// Enum for Payment Status
+enum PaymentStatus {
+  PENDING
+  APPROVED
+  DECLINED
+  CANCELLED
+  FAILED
+}

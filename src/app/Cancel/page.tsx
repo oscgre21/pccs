@@ -8,11 +8,47 @@ import { parseCallbackParams, formatResponseForDisplay } from '@/lib/azul/valida
 function CancelContent() {
   const searchParams = useSearchParams();
   const [response, setResponse] = useState<AzulPaymentResponse | null>(null);
+  const [isValidating, setIsValidating] = useState(true);
 
   useEffect(() => {
-    const paymentResponse = parseCallbackParams(searchParams);
-    setResponse(paymentResponse);
+    const validateResponse = async () => {
+      try {
+        const queryString = searchParams.toString();
+
+        // Call server API to validate and update database
+        const res = await fetch('/api/azul/validate-response', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ queryString, callbackType: 'cancelled' }),
+        });
+
+        const data = await res.json();
+
+        if (data.success && data.response) {
+          setResponse(data.response);
+        }
+      } catch (error) {
+        console.error('[Cancel] Validation error:', error);
+      } finally {
+        setIsValidating(false);
+      }
+    };
+
+    validateResponse();
   }, [searchParams]);
+
+  if (isValidating) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 mx-auto mb-4" style={{ borderColor: '#1E1E8C' }}></div>
+          <p className="text-gray-600">Processing...</p>
+        </div>
+      </div>
+    );
+  }
 
   const displayData = response ? formatResponseForDisplay(response) : null;
 

@@ -1,30 +1,45 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { buildPaymentRequest, generatePaymentFormHtml, getServerAzulConfig } from '@/lib/azul/server';
+import { createDonation } from '@/lib/db/donation.service';
 
 /**
- * API Route: Initiate AZUL Payment
+ * API Route: Initiate AZUL Payment with Donation Tracking
  * POST /api/azul/initiate-payment
  *
  * This route handles ALL sensitive payment logic server-side:
+ * - Saves donor information to database
  * - Generates order numbers
  * - Reads merchant credentials
  * - Constructs complete payment request
  * - Generates AuthHash
  * - Returns HTML form ready to submit
  *
- * Client only sends: amount, description, and optional custom fields
+ * Client sends: amount, description, donor info, donation type, and optional custom fields
  */
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    const { amount, description, customOrderId, customField1, customField2 } = body;
+    const {
+      amount,
+      description,
+      donorName,
+      donorEmail,
+      donorPhone,
+      comment,
+      donationTypeId,
+      customOrderId,
+      customField1,
+      customField2,
+    } = body;
 
     console.log('[Initiate Payment] Request received:', {
       amount,
       description,
-      customOrderId,
+      donorName,
+      donorEmail,
+      donationTypeId,
       hasCustomField1: !!customField1,
       hasCustomField2: !!customField2,
     });
@@ -51,6 +66,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (!donorName || !donorEmail || !donationTypeId) {
+      return NextResponse.json(
+        { success: false, error: 'Donor information is required' },
+        { status: 400 }
+      );
+    }
+
     // Build complete payment request (all sensitive logic here)
     const result = buildPaymentRequest({
       amount,
@@ -67,6 +89,33 @@ export async function POST(request: NextRequest) {
           success: false,
           error: result.error || 'Failed to build payment request',
           errors: result.errors,
+        },
+        { status: 500 }
+      );
+    }
+
+    // Save donation to database with PENDING status
+    try {
+      await createDonation({
+        donorName,
+        donorEmail,
+        donorPhone,
+        comment,
+        amount,
+        orderNumber: result.orderNumber!,
+        donationTypeId,
+      });
+
+      console.log('[Initiate Payment] Donation saved to database:', {
+        orderNumber: result.orderNumber,
+        donorEmail,
+      });
+    } catch (dbError) {
+      console.error('[Initiate Payment] Database error:', dbError);
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Failed to save donation record',
         },
         { status: 500 }
       );

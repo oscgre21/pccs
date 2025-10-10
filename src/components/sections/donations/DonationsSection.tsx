@@ -1,7 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AzulPaymentButton } from '@/components/payment';
+
+interface DonationType {
+  id: string;
+  name: string;
+  description: string | null;
+  amount: number;
+}
 
 interface DonationImage {
   id: string;
@@ -9,96 +16,79 @@ interface DonationImage {
   alt: string;
   title: string;
   description: string;
+  donationTypeName: string; // Maps to DonationType.name
 }
 
 interface DonationsSectionProps {
   className?: string;
 }
 
-interface DonationAmountButtonProps {
-  amount: number;
-  description: string;
-}
-
-function DonationAmountButton({ amount, description }: DonationAmountButtonProps) {
-  return (
-    <div className="flex flex-col">
-      <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-        <div className="text-center mb-3">
-          <div className="text-3xl font-bold" style={{ color: '#1E1E8C' }}>
-            ${amount}
-          </div>
-          <div className="text-sm text-gray-600 mt-1">{description}</div>
-        </div>
-        <AzulPaymentButton
-          amount={amount}
-          description={`Donation - ${description}`}
-          customField1={{
-            label: 'Donation Type',
-            value: description,
-          }}
-          className="w-full text-sm py-3"
-        >
-          Donate ${amount}
-        </AzulPaymentButton>
-      </div>
-    </div>
-  );
-}
-
 export function DonationsSection({ className = '' }: DonationsSectionProps) {
   const [selectedImage, setSelectedImage] = useState<DonationImage | null>(null);
+  const [donationTypes, setDonationTypes] = useState<DonationType[]>([]);
+  const [isLoadingTypes, setIsLoadingTypes] = useState(true);
 
-  // Array of donation images with descriptions
+  useEffect(() => {
+    const loadDonationTypes = async () => {
+      try {
+        const response = await fetch('/api/donation-types');
+        const data = await response.json();
+        if (data.success && data.types) {
+          setDonationTypes(data.types);
+          // Wait for next tick to ensure state is updated before hiding loader
+          setTimeout(() => setIsLoadingTypes(false), 0);
+        } else {
+          setIsLoadingTypes(false);
+        }
+      } catch (error) {
+        console.error('Failed to load donation types:', error);
+        setIsLoadingTypes(false);
+      }
+    };
+    loadDonationTypes();
+  }, []);
+
+  // Array of donation images with descriptions mapped to donation types
   const donationImages: DonationImage[] = [
     {
-      id: 'donation-1',
+      id: 'school-supplies',
       src: '/images/donations/1.jpg',
-      alt: 'PCCS Donation 1',
-      title: 'Educational Support',
-      description: 'Your donation helps provide quality education to children in need.'
+      alt: 'School Supplies',
+      title: 'School Supplies',
+      description: 'Your donation helps provide essential school supplies to children in need.',
+      donationTypeName: 'School Supplies'
     },
     {
-      id: 'donation-2',
+      id: 'scholarships',
       src: '/images/donations/2.jpg',
-      alt: 'PCCS Donation 2',
-      title: 'Study Scholarships',
-      description: 'Scholarship program for students with financial needs.'
+      alt: 'Scholarships',
+      title: 'Scholarships',
+      description: 'Scholarship program for students with financial needs.',
+      donationTypeName: 'Scholarships'
     },
     {
-      id: 'donation-3',
+      id: 'infrastructure',
       src: '/images/donations/3.jpg',
-      alt: 'PCCS Donation 3',
+      alt: 'Infrastructure',
       title: 'Infrastructure',
-      description: 'Improvements to school facilities for a better learning environment.'
+      description: 'Improvements to school facilities for a better learning environment.',
+      donationTypeName: 'Infrastructure'
     },
     {
-      id: 'donation-4',
+      id: 'general',
       src: '/images/donations/4.jpg',
-      alt: 'PCCS Donation 4',
-      title: 'Educational Resources',
-      description: 'Books, materials and technology to enrich the educational experience.'
-    },
-    {
-      id: 'donation-5',
-      src: '/images/donations/5.jpg',
-      alt: 'PCCS Donation 5',
-      title: 'Special Programs',
-      description: 'Extracurricular activities and comprehensive development programs.'
-    },
-    {
-      id: 'donation-6',
-      src: '/images/donations/6.jpg',
-      alt: 'PCCS Donation 6',
-      title: 'School Nutrition',
-      description: 'Nutrition program to ensure the health of our students.'
+      alt: 'General Donation',
+      title: 'General Donation',
+      description: 'Support the overall mission and operations of our school.',
+      donationTypeName: 'General Donation'
     },
     {
       id: 'sponsor-child',
       src: '/images/donations/Apadrina un niño - Ingles.PNG',
       alt: 'Sponsor a Child',
       title: 'Sponsor a Child',
-      description: 'Special sponsorship program to transform lives through education.'
+      description: 'Special sponsorship program to transform lives through education.',
+      donationTypeName: 'Sponsor a Child'
     }
   ];
 
@@ -190,29 +180,51 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                 of our students and strengthens our educational mission.
               </p>
 
-              {/* Quick Donation Amounts */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
-                <DonationAmountButton amount={25} description="School Supplies" />
-                <DonationAmountButton amount={50} description="Monthly Support" />
-                <DonationAmountButton amount={100} description="Student Scholarship" />
-                <DonationAmountButton amount={250} description="Major Donor" />
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center px-8 py-4 border-2 font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
-                  style={{
-                    borderColor: '#1E1E8C',
-                    color: '#1E1E8C'
-                  }}
-                >
-                  More Information
-                  <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </a>
-              </div>
+              {/* Donation Types List */}
+              {isLoadingTypes ? (
+                <div className="flex justify-center items-center py-12 mb-8">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#1E1E8C' }}></div>
+                    <p className="text-gray-600">Loading donation options...</p>
+                  </div>
+                </div>
+              ) : donationTypes.length === 0 ? (
+                <div className="text-center py-12 mb-8">
+                  <p className="text-gray-600">No donation types available at the moment.</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  {donationTypes.map((type) => (
+                    <div
+                      key={type.id}
+                      className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6"
+                    >
+                      <h4 className="text-xl font-bold mb-2" style={{ color: '#1E1E8C' }}>
+                        {type.name}
+                      </h4>
+                      {type.description && (
+                        <p className="text-gray-600 text-sm mb-4">
+                          {type.description}
+                        </p>
+                      )}
+                      <div className="mb-4">
+                        <span className="text-3xl font-bold" style={{ color: '#2ECC40' }}>
+                          ${type.amount.toFixed(2)}
+                        </span>
+                      </div>
+                      <AzulPaymentButton
+                        amount={type.amount}
+                        description={`Donation - ${type.name}`}
+                        donationTypeId={type.id}
+                        className="w-full text-base py-3 px-6"
+                      >
+                        Donate Now
+                      </AzulPaymentButton>
+                    </div>
+                  ))}
+                </div>
+              )}
+ 
             </div>
           </div>
         </div>
@@ -254,9 +266,23 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                   {selectedImage.title}
                 </h3>
                 <div className="w-16 h-1 rounded-full mb-4" style={{ backgroundColor: '#2ECC40' }}></div>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed mb-6">
                   {selectedImage.description}
                 </p>
+
+                {/* Donation Button with pre-selected type */}
+                {donationTypes.find(t => t.name === selectedImage.donationTypeName) && (
+                  <div className="flex justify-center" onClick={(e) => e.stopPropagation()}>
+                    <AzulPaymentButton
+                      amount={50}
+                      description={`Donation - ${selectedImage.title}`}
+                      donationTypeId={donationTypes.find(t => t.name === selectedImage.donationTypeName)?.id}
+                      className="text-lg py-4 px-8"
+                    >
+                      Donate Now
+                    </AzulPaymentButton>
+                  </div>
+                )}
               </div>
             </div>
           </div>

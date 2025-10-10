@@ -67,6 +67,7 @@ export interface AzulPaymentConfig {
 export interface PaymentButtonProps {
   amount: number;
   description: string;
+  donationTypeId?: string; // Optional: pre-selected donation type
   customOrderId?: string;
   customField1?: {
     label: string;
