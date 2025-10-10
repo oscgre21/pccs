@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
 
     // Check if donation exists and has a final status (APPROVED, DECLINED, CANCELLED)
     const existingDonation = await getDonationByOrderNumber(paymentResponse.OrderNumber);
-    const finalStatuses = [PaymentStatus.APPROVED, PaymentStatus.DECLINED, PaymentStatus.CANCELLED];
+    const finalStatuses: PaymentStatus[] = [PaymentStatus.APPROVED, PaymentStatus.DECLINED, PaymentStatus.CANCELLED];
 
     if (existingDonation && finalStatuses.includes(existingDonation.status)) {
       // Security logging - record attempt to modify final status

@@ -126,9 +126,7 @@ export async function updateDonationStatus(
 /**
  * Get donation by ID
  */
-export async function getDonationById(
-  id: string
-): Promise<Donation | null> {
+export async function getDonationById(id: string) {
   return prisma.donation.findUnique({
     where: { id },
     include: {
@@ -143,9 +141,7 @@ export async function getDonationById(
 /**
  * Get donation by order number
  */
-export async function getDonationByOrderNumber(
-  orderNumber: string
-): Promise<Donation | null> {
+export async function getDonationByOrderNumber(orderNumber: string) {
   return prisma.donation.findUnique({
     where: { orderNumber },
     include: {
