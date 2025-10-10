@@ -18,8 +18,9 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json* ./
 
-# Install all dependencies directly in builder stage
-RUN npm ci --include=optional
+# Remove package-lock if exists and do clean install for Linux platform
+RUN rm -f package-lock.json && \
+    npm install --include=optional
 
 # Copy source files
 COPY . .
