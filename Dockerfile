@@ -25,6 +25,9 @@ FROM base AS builder
 RUN apt-get update && apt-get install -y \
     openssl \
     ca-certificates \
+    python3 \
+    make \
+    g++ \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -39,6 +42,9 @@ COPY . .
 
 # Generate Prisma Client
 RUN npx prisma generate
+
+# Rebuild native modules in builder stage
+RUN npm rebuild lightningcss
 
 # Build the application
 ENV NEXT_TELEMETRY_DISABLED=1
