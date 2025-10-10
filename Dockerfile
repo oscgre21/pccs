@@ -2,37 +2,34 @@ FROM node:20.11.1-alpine3.19 AS base
 
 # Install dependencies only when needed
 FROM base AS deps
-RUN apk add --no-cache libc6-compat git
+RUN apk add --no-cache libc6-compat git openssl python3 make g++
 WORKDIR /app
 
-# Enable pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Copy package files
+COPY package.json package-lock.json* ./
 
-# Copy only package files
-COPY package.json pnpm-lock.yaml* ./
-
-# Install dependencies and update lock file
-RUN pnpm install --no-frozen-lockfile && \
-    pnpm install
+# Install dependencies (including optional dependencies for native modules)
+RUN npm ci --include=optional
 
 # Development dependencies for build
 FROM base AS builder
+RUN apk add --no-cache python3 make g++
 WORKDIR /app
-
-# Enable pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/package.json ./package.json
-COPY --from=deps /app/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=deps /app/package-lock.json* ./package-lock.json
 
 # Copy source files
 COPY . .
 
+# Generate Prisma Client
+RUN npx prisma generate
+
 # Build the application
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN pnpm run build
+RUN npm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
