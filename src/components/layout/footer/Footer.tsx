@@ -34,10 +34,9 @@ const footerSections: FooterSection[] = [
   {
     title: 'Resources',
     links: [
-      { title: 'Blog', href: '/blog' },
-      { title: 'Events', href: '/events' },
-      { title: 'Gallery', href: '/gallery' },
-      { title: 'Downloads', href: '/downloads' }
+      //{ title: 'Blog', href: '/blog' },
+      //{ title: 'Events', href: '/events' },
+      { title: 'Gallery', href: '/gallery' }, 
     ]
   }
 ];
@@ -53,12 +52,14 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Logo and Description */}
             <div className="lg:col-span-1">
-              <div className="mb-6">
-                <img
-                  src="/logos/logo3.png"
-                  alt="PCCS Logo"
-                  className="h-12 w-auto"
-                />
+              <div className="mb-6 inline-block">
+                <div className="bg-white rounded-lg p-4 shadow-lg">
+                  <img
+                    src="/logos/logo3.png"
+                    alt="PCCS Logo"
+                    className="h-20 w-auto"
+                  />
+                </div>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 PCCS offers an innovative approach to the study and development of children and youth,
@@ -144,7 +145,7 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Copyright */}
+      {/* Copyright 
       <div className="border-t py-6" style={{ borderColor: '#665555' }}>
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
@@ -161,7 +162,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </div>*/}
     </footer>
   );
 }
