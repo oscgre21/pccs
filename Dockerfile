@@ -1,8 +1,16 @@
-FROM node:20.11.1-alpine3.19 AS base
+FROM node:20-slim AS base
 
 # Install dependencies only when needed
 FROM base AS deps
-RUN apk add --no-cache libc6-compat git openssl python3 make g++
+RUN apt-get update && apt-get install -y \
+    openssl \
+    ca-certificates \
+    git \
+    python3 \
+    make \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Copy package files
@@ -13,7 +21,11 @@ RUN npm ci --include=optional
 
 # Development dependencies for build
 FROM base AS builder
-RUN apk add --no-cache python3 make g++
+RUN apt-get update && apt-get install -y \
+    openssl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Copy dependencies from deps stage
@@ -33,6 +45,13 @@ RUN npm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
+
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y \
+    openssl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Set runtime environment variables
@@ -41,9 +60,9 @@ ENV NODE_ENV=production \
     PORT=3000 \
     HOSTNAME=0.0.0.0
 
-# Create non-root user and group
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nextjs
+# Create non-root user and group (Debian syntax)
+RUN groupadd --system --gid 1001 nodejs && \
+    useradd --system --uid 1001 --gid nodejs nextjs
 
 # Create and set permissions for Next.js directories
 RUN mkdir -p .next/cache && \
