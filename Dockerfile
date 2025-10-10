@@ -16,8 +16,9 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json* ./
 
-# Install dependencies (including optional dependencies for native modules)
-RUN npm ci --include=optional
+# Install dependencies (force fresh install of native modules)
+RUN npm ci --include=optional && \
+    npm rebuild lightningcss
 
 # Development dependencies for build
 FROM base AS builder
