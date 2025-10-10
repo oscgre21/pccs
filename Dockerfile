@@ -1,7 +1,9 @@
 FROM node:20-slim AS base
 
-# Install dependencies only when needed
-FROM base AS deps
+# Build stage
+FROM base AS builder
+
+# Install build dependencies including tools for native modules
 RUN apt-get update && apt-get install -y \
     openssl \
     ca-certificates \
@@ -16,35 +18,14 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json* ./
 
-# Install dependencies (force fresh install of native modules)
-RUN npm ci --include=optional && \
-    npm rebuild lightningcss
-
-# Development dependencies for build
-FROM base AS builder
-RUN apt-get update && apt-get install -y \
-    openssl \
-    ca-certificates \
-    python3 \
-    make \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
-
-# Copy dependencies from deps stage
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/package.json ./package.json
-COPY --from=deps /app/package-lock.json* ./package-lock.json
+# Install all dependencies directly in builder stage
+RUN npm ci --include=optional
 
 # Copy source files
 COPY . .
 
 # Generate Prisma Client
 RUN npx prisma generate
-
-# Rebuild native modules in builder stage
-RUN npm rebuild lightningcss
 
 # Build the application
 ENV NEXT_TELEMETRY_DISABLED=1
