@@ -4,45 +4,7 @@ import React from 'react';
 import { getAssetPath } from '@/data/assets-mapping';
 import { VideoModal } from '@/components/ui';
 import { useModal } from '@/hooks';
-
-interface Feature {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  gradientClass: string;
-}
-
-const features: Feature[] = [
-  {
-    id: 'active-learning',
-    title: 'Active Learning',
-    description: 'Engaging and interactive learning experiences that promote critical thinking and creativity.',
-    icon: '/icons/feat-icon-1.png',
-    gradientClass: 'bg-gradient-1'
-  },
-  {
-    id: 'parents-day',
-    title: 'Parents Day',
-    description: 'Special events that strengthen the bond between families and our educational community.',
-    icon: '/icons/feat-icon-2.png',
-    gradientClass: 'bg-gradient-2'
-  },
-  {
-    id: 'expert-teachers',
-    title: 'Expert Teachers',
-    description: 'Qualified educators dedicated to nurturing each student\'s potential with passion and expertise.',
-    icon: '/icons/feat-icon-3.png',
-    gradientClass: 'bg-gradient-3'
-  },
-  {
-    id: 'music-lessons',
-    title: 'Music Lessons',
-    description: 'Creative music education that develops artistic expression and cultural appreciation.',
-    icon: '/icons/feat-icon-4.png',
-    gradientClass: 'bg-gradient-4'
-  }
-];
+import { useTranslation } from '@/contexts/LanguageContext';
 
 interface FeaturesSectionProps {
   className?: string;
@@ -50,6 +12,7 @@ interface FeaturesSectionProps {
 
 export function FeaturesSection({ className = '' }: FeaturesSectionProps) {
   const { isOpen, openModal, closeModal } = useModal();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -61,11 +24,10 @@ export function FeaturesSection({ className = '' }: FeaturesSectionProps) {
             {/* Section Heading */}
             <div className="section-heading mb-8">
               <h2 className="section-title text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">
-                Cultivating Love for God by Equipping Them for Life
+                {t.features.title}
               </h2>
               <p className="heading-sub-txt text-lg text-gray-600 leading-relaxed">
-               We educate students with academic excellence, bilingual education, Christian faith and values that transform lives. <br />
-               We open doors for children who deserve an opportunity, regardless of their economic situation.
+                {t.features.description}
               </p>
             </div>
 

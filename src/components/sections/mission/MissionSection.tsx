@@ -1,16 +1,14 @@
+'use client';
+
 import React from 'react';
+import { useTranslation } from '@/contexts/LanguageContext';
 
 interface MissionSectionProps {
   className?: string;
 }
 
 export function MissionSection({ className = '' }: MissionSectionProps) {
-  const missionPoints = [
-    "The formation of young people through comprehensive education based on the word of God.",
-    "Create a Christian environment, where young people acquire the spiritual and intellectual tools that guarantee their permanent improvement.",
-    "Provide high-quality bilingual Christian education at affordable prices, committed to the comprehensive development of each student.",
-    "Cultivate an excellent and loving learning environment, where spiritual, intellectual and emotional growth is promoted, with Christian values in love, compassion and service."
-  ];
+  const { t } = useTranslation();
 
   return (
     <section id="mission" className={`mission-area py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-purple-50 ${className}`}>
@@ -21,17 +19,16 @@ export function MissionSection({ className = '' }: MissionSectionProps) {
             <div className="mission-content">
               <div className="section-heading mb-8">
                 <h2 className="tp-el-title mission-title text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Our Mission
+                  {t.mission.title}
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  At PCCS, we are dedicated to forming young people of integrity through excellent Christian education,
-                  committed to the spiritual, academic and personal development of each student.
+                  {t.mission.description}
                 </p>
               </div>
 
               {/* Mission Points */}
               <div className="mission-points space-y-6 mb-8">
-                {missionPoints.map((point, index) => (
+                {t.mission.points.map((point, index) => (
                   <div key={index} className="mission-point flex items-start space-x-4">
                     <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style={{ backgroundColor: '#1E1E8C' }}>
                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -66,8 +63,8 @@ export function MissionSection({ className = '' }: MissionSectionProps) {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Comprehensive Education</h4>
-                      <p className="text-sm text-gray-600">Christian and Bilingual</p>
+                      <h4 className="font-bold text-gray-900">{t.mission.overlayTitle}</h4>
+                      <p className="text-sm text-gray-600">{t.mission.overlaySubtitle}</p>
                     </div>
                   </div>
                 </div>

@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { HeroSectionProps, CarouselImage } from '@/types';
+import { useTranslation } from '@/contexts/LanguageContext';
 
-
-const animatedWords = ['Kids', 'Child', 'youth'];
 const carouselImages: CarouselImage[] = [
   {
     src: '/images/pic/PCCS-12.JPG',
@@ -18,11 +17,15 @@ const carouselImages: CarouselImage[] = [
 ];
 
 export function HeroSection({ className = '' }: HeroSectionProps) {
+  const { t } = useTranslation();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [nextImageIndex, setNextImageIndex] = useState(1);
   const [showCurrentImage, setShowCurrentImage] = useState(true);
+
+  // Animated words from translations
+  const animatedWords = [t.hero.title.kids, t.hero.title.child, t.hero.title.youth];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -85,12 +88,12 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
           <div className="banner-txt text-white">
             {/* Subtitle */}
             <h3 className="banner-subtitle text-lg md:text-xl lg:text-2xl font-medium mb-4" style={{ color: '#2ECC40' }}>
-              A New Approach to
+              {t.hero.subtitle}
             </h3>
 
             {/* Animated Title */}
             <h1 className="banner-title text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
-              <span className="block">Study Of</span>
+              <span className="block">{t.hero.title.studyOf}</span>
               <span className="block mt-2">
                 <span
                   className={`inline-block transition-all duration-300 ${
@@ -106,7 +109,7 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
 
             {/* Description */}
             <p className="banner-paragraph text-lg md:text-xl lg:text-2xl mb-8 lg:mb-12 leading-relaxed text-gray-100 max-w-2xl">
-              We educate students with academic excellence, bilingual education, Christian faith and values that transform lives.
+              {t.hero.description}
             </p>
 
             {/* Buttons */}
@@ -119,7 +122,7 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                 onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#1E1E8C'}
                 aria-label="Apply for admission to PCCS Education"
               >
-                APPLY NOW
+                {t.hero.applyButton}
               </a>
               <a
                 href="/courses"
@@ -129,7 +132,7 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                 onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#2ECC40'}
                 aria-label="View our available classes and courses"
               >
-                OUR CLASSES
+                {t.hero.coursesButton}
               </a>
             </div>
           </div>

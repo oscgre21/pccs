@@ -48,42 +48,170 @@ export const es: Translations = {
   },
 
   features: {
-    title: '¿Por Qué Elegir PCCS?',
+    title: 'Cultivando el Amor a Dios Equipándolos para la Vida',
     subtitle: 'Excelencia en Educación Cristiana',
+    description: 'Educamos a los estudiantes con excelencia académica, educación bilingüe, fe y valores cristianos que transforman vidas. Abrimos puertas a niños que merecen una oportunidad, sin importar su situación económica.',
+    activeLearning: {
+      title: 'Aprendizaje Activo',
+      description: 'Experiencias de aprendizaje interactivas y participativas que promueven el pensamiento crítico y la creatividad.',
+    },
+    parentsDay: {
+      title: 'Día de los Padres',
+      description: 'Eventos especiales que fortalecen el vínculo entre las familias y nuestra comunidad educativa.',
+    },
+    expertTeachers: {
+      title: 'Maestros Expertos',
+      description: 'Educadores calificados dedicados a cultivar el potencial de cada estudiante con pasión y experiencia.',
+    },
+    musicLessons: {
+      title: 'Lecciones de Música',
+      description: 'Educación musical creativa que desarrolla la expresión artística y el aprecio cultural.',
+    },
   },
 
   mission: {
     title: 'Nuestra Misión',
     content: 'Proporcionar educación cristiana de calidad que desarrolle al niño en su totalidad - académica, espiritual, social y emocionalmente - preparándolos para hacer un impacto positivo en sus comunidades y el mundo.',
+    description: 'En PCCS, nos dedicamos a formar jóvenes íntegros a través de una educación cristiana excelente, comprometidos con el desarrollo espiritual, académico y personal de cada estudiante.',
+    points: [
+      'La formación de jóvenes a través de una educación integral basada en la palabra de Dios.',
+      'Crear un ambiente cristiano, donde los jóvenes adquieran las herramientas espirituales e intelectuales que garanticen su mejoramiento permanente.',
+      'Proporcionar educación cristiana bilingüe de alta calidad a precios accesibles, comprometidos con el desarrollo integral de cada estudiante.',
+      'Cultivar un ambiente de aprendizaje excelente y amoroso, donde se promueva el crecimiento espiritual, intelectual y emocional, con valores cristianos en amor, compasión y servicio.',
+    ],
+    overlayTitle: 'Educación Integral',
+    overlaySubtitle: 'Cristiana y Bilingüe',
   },
 
   vision: {
     title: 'Nuestra Visión',
     content: 'Ser una institución educativa cristiana líder en el Caribe, reconocida por su excelencia académica, formación espiritual e impacto comunitario, donde cada estudiante descubre y desarrolla su potencial dado por Dios.',
+    description1: 'Ser reconocidos como líderes en la provisión de educación cristiana bilingüe de calidad, asequible y accesible para todas las familias. Aspiramos a crear un ambiente educativo dinámico y acogedor, donde cada estudiante se sienta valorado y capacitado para alcanzar sus metas.',
+    description2: 'Buscamos formar líderes cristianos que sean ciudadanos comprometidos con la justicia social, capaces de enfrentar los desafíos del mundo con confianza, integridad y compasión.',
+    qualityEducation: {
+      title: 'Educación de Calidad',
+      description: 'Líderes en educación cristiana bilingüe accesible para todas las familias',
+    },
+    welcomingEnvironment: {
+      title: 'Ambiente Acogedor',
+      description: 'Ambiente educativo dinámico donde cada estudiante se siente valorado',
+    },
+    christianLeaders: {
+      title: 'Líderes Cristianos',
+      description: 'Formamos ciudadanos comprometidos con la justicia social',
+    },
+    trustIntegrity: {
+      title: 'Confianza e Integridad',
+      description: 'Capacitamos para enfrentar desafíos con compasión y determinación',
+    },
+    ctaButton: 'Únete a Nuestra Visión',
   },
 
   values: {
     title: 'Nuestros Valores',
     subtitle: 'Los principios que guían todo lo que hacemos',
+    description: 'Los valores que guían nuestra misión educativa y moldean el carácter de nuestra comunidad estudiantil. Cada valor representa un pilar fundamental en la educación integral que ofrecemos.',
+    overlayTitle: 'Formación en Valores',
+    overlaySubtitle: 'Construyendo carácter con principios cristianos',
+    faith: {
+      title: 'Fe Cristiana',
+      description: 'Promover y practicar los principios del cristianismo en todas las áreas de la vida.',
+    },
+    integrity: {
+      title: 'Integridad',
+      description: 'Actuar con honestidad, sinceridad y coherencia entre lo que se dice y lo que se hace.',
+    },
+    excellence: {
+      title: 'Excelencia',
+      description: 'Buscar la excelencia en todas las áreas de la vida, esforzándose por alcanzar el máximo potencial.',
+    },
+    learning: {
+      title: 'Aprendizaje',
+      description: 'Fomentar una actitud de curiosidad y aprendizaje continuo, valorando la educación como camino hacia el crecimiento personal y espiritual.',
+    },
+    love: {
+      title: 'Amor',
+      description: 'Fomentar el amor incondicional hacia Dios y los demás, siguiendo el ejemplo de Jesucristo.',
+    },
+    compassion: {
+      title: 'Compasión',
+      description: 'Demostrar empatía y comprensión hacia las necesidades y sufrimientos de los demás, ofreciendo apoyo y ayuda.',
+    },
+    service: {
+      title: 'Servicio',
+      description: 'Servir a los demás con humildad, generosidad y altruismo, buscando siempre el bienestar y la justicia para todos.',
+    },
+    gratitude: {
+      title: 'Gratitud',
+      description: 'Reconocer y apreciar las bendiciones recibidas, mostrando agradecimiento hacia Dios y quienes nos rodean y nos enseñan.',
+    },
+    ctaTitle: 'Únete a Nuestra Comunidad de Valores',
+    ctaDescription: 'En PCCS, estos valores no son solo palabras en una pared. Son principios vivos que guían cada aspecto de nuestra educación y formación integral.',
+    ctaButton: 'Conoce Más Sobre Nosotros',
   },
 
   purpose: {
     title: 'Nuestro Propósito',
     content: 'Crear un ambiente de aprendizaje enriquecedor donde los estudiantes crezcan en sabiduría, carácter y fe, equipados con el conocimiento, habilidades y valores necesarios para sobresalir académicamente y servir a otros con compasión e integridad.',
+    description: 'En PCCS, nuestro propósito va más allá de la simple educación. Estamos comprometidos a crear un centro de excelencia que reconozca y honre a Dios en cada aspecto de nuestro trabajo educativo.',
+    academicExcellence: {
+      title: 'Centro de Excelencia Académica',
+      description: 'Ser un centro donde la excelencia académica permee las acciones del cuerpo docente y el bienestar estudiantil.',
+    },
+    missionOriented: {
+      title: 'Logros Orientados a la Misión',
+      description: 'Alcanzar las metas orientadas por nuestra misión educativa cristiana y bilingüe.',
+    },
+    recognitionQuality: {
+      title: 'Reconocimiento y Calidad',
+      description: 'Obtener reconocimiento por efectividad, calidad, responsabilidad, honestidad y ser un centro amante de Dios.',
+    },
+    quote: 'Nuestro propósito es formar no solo estudiantes académicamente excelentes, sino ciudadanos íntegros que honren a Dios en todo lo que hacen.',
+    quoteAuthor: 'Filosofía Educativa PCCS',
+    ctaButton: 'Conoce Nuestro Compromiso',
+    statsCommitment: 'Compromiso',
+    statsExcellence: 'Excelencia',
+    statsQuality: 'Calidad',
   },
 
   admissions: {
-    title: 'Únete a Nuestra Familia Escolar',
-    subtitle: 'Admisiones e Inscripción',
-    description: 'Comienza el viaje de tu hijo con nosotros. Damos la bienvenida a estudiantes de todos los orígenes que estén listos para aprender y crecer en un ambiente cristiano de apoyo.',
-    requiredDocuments: 'Documentos Requeridos',
+    // Hero section
+    heroTitle: 'ADMISIONES',
+    heroSubtitle: 'Descubre la excelencia en educación que prepara a nuestros estudiantes para un futuro brillante',
     viewForms: 'Ver Formularios',
     callNow: 'Llamar Ahora',
-    scheduleAppointment: 'Agendar una Cita',
+
+    // Documents section
+    title: 'Lista de Documentos para Admisión',
+    subtitle: 'Únete a Nuestra Familia Escolar',
+    description: 'Para completar el proceso de admisión en PCCS, necesitarás reunir los siguientes documentos. Nuestro equipo estará disponible para ayudarte en cada paso del camino.',
+    documentsTitle: 'Admisión e Inscripción',
+    requiredDocuments: 'DOCUMENTOS REQUERIDOS',
+    documents: [
+      '4 fotos 2x2',
+      'Acta de Nacimiento',
+      'Copia de Tarjeta de Seguro Médico',
+      'Copia de Cédula o Pasaporte de los Padres',
+      'Récord de Vacunación',
+      'Certificado Médico',
+      'Informe de Aprendizaje',
+      'Carta de Saldo',
+      'Carta de Conducta',
+      'Informe de Calificaciones',
+      'Copia de los récords de años de primaria completados (desde 1er grado en adelante)',
+      'Verificación de Oftalmología',
+    ],
+
+    // Forms section
+    processesTitle: 'Procesos de Admisión',
+    processesDescription: 'Accede a nuestros formularios y servicios directamente',
+    scheduleAppointment: 'Agenda tu Cita',
     admissionForm: 'Formulario de Admisión',
     scholarshipApplication: 'Solicitud de Beca',
-    inquiries: 'Para consultas y citas',
-    needHelp: '¿Necesitas ayuda con el proceso de admisión?',
+    inquiries: 'Consultas',
+
+    // Quick contact
+    needHelp: '¿Necesitas ayuda inmediata?',
   },
 
   gallery: {

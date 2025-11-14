@@ -48,42 +48,170 @@ export const en: Translations = {
   },
 
   features: {
-    title: 'Why Choose PCCS?',
+    title: 'Cultivating Love for God by Equipping Them for Life',
     subtitle: 'Excellence in Christian Education',
+    description: 'We educate students with academic excellence, bilingual education, Christian faith and values that transform lives. We open doors for children who deserve an opportunity, regardless of their economic situation.',
+    activeLearning: {
+      title: 'Active Learning',
+      description: 'Engaging and interactive learning experiences that promote critical thinking and creativity.',
+    },
+    parentsDay: {
+      title: 'Parents Day',
+      description: 'Special events that strengthen the bond between families and our educational community.',
+    },
+    expertTeachers: {
+      title: 'Expert Teachers',
+      description: 'Qualified educators dedicated to nurturing each student\'s potential with passion and expertise.',
+    },
+    musicLessons: {
+      title: 'Music Lessons',
+      description: 'Creative music education that develops artistic expression and cultural appreciation.',
+    },
   },
 
   mission: {
     title: 'Our Mission',
     content: 'To provide quality Christian education that develops the whole child - academically, spiritually, socially, and emotionally - preparing them to make a positive impact in their communities and the world.',
+    description: 'At PCCS, we are dedicated to forming young people of integrity through excellent Christian education, committed to the spiritual, academic and personal development of each student.',
+    points: [
+      'The formation of young people through comprehensive education based on the word of God.',
+      'Create a Christian environment, where young people acquire the spiritual and intellectual tools that guarantee their permanent improvement.',
+      'Provide high-quality bilingual Christian education at affordable prices, committed to the comprehensive development of each student.',
+      'Cultivate an excellent and loving learning environment, where spiritual, intellectual and emotional growth is promoted, with Christian values in love, compassion and service.',
+    ],
+    overlayTitle: 'Comprehensive Education',
+    overlaySubtitle: 'Christian and Bilingual',
   },
 
   vision: {
     title: 'Our Vision',
     content: 'To be a leading Christian educational institution in the Caribbean, known for academic excellence, spiritual formation, and community impact, where every student discovers and develops their God-given potential.',
+    description1: 'To be recognized as leaders in providing quality bilingual Christian education, affordable and accessible to all families. We aspire to create a dynamic and welcoming educational environment, where every student feels valued and empowered to achieve their goals.',
+    description2: 'We seek to form Christian leaders who are citizens committed to social justice, capable of facing the world\'s challenges with confidence, integrity and compassion.',
+    qualityEducation: {
+      title: 'Quality Education',
+      description: 'Leader in accessible bilingual Christian education for all families',
+    },
+    welcomingEnvironment: {
+      title: 'Welcoming Environment',
+      description: 'Dynamic educational environment where every student feels valued',
+    },
+    christianLeaders: {
+      title: 'Christian Leaders',
+      description: 'We form citizens committed to social justice',
+    },
+    trustIntegrity: {
+      title: 'Trust and Integrity',
+      description: 'We empower to face challenges with compassion and determination',
+    },
+    ctaButton: 'Join Our Vision',
   },
 
   values: {
     title: 'Our Values',
     subtitle: 'The principles that guide everything we do',
+    description: 'The values that guide our educational mission and shape the character of our student community. Each value represents a fundamental pillar in the comprehensive education we offer.',
+    overlayTitle: 'Values Formation',
+    overlaySubtitle: 'Building character with Christian principles',
+    faith: {
+      title: 'Christian Faith',
+      description: 'Promote and practice the principles of Christianity in all areas of life.',
+    },
+    integrity: {
+      title: 'Integrity',
+      description: 'Act with honesty, sincerity and consistency between what is said and what is done.',
+    },
+    excellence: {
+      title: 'Excellence',
+      description: 'Seek excellence in all areas of life, striving to reach maximum potential.',
+    },
+    learning: {
+      title: 'Learning',
+      description: 'Foster an attitude of curiosity and continuous learning, valuing education as a path to personal and spiritual growth.',
+    },
+    love: {
+      title: 'Love',
+      description: 'Foster unconditional love toward God and others, following the example of Jesus Christ.',
+    },
+    compassion: {
+      title: 'Compassion',
+      description: 'Demonstrate empathy and understanding toward the needs and sufferings of others, offering support and help.',
+    },
+    service: {
+      title: 'Service',
+      description: 'Serve others with humility, generosity and altruism, always seeking the welfare and justice for all.',
+    },
+    gratitude: {
+      title: 'Gratitude',
+      description: 'Recognize and appreciate the blessings received, showing gratitude toward God and those who surround us and teach us.',
+    },
+    ctaTitle: 'Join Our Values Community',
+    ctaDescription: 'At PCCS, these values are not just words on a wall. They are living principles that guide every aspect of our education and comprehensive formation.',
+    ctaButton: 'Learn More About Us',
   },
 
   purpose: {
     title: 'Our Purpose',
     content: 'To create a nurturing learning environment where students grow in wisdom, character, and faith, equipped with the knowledge, skills, and values needed to excel academically and serve others with compassion and integrity.',
+    description: 'At PCCS, our purpose goes beyond simple education. We are committed to creating a center of excellence that recognizes and honors God in every aspect of our educational work.',
+    academicExcellence: {
+      title: 'Center of Academic Excellence',
+      description: 'To be a center where academic excellence permeates the actions of faculty and student welfare.',
+    },
+    missionOriented: {
+      title: 'Mission-Oriented Achievements',
+      description: 'Achieve the goals oriented by our Christian and bilingual educational mission.',
+    },
+    recognitionQuality: {
+      title: 'Recognition and Quality',
+      description: 'Obtain recognition for effectiveness, quality, responsibility, honesty and be a God-loving center.',
+    },
+    quote: 'Our purpose is to form not only academically excellent students, but citizens of integrity who honor God in everything they do.',
+    quoteAuthor: 'PCCS Educational Philosophy',
+    ctaButton: 'Learn About Our Commitment',
+    statsCommitment: 'Commitment',
+    statsExcellence: 'Excellence',
+    statsQuality: 'Quality',
   },
 
   admissions: {
-    title: 'Join Our School Family',
-    subtitle: 'Admissions & Enrollment',
-    description: 'Begin your child\'s journey with us. We welcome students from all backgrounds who are ready to learn and grow in a supportive Christian environment.',
-    requiredDocuments: 'Required Documents',
+    // Hero section
+    heroTitle: 'ADMISSIONS',
+    heroSubtitle: 'Discover excellence in education that prepares our students for a bright future',
     viewForms: 'View Forms',
     callNow: 'Call Now',
-    scheduleAppointment: 'Schedule an Appointment',
+
+    // Documents section
+    title: 'Documents List for Admissions',
+    subtitle: 'Join Our School Family',
+    description: 'To complete the admission process at PCCS, you will need to gather the following documents. Our team will be available to help you every step of the way.',
+    documentsTitle: 'Admissions & Enrollment',
+    requiredDocuments: 'REQUIRED DOCUMENTS',
+    documents: [
+      '4 photos 2x2',
+      'Birth Certificate',
+      'Copy of Medical Insurance Card',
+      'Copy of Parents\' ID or Passport',
+      'Vaccination Record',
+      'Medical Certificate',
+      'Learning Report',
+      'Balance Letter',
+      'Conduct Letter',
+      'Grade Report',
+      'Copy of primary school years completed records (from 1st grade onwards)',
+      'Ophthalmology Verification',
+    ],
+
+    // Forms section
+    processesTitle: 'Admission Processes',
+    processesDescription: 'Access our forms and services directly',
+    scheduleAppointment: 'Schedule Your Appointment',
     admissionForm: 'Admission Form',
     scholarshipApplication: 'Scholarship Application',
-    inquiries: 'For inquiries and appointments',
-    needHelp: 'Need help with the admission process?',
+    inquiries: 'Inquiries',
+
+    // Quick contact
+    needHelp: 'Need immediate help?',
   },
 
   gallery: {

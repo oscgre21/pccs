@@ -56,44 +56,154 @@ export interface Translations {
   features: {
     title: string;
     subtitle: string;
+    description: string;
+    activeLearning: {
+      title: string;
+      description: string;
+    };
+    parentsDay: {
+      title: string;
+      description: string;
+    };
+    expertTeachers: {
+      title: string;
+      description: string;
+    };
+    musicLessons: {
+      title: string;
+      description: string;
+    };
   };
 
   // Mission Section
   mission: {
     title: string;
     content: string;
+    description: string;
+    points: string[];
+    overlayTitle: string;
+    overlaySubtitle: string;
   };
 
   // Vision Section
   vision: {
     title: string;
     content: string;
+    description1: string;
+    description2: string;
+    qualityEducation: {
+      title: string;
+      description: string;
+    };
+    welcomingEnvironment: {
+      title: string;
+      description: string;
+    };
+    christianLeaders: {
+      title: string;
+      description: string;
+    };
+    trustIntegrity: {
+      title: string;
+      description: string;
+    };
+    ctaButton: string;
   };
 
   // Values Section
   values: {
     title: string;
     subtitle: string;
+    description: string;
+    overlayTitle: string;
+    overlaySubtitle: string;
+    faith: {
+      title: string;
+      description: string;
+    };
+    integrity: {
+      title: string;
+      description: string;
+    };
+    excellence: {
+      title: string;
+      description: string;
+    };
+    learning: {
+      title: string;
+      description: string;
+    };
+    love: {
+      title: string;
+      description: string;
+    };
+    compassion: {
+      title: string;
+      description: string;
+    };
+    service: {
+      title: string;
+      description: string;
+    };
+    gratitude: {
+      title: string;
+      description: string;
+    };
+    ctaTitle: string;
+    ctaDescription: string;
+    ctaButton: string;
   };
 
   // Purpose Section
   purpose: {
     title: string;
     content: string;
+    description: string;
+    academicExcellence: {
+      title: string;
+      description: string;
+    };
+    missionOriented: {
+      title: string;
+      description: string;
+    };
+    recognitionQuality: {
+      title: string;
+      description: string;
+    };
+    quote: string;
+    quoteAuthor: string;
+    ctaButton: string;
+    statsCommitment: string;
+    statsExcellence: string;
+    statsQuality: string;
   };
 
   // Admissions Section
   admissions: {
+    // Hero section
+    heroTitle: string;
+    heroSubtitle: string;
+    viewForms: string;
+    callNow: string;
+
+    // Documents section
     title: string;
     subtitle: string;
     description: string;
+    documentsTitle: string;
     requiredDocuments: string;
-    viewForms: string;
-    callNow: string;
+    documents: string[];
+
+    // Forms section
+    processesTitle: string;
+    processesDescription: string;
     scheduleAppointment: string;
     admissionForm: string;
     scholarshipApplication: string;
     inquiries: string;
+
+    // Quick contact
     needHelp: string;
   };
 

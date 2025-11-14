@@ -48,19 +48,14 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     }
   };
 
-  // Get current translations
-  const t = translations[language];
+  // Get current translations - always use default 'en' until mounted to prevent hydration issues
+  const t = translations[mounted ? language : 'en'];
 
   const value: LanguageContextType = {
-    language,
+    language: mounted ? language : 'en',
     setLanguage,
     t,
   };
-
-  // Prevent hydration mismatch by not rendering until mounted
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <LanguageContext.Provider value={value}>
