@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { PaymentButtonProps, PaymentStatus } from '@/lib/azul/types';
 
 interface DonationType {
@@ -37,6 +38,7 @@ export function AzulPaymentButton({
   const [status, setStatus] = useState<PaymentStatus>('idle');
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Donor information
   const [donorName, setDonorName] = useState('');
@@ -48,6 +50,12 @@ export function AzulPaymentButton({
   // Donation types
   const [donationTypes, setDonationTypes] = useState<DonationType[]>([]);
   const [loadingTypes, setLoadingTypes] = useState(true);
+
+  // Check if component is mounted (for portal)
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
 
   // Load donation types on mount
   useEffect(() => {
@@ -182,62 +190,9 @@ export function AzulPaymentButton({
     setShowForm(true);
   };
 
-  if (!showForm) {
-    return (
-      <button
-        onClick={handleButtonClick}
-        disabled={status === 'processing'}
-        className={`
-          inline-flex items-center justify-center
-          px-8 py-4
-          font-semibold text-white
-          rounded-full
-          transition-all duration-300
-          transform hover:scale-105
-          shadow-lg hover:shadow-xl
-          disabled:opacity-50 disabled:cursor-not-allowed
-          ${className}
-        `}
-        style={{ backgroundColor: '#1E1E8C' }}
-      >
-        {loadingTypes ? (
-          <>
-            <svg
-              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-            Loading...
-          </>
-        ) : (
-          <>
-            {children || `Donate $${amount}`}
-            <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          </>
-        )}
-      </button>
-    );
-  }
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+  // Render modal using Portal to avoid z-index and overflow issues
+  const modalContent = (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[9999]">
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           {/* Header */}
@@ -425,5 +380,61 @@ export function AzulPaymentButton({
         </div>
       </div>
     </div>
+  );
+
+  // Only render portal if mounted and form is shown
+  return (
+    <>
+      <button
+        onClick={handleButtonClick}
+        disabled={status === 'processing'}
+        className={`
+          inline-flex items-center justify-center
+          px-8 py-4
+          font-semibold text-white
+          rounded-full
+          transition-all duration-300
+          transform hover:scale-105
+          shadow-lg hover:shadow-xl
+          disabled:opacity-50 disabled:cursor-not-allowed
+          ${className}
+        `}
+        style={{ backgroundColor: '#1E1E8C' }}
+      >
+        {loadingTypes ? (
+          <>
+            <svg
+              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            Loading...
+          </>
+        ) : (
+          <>
+            {children || `Donate $${amount}`}
+            <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </>
+        )}
+      </button>
+      {mounted && showForm && createPortal(modalContent, document.body)}
+    </>
   );
 }
