@@ -1,50 +1,54 @@
+'use client';
+
 import React from 'react';
 import { SocialLinks } from '../header/SocialLinks';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from '@/contexts/LanguageContext';
 
 interface FooterLink {
-  title: string;
+  titleKey: string;
   href: string;
 }
 
 interface FooterSection {
-  title: string;
+  titleKey: string;
   links: FooterLink[];
 }
 
-const footerSections: FooterSection[] = [
-  {
-    title: 'Navigation',
-    links: [
-      { title: 'Home', href: '/' },
-      { title: 'About Us', href: '/about' },
-      { title: 'Courses', href: '/courses' },
-      { title: 'Admissions', href: '/admissions' },
-      { title: 'Contact', href: '/contact' }
-    ]
-  },
-  {
-    title: 'Explore',
-    links: [
-      { title: 'Gallery', href: '/gallery' },
-      { title: 'Our Staff', href: '/staff' },
-      { title: 'Donations', href: '/donations' },
-      { title: 'Blog', href: '/blog' }
-    ]
-  },
-  {
-    title: 'Quick Links',
-    links: [
-      { title: 'Mission', href: '/#mission' },
-      { title: 'Vision', href: '/#vision' },
-      { title: 'Values', href: '/#values' },
-      { title: 'Purpose', href: '/#purpose' }
-    ]
-  }
-];
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
+
+  const footerSections: FooterSection[] = [
+    {
+      titleKey: 'navigation',
+      links: [
+        { titleKey: 'home', href: '/' },
+        { titleKey: 'aboutUs', href: '/about' },
+        { titleKey: 'courses', href: '/courses' },
+        { titleKey: 'admissions', href: '/admissions' },
+        { titleKey: 'contact', href: '/contact' }
+      ]
+    },
+    {
+      titleKey: 'explore',
+      links: [
+        { titleKey: 'gallery', href: '/gallery' },
+        { titleKey: 'staff', href: '/staff' },
+        { titleKey: 'donations', href: '/donations' },
+        { titleKey: 'blog', href: '/blog' }
+      ]
+    },
+    {
+      titleKey: 'quickLinks',
+      links: [
+        { titleKey: 'mission', href: '/#mission' },
+        { titleKey: 'vision', href: '/#vision' },
+        { titleKey: 'values', href: '/#values' },
+        { titleKey: 'purpose', href: '/#purpose' }
+      ]
+    }
+  ];
 
   return (
     <footer className="text-white" style={{ backgroundColor: '#4433BB' }}>
@@ -64,11 +68,10 @@ export function Footer() {
                 </div>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                PCCS offers an innovative approach to the study and development of children and youth,
-                providing the best educational solutions in a clean and safe environment.
+                {t.footer.description}
               </p>
               <div className="mb-6">
-                <h4 className="text-white font-semibold mb-4">Follow Us</h4>
+                <h4 className="text-white font-semibold mb-4">{t.footer.followUs}</h4>
                 <SocialLinks />
               </div>
             </div>
@@ -76,7 +79,9 @@ export function Footer() {
             {/* Footer Navigation */}
             {footerSections.map((section, index) => (
               <div key={index}>
-                <h4 className="text-white font-semibold mb-6">{section.title}</h4>
+                <h4 className="text-white font-semibold mb-6">
+                  {t.footer[section.titleKey as keyof typeof t.footer] as string}
+                </h4>
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
@@ -84,7 +89,7 @@ export function Footer() {
                         href={link.href}
                         className="text-gray-300 hover:text-white transition-colors duration-200"
                       >
-                        {link.title}
+                        {t.navigation[link.titleKey as keyof typeof t.navigation]}
                       </a>
                     </li>
                   ))}
@@ -105,7 +110,7 @@ export function Footer() {
                 <PhoneIcon className="w-6 h-6 text-white" strokeWidth={2} />
               </div>
               <div>
-                <p className="text-purple-200 text-sm">Call Us</p>
+                <p className="text-purple-200 text-sm">{t.footer.callUs}</p>
                 <a
                   href="tel:+18498551635"
                   className="text-white hover:text-purple-300 transition-colors"
@@ -121,7 +126,7 @@ export function Footer() {
                 <EnvelopeIcon className="w-6 h-6 text-white" strokeWidth={2} />
               </div>
               <div>
-                <p className="text-purple-200 text-sm">Email</p>
+                <p className="text-purple-200 text-sm">{t.footer.email}</p>
                 <a
                   href="mailto:info@pccs.edu.do"
                   className="text-white hover:text-purple-300 transition-colors"
@@ -137,7 +142,7 @@ export function Footer() {
                 <MapPinIcon className="w-6 h-6 text-white" strokeWidth={2} />
               </div>
               <div>
-                <p className="text-purple-200 text-sm">Location</p>
+                <p className="text-purple-200 text-sm">{t.footer.location}</p>
                 <p className="text-white">
                   Av. Barcelo, Punta Cana, C. Edgar Allan Poe, No. 1
                 </p>

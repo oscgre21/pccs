@@ -1,0 +1,278 @@
+// Language types
+export type Language = 'en' | 'es';
+
+// Translation structure - organized by sections
+export interface Translations {
+  // Common translations
+  common: {
+    readMore: string;
+    learnMore: string;
+    contactUs: string;
+    applyNow: string;
+    donateNow: string;
+    viewMore: string;
+    loading: string;
+    submit: string;
+    cancel: string;
+    close: string;
+    back: string;
+    next: string;
+    previous: string;
+    search: string;
+  };
+
+  // Navigation
+  navigation: {
+    home: string;
+    aboutUs: string;
+    courses: string;
+    admissions: string;
+    gallery: string;
+    contact: string;
+    blog: string;
+    donations: string;
+    staff: string;
+    mission: string;
+    vision: string;
+    values: string;
+    purpose: string;
+  };
+
+  // Hero Section
+  hero: {
+    subtitle: string;
+    title: {
+      studyOf: string;
+      kids: string;
+      child: string;
+      youth: string;
+    };
+    description: string;
+    applyButton: string;
+    coursesButton: string;
+  };
+
+  // Features Section
+  features: {
+    title: string;
+    subtitle: string;
+  };
+
+  // Mission Section
+  mission: {
+    title: string;
+    content: string;
+  };
+
+  // Vision Section
+  vision: {
+    title: string;
+    content: string;
+  };
+
+  // Values Section
+  values: {
+    title: string;
+    subtitle: string;
+  };
+
+  // Purpose Section
+  purpose: {
+    title: string;
+    content: string;
+  };
+
+  // Admissions Section
+  admissions: {
+    title: string;
+    subtitle: string;
+    description: string;
+    requiredDocuments: string;
+    viewForms: string;
+    callNow: string;
+    scheduleAppointment: string;
+    admissionForm: string;
+    scholarshipApplication: string;
+    inquiries: string;
+    needHelp: string;
+  };
+
+  // Gallery Section
+  gallery: {
+    title: string;
+    subtitle: string;
+  };
+
+  // Donations Section
+  donations: {
+    title: string;
+    subtitle: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    impactTitle: string;
+    impactDescription: string;
+    qualityEducation: string;
+    qualityEducationDesc: string;
+    scholarships: string;
+    scholarshipsDesc: string;
+    development: string;
+    developmentDesc: string;
+    fundDistribution: string;
+    educationResources: string;
+    infrastructure: string;
+    transparency: string;
+    readyToMakeDifference: string;
+    everyDonation: string;
+  };
+
+  // Contact Section
+  contact: {
+    title: string;
+    subtitle: string;
+    callUs: string;
+    emailUs: string;
+    visitUs: string;
+    sendMessage: string;
+    fullName: string;
+    email: string;
+    phone: string;
+    subject: string;
+    message: string;
+    sendButton: string;
+    officeHours: string;
+    mondayFriday: string;
+    saturdaySunday: string;
+    closed: string;
+    officeHoursNote: string;
+  };
+
+  // Footer
+  footer: {
+    description: string;
+    followUs: string;
+    navigation: string;
+    explore: string;
+    quickLinks: string;
+    callUs: string;
+    email: string;
+    location: string;
+  };
+
+  // Payment pages
+  payment: {
+    approved: {
+      title: string;
+      validating: string;
+      redirecting: string;
+      returnHome: string;
+      validationError: string;
+    };
+    declined: {
+      title: string;
+      subtitle: string;
+      reason: string;
+      transactionDetails: string;
+      orderNumber: string;
+      amount: string;
+      date: string;
+      responseCode: string;
+      status: string;
+      whatCanIDo: string;
+      verifyCard: string;
+      checkBalance: string;
+      contactBank: string;
+      tryDifferentMethod: string;
+      tryAgain: string;
+      returnHome: string;
+      needHelp: string;
+      needHelpDesc: string;
+      contactSupport: string;
+    };
+    cancelled: {
+      title: string;
+      subtitle: string;
+      noCharges: string;
+      noChargesDesc: string;
+      transactionDetails: string;
+      orderNumber: string;
+      amount: string;
+      status: string;
+      completeDonation: string;
+      returnHome: string;
+      whySupport: string;
+      qualityEducation: string;
+      qualityEducationDesc: string;
+      studentSupport: string;
+      studentSupportDesc: string;
+      communityImpact: string;
+      communityImpactDesc: string;
+      quote: string;
+    };
+  };
+
+  // About Page
+  about: {
+    title: string;
+    subtitle: string;
+  };
+
+  // Courses Page
+  courses: {
+    title: string;
+    subtitle: string;
+    earlyChildhood: string;
+    earlyChildhoodAge: string;
+    earlyChildhoodDesc: string;
+    elementary: string;
+    elementaryAge: string;
+    elementaryDesc: string;
+    middleSchool: string;
+    middleSchoolAge: string;
+    middleSchoolDesc: string;
+    programFeatures: string;
+    playBased: string;
+    socialDevelopment: string;
+    basicConcepts: string;
+    characterFormation: string;
+    bilingualEducation: string;
+    coreSubjects: string;
+    criticalThinking: string;
+    worldview: string;
+    advancedCurriculum: string;
+    leadership: string;
+    technology: string;
+    serviceLearning: string;
+    readyToEnroll: string;
+    readyToEnrollDesc: string;
+  };
+
+  // Staff Page
+  staff: {
+    title: string;
+    subtitle: string;
+    joinTeam: string;
+    joinTeamDesc: string;
+    contactAboutOpportunities: string;
+  };
+
+  // Blog Page
+  blog: {
+    title: string;
+    subtitle: string;
+    comingSoon: string;
+    comingSoonDesc: string;
+    returnHome: string;
+    contactUs: string;
+    stayInLoop: string;
+    stayInLoopDesc: string;
+    enterEmail: string;
+    subscribe: string;
+  };
+}
+
+// Context type
+export interface LanguageContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: Translations;
+}

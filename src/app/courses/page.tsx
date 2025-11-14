@@ -1,51 +1,34 @@
-import React from 'react';
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Courses - PCCS',
-  description: 'Explore our comprehensive curriculum and educational programs at Punta Cana Christian School. From early childhood to primary education.',
-  keywords: ['courses', 'curriculum', 'education', 'programs', 'PCCS', 'Christian school'],
-};
+import React from 'react';
+import { useTranslation } from '@/contexts/LanguageContext';
 
 export default function CoursesPage() {
+  const { t } = useTranslation();
+
   const courses = [
     {
       id: 'early-childhood',
-      title: 'Early Childhood Education',
-      ageRange: '3-5 years',
-      description: 'A nurturing environment where young learners develop foundational skills through play-based learning and Christian values.',
-      features: [
-        'Play-based learning approach',
-        'Social and emotional development',
-        'Introduction to basic concepts',
-        'Christian character formation'
-      ],
+      titleKey: 'earlyChildhood',
+      ageRangeKey: 'earlyChildhoodAge',
+      descriptionKey: 'earlyChildhoodDesc',
+      features: ['playBased', 'socialDevelopment', 'basicConcepts', 'characterFormation'],
       image: '/images/pic/PCCS-25.JPG'
     },
     {
       id: 'elementary',
-      title: 'Elementary Program',
-      ageRange: '6-11 years',
-      description: 'Building strong academic foundations with a bilingual curriculum that integrates faith and learning.',
-      features: [
-        'Bilingual education (English/Spanish)',
-        'Core subjects mastery',
-        'Critical thinking development',
-        'Biblical worldview integration'
-      ],
+      titleKey: 'elementary',
+      ageRangeKey: 'elementaryAge',
+      descriptionKey: 'elementaryDesc',
+      features: ['bilingualEducation', 'coreSubjects', 'criticalThinking', 'worldview'],
       image: '/images/pic/PCCS-30.JPG'
     },
     {
       id: 'middle-school',
-      title: 'Middle School',
-      ageRange: '12-14 years',
-      description: 'Preparing students for academic excellence and spiritual growth through comprehensive education.',
-      features: [
-        'Advanced curriculum',
-        'Leadership development',
-        'Technology integration',
-        'Service learning opportunities'
-      ],
+      titleKey: 'middleSchool',
+      ageRangeKey: 'middleSchoolAge',
+      descriptionKey: 'middleSchoolDesc',
+      features: ['advancedCurriculum', 'leadership', 'technology', 'serviceLearning'],
       image: '/images/pic/PCCS-45.JPG'
     }
   ];
@@ -56,11 +39,10 @@ export default function CoursesPage() {
       <section className="bg-gradient-to-r from-green-600 to-green-700 text-white py-16 lg:py-24">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-            Our Courses
+            {t.courses.title}
           </h1>
           <p className="text-xl text-green-100 max-w-4xl mx-auto">
-            Comprehensive educational programs designed to nurture minds, hearts, and spirits
-            through academic excellence and Christian values.
+            {t.courses.subtitle}
           </p>
         </div>
       </section>
@@ -81,12 +63,12 @@ export default function CoursesPage() {
                   <div className="relative h-80 rounded-2xl overflow-hidden shadow-2xl">
                     <img
                       src={course.image}
-                      alt={course.title}
+                      alt={t.courses[course.titleKey as keyof typeof t.courses] as string}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-4 right-4 bg-white rounded-full px-4 py-2 shadow-lg">
                       <span className="text-sm font-semibold text-blue-900">
-                        {course.ageRange}
+                        {t.courses[course.ageRangeKey as keyof typeof t.courses]}
                       </span>
                     </div>
                   </div>
@@ -95,17 +77,17 @@ export default function CoursesPage() {
                 {/* Content */}
                 <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                   <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                    {course.title}
+                    {t.courses[course.titleKey as keyof typeof t.courses]}
                   </h2>
                   <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    {course.description}
+                    {t.courses[course.descriptionKey as keyof typeof t.courses]}
                   </p>
 
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                    Program Features:
+                    {t.courses.programFeatures}
                   </h3>
                   <ul className="space-y-3 mb-8">
-                    {course.features.map((feature, idx) => (
+                    {course.features.map((featureKey, idx) => (
                       <li key={idx} className="flex items-start">
                         <svg
                           className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5"
@@ -118,7 +100,9 @@ export default function CoursesPage() {
                             clipRule="evenodd"
                           />
                         </svg>
-                        <span className="text-gray-700">{feature}</span>
+                        <span className="text-gray-700">
+                          {t.courses[featureKey as keyof typeof t.courses]}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -128,7 +112,7 @@ export default function CoursesPage() {
                     className="inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                     style={{ backgroundColor: '#1E1E8C' }}
                   >
-                    Learn More
+                    {t.common.learnMore}
                   </a>
                 </div>
               </div>
@@ -141,10 +125,10 @@ export default function CoursesPage() {
       <section className="bg-gray-50 py-16 lg:py-24">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            Ready to Enroll?
+            {t.courses.readyToEnroll}
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join our community of learners and experience the difference of quality Christian education.
+            {t.courses.readyToEnrollDesc}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -152,14 +136,14 @@ export default function CoursesPage() {
               className="inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               style={{ backgroundColor: '#1E1E8C' }}
             >
-              Apply Now
+              {t.common.applyNow}
             </a>
             <a
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 border-2 font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
               style={{ borderColor: '#1E1E8C', color: '#1E1E8C' }}
             >
-              Contact Us
+              {t.common.contactUs}
             </a>
           </div>
         </div>

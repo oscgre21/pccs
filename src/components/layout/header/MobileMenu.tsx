@@ -3,54 +3,15 @@
 import React, { useState } from 'react';
 import { XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { contactInfo } from '@/app/constant';
+import { useTranslation } from '@/contexts/LanguageContext';
+import { LanguageSelector } from '@/components/ui/LanguageSelector';
 
 interface MenuItem {
   id: string;
-  title: string;
+  titleKey: string;
   href: string;
   children?: MenuItem[];
 }
-
-const menuItems: MenuItem[] = [
-  {
-    id: 'home',
-    title: 'Home',
-    href: '/',
-  },
-  {
-    id: 'about',
-    title: 'About Us',
-    href: '/about',
-    children: [
-      { id: 'mission', title: 'Mission', href: '/#mission' },
-      { id: 'vision', title: 'Vision', href: '/#vision' },
-      { id: 'values', title: 'Values', href: '/#values' },
-      { id: 'purpose', title: 'Purpose', href: '/#purpose' }
-    ]
-  },
-  {
-    id: 'courses',
-    title: 'Courses',
-    href: '/courses',
-  },
-  {
-    id: 'admissions',
-    title: 'Admissions',
-    href: '/admissions',
-  },
-  {
-    id: 'gallery',
-    title: 'Gallery',
-    href: '/gallery',
-  },
-  {
-    id: 'contact',
-    title: 'Contact Us',
-    href: '/contact'
-  }
-];
-
- 
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -59,6 +20,46 @@ interface MobileMenuProps {
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const { t } = useTranslation();
+
+  const menuItems: MenuItem[] = [
+    {
+      id: 'home',
+      titleKey: 'home',
+      href: '/',
+    },
+    {
+      id: 'about',
+      titleKey: 'aboutUs',
+      href: '/about',
+      children: [
+        { id: 'mission', titleKey: 'mission', href: '/#mission' },
+        { id: 'vision', titleKey: 'vision', href: '/#vision' },
+        { id: 'values', titleKey: 'values', href: '/#values' },
+        { id: 'purpose', titleKey: 'purpose', href: '/#purpose' }
+      ]
+    },
+    {
+      id: 'courses',
+      titleKey: 'courses',
+      href: '/courses',
+    },
+    {
+      id: 'admissions',
+      titleKey: 'admissions',
+      href: '/admissions',
+    },
+    {
+      id: 'gallery',
+      titleKey: 'gallery',
+      href: '/gallery',
+    },
+    {
+      id: 'contact',
+      titleKey: 'contact',
+      href: '/contact'
+    }
+  ];
 
   const toggleSubmenu = (itemId: string) => {
     setExpandedItems(prev =>
@@ -97,15 +98,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               className="h-8"
             />
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 text-white rounded-md transition-colors"
-            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'rgba(74, 144, 226, 0.2)'}
-            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
-            aria-label="Close menu"
-          >
-            <XMarkIcon className="w-6 h-6" />
-          </button>
+          <div className="flex items-center gap-3">
+            <LanguageSelector />
+            <button
+              onClick={onClose}
+              className="p-2 text-white rounded-md transition-colors"
+              onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'rgba(74, 144, 226, 0.2)'}
+              onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
+              aria-label="Close menu"
+            >
+              <XMarkIcon className="w-6 h-6" />
+            </button>
+          </div>
         </div>
 
         {/* Navigation */}
@@ -122,7 +126,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#2ECC40'}
                         onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#FFFFFF'}
                       >
-                        <span className="font-medium">{item.title}</span>
+                        <span className="font-medium">
+                          {t.navigation[item.titleKey as keyof typeof t.navigation]}
+                        </span>
                         <ChevronDownIcon
                           className={`w-4 h-4 text-white transition-transform ${
                             expandedItems.includes(item.id) ? 'rotate-180' : ''
@@ -137,7 +143,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#2ECC40'}
                         onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#FFFFFF'}
                       >
-                        {item.title}
+                        {t.navigation[item.titleKey as keyof typeof t.navigation]}
                       </a>
                     )}
 
@@ -159,7 +165,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                 (e.target as HTMLElement).style.opacity = '0.8';
                               }}
                             >
-                              {child.title}
+                              {t.navigation[child.titleKey as keyof typeof t.navigation]}
                             </a>
                           </li>
                         ))}
@@ -181,13 +187,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
             </svg>
-            Sponsor
+            {t.common.donateNow}
           </a>
         </div>
 
         {/* Contact Info */}
         <div className="border-t mt-6 pt-6 px-4" style={{ borderColor: 'rgba(255, 255, 255, 0.1)', backgroundColor: 'rgba(0, 0, 0, 0.15)' }}>
-          <h4 className="font-semibold text-white mb-4">Contact Info</h4>
+          <h4 className="font-semibold text-white mb-4">{t.contact.title}</h4>
           <ul className="space-y-3">
             {contactInfo.map((item, index) => (
               <li key={index}>

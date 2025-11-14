@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Open_Sans, Fredoka, Roboto } from 'next/font/google';
 import { Header, Footer } from '@/components/layout';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 import './globals.css';
 
 // Font configurations
@@ -121,24 +122,26 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>
       <body className="font-sans antialiased bg-white text-gray-900 selection:bg-blue-100 selection:text-blue-900">
-        {/* Skip to main content for accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50"
-        >
-          Skip to main content
-        </a>
+        <LanguageProvider>
+          {/* Skip to main content for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50"
+          >
+            Skip to main content
+          </a>
 
-        {/* Header */}
-        <Header />
+          {/* Header */}
+          <Header />
 
-        {/* Main Content */}
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
+          {/* Main Content */}
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
+        </LanguageProvider>
 
         {/* Schema.org structured data */}
         <script

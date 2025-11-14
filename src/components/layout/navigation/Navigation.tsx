@@ -2,55 +2,57 @@
 
 import React, { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from '@/contexts/LanguageContext';
 
 interface MenuItem {
   id: string;
-  title: string;
+  titleKey: string;
   href: string;
   children?: MenuItem[];
 }
 
-const menuItems: MenuItem[] = [
-  {
-    id: 'home',
-    title: 'HOME',
-    href: '/',
-  },
-  {
-    id: 'about',
-    title: 'ABOUT US',
-    href: '/about',
-    children: [
-      { id: 'mission', title: 'Mission', href: '/#mission' },
-      { id: 'vision', title: 'Vision', href: '/#vision' },
-      { id: 'values', title: 'Values', href: '/#values' },
-      { id: 'purpose', title: 'Purpose', href: '/#purpose' }
-    ]
-  },
-  {
-    id: 'courses',
-    title: 'COURSES',
-    href: '/courses',
-  },
-  {
-    id: 'admissions',
-    title: 'ADMISSIONS',
-    href: '/admissions',
-  },
-  {
-    id: 'gallery',
-    title: 'GALLERY',
-    href: '/gallery',
-  },
-  {
-    id: 'contact',
-    title: 'CONTACT US',
-    href: '/contact'
-  }
-];
-
 export function Navigation() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const { t } = useTranslation();
+
+  const menuItems: MenuItem[] = [
+    {
+      id: 'home',
+      titleKey: 'home',
+      href: '/',
+    },
+    {
+      id: 'about',
+      titleKey: 'aboutUs',
+      href: '/about',
+      children: [
+        { id: 'mission', titleKey: 'mission', href: '/#mission' },
+        { id: 'vision', titleKey: 'vision', href: '/#vision' },
+        { id: 'values', titleKey: 'values', href: '/#values' },
+        { id: 'purpose', titleKey: 'purpose', href: '/#purpose' }
+      ]
+    },
+    {
+      id: 'courses',
+      titleKey: 'courses',
+      href: '/courses',
+    },
+    {
+      id: 'admissions',
+      titleKey: 'admissions',
+      href: '/admissions',
+    },
+    {
+      id: 'gallery',
+      titleKey: 'gallery',
+      href: '/gallery',
+    },
+    {
+      id: 'contact',
+      titleKey: 'contact',
+      href: '/contact'
+    }
+  ];
 
   const handleMouseEnter = (itemId: string) => {
     setActiveDropdown(itemId);
@@ -74,7 +76,7 @@ export function Navigation() {
               href={item.href}
               className="nav-link flex items-center px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-bold uppercase"
             >
-              {item.title}
+              {t.navigation[item.titleKey as keyof typeof t.navigation]}
               {item.children && (
                 <ChevronDownIcon className="w-4 h-4 ml-1" />
               )}
@@ -96,7 +98,7 @@ export function Navigation() {
                     href={child.href}
                     className="block px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors"
                   >
-                    {child.title}
+                    {t.navigation[child.titleKey as keyof typeof t.navigation]}
                   </a>
                 ))}
               </div>

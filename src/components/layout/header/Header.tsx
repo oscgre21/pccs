@@ -5,6 +5,8 @@ import { Navigation } from '../navigation/Navigation';
 import { ContactInfo } from './ContactInfo';
 import { SocialLinks } from './SocialLinks';
 import { MobileMenu } from './MobileMenu';
+import { LanguageSelector } from '@/components/ui/LanguageSelector';
+import { useTranslation } from '@/contexts/LanguageContext';
 
 interface HeaderProps {
   className?: string;
@@ -12,6 +14,7 @@ interface HeaderProps {
 
 export function Header({ className = '' }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <header className={`header header-style-1 ${className}`}>
@@ -20,7 +23,10 @@ export function Header({ className = '' }: HeaderProps) {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             <ContactInfo />
-            <SocialLinks />
+            <div className="flex items-center gap-4">
+              <LanguageSelector />
+              <SocialLinks />
+            </div>
           </div>
         </div>
       </div>
@@ -54,7 +60,7 @@ export function Header({ className = '' }: HeaderProps) {
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
                 </svg>
-                Sponsor
+                {t.common.donateNow}
               </a>
             </div>
 
