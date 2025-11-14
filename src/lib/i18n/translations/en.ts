@@ -241,20 +241,36 @@ export const en: Translations = {
   },
 
   contact: {
+    // Hero
     title: 'Contact Us',
-    subtitle: 'We would love to hear from you. Reach out to us with any questions or to schedule a visit.',
+    subtitle: 'We\'d love to hear from you. Reach out to us with any questions or to schedule a visit.',
+
+    // Contact Cards
     callUs: 'Call Us',
+    callUsDesc: 'We\'re here to help',
     emailUs: 'Email Us',
+    emailUsDesc: 'Send us a message',
     visitUs: 'Visit Us',
+    visitUsDesc: 'Come see our campus',
+
+    // Form
     sendMessage: 'Send Us a Message',
     fullName: 'Full Name',
+    fullNamePlaceholder: 'Your name',
     email: 'Email',
+    emailPlaceholder: 'your.email@example.com',
     phone: 'Phone',
+    phonePlaceholder: 'Your phone number',
     subject: 'Subject',
+    subjectPlaceholder: 'What is this regarding?',
     message: 'Message',
+    messagePlaceholder: 'Your message...',
     sendButton: 'Send Message',
+
+    // Office Hours
     officeHours: 'Office Hours',
     mondayFriday: 'Monday - Friday',
+    mondayFridayHours: '8:00 AM - 4:00 PM',
     saturdaySunday: 'Saturday - Sunday',
     closed: 'Closed',
     officeHoursNote: '* Office hours may vary during holidays and school breaks',

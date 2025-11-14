@@ -237,20 +237,36 @@ export interface Translations {
 
   // Contact Section
   contact: {
+    // Hero
     title: string;
     subtitle: string;
+
+    // Contact Cards
     callUs: string;
+    callUsDesc: string;
     emailUs: string;
+    emailUsDesc: string;
     visitUs: string;
+    visitUsDesc: string;
+
+    // Form
     sendMessage: string;
     fullName: string;
+    fullNamePlaceholder: string;
     email: string;
+    emailPlaceholder: string;
     phone: string;
+    phonePlaceholder: string;
     subject: string;
+    subjectPlaceholder: string;
     message: string;
+    messagePlaceholder: string;
     sendButton: string;
+
+    // Office Hours
     officeHours: string;
     mondayFriday: string;
+    mondayFridayHours: string;
     saturdaySunday: string;
     closed: string;
     officeHoursNote: string;

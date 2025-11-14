@@ -241,20 +241,36 @@ export const es: Translations = {
   },
 
   contact: {
+    // Hero
     title: 'Contáctanos',
     subtitle: 'Nos encantaría saber de ti. Contáctanos con cualquier pregunta o para agendar una visita.',
+
+    // Contact Cards
     callUs: 'Llámanos',
+    callUsDesc: 'Estamos aquí para ayudarte',
     emailUs: 'Envíanos un Email',
+    emailUsDesc: 'Envíanos un mensaje',
     visitUs: 'Visítanos',
+    visitUsDesc: 'Ven a conocer nuestro campus',
+
+    // Form
     sendMessage: 'Envíanos un Mensaje',
     fullName: 'Nombre Completo',
+    fullNamePlaceholder: 'Tu nombre',
     email: 'Correo Electrónico',
+    emailPlaceholder: 'tu.correo@ejemplo.com',
     phone: 'Teléfono',
+    phonePlaceholder: 'Tu número de teléfono',
     subject: 'Asunto',
+    subjectPlaceholder: '¿Sobre qué es tu consulta?',
     message: 'Mensaje',
+    messagePlaceholder: 'Tu mensaje...',
     sendButton: 'Enviar Mensaje',
+
+    // Office Hours
     officeHours: 'Horario de Oficina',
     mondayFriday: 'Lunes - Viernes',
+    mondayFridayHours: '8:00 AM - 4:00 PM',
     saturdaySunday: 'Sábado - Domingo',
     closed: 'Cerrado',
     officeHoursNote: '* El horario de oficina puede variar durante días festivos y vacaciones escolares',
