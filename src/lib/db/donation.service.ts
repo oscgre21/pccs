@@ -183,6 +183,7 @@ export async function getDonations(params: {
  */
 export async function ensureDonationTypes(): Promise<DonationType[]> {
   const types = [
+    // Original donation types
     {
       name: 'School Supplies',
       description: 'Útiles Escolares',
@@ -207,6 +208,42 @@ export async function ensureDonationTypes(): Promise<DonationType[]> {
       name: 'Scholarships',
       description: 'Becas',
       amount: 100.00,
+    },
+    // Sponsorship Impact Panel levels
+    {
+      name: 'School Materials',
+      description: 'Provide essential school materials for students',
+      amount: 50.00,
+    },
+    {
+      name: 'One Month of School Meals',
+      description: 'Feed students for one month',
+      amount: 150.00,
+    },
+    {
+      name: 'English & Technology Resources',
+      description: 'Support language learning and technology access',
+      amount: 500.00,
+    },
+    {
+      name: 'Classroom Materials for a Year',
+      description: 'Equip a classroom with necessary materials for an entire year',
+      amount: 2000.00,
+    },
+    {
+      name: 'Sponsor One Student (Full Year)',
+      description: 'Cover all expenses for one student for a full academic year',
+      amount: 7000.00,
+    },
+    {
+      name: 'Sponsor One Teacher\'s Annual Salary',
+      description: 'Support a qualified teacher for one year',
+      amount: 18000.00,
+    },
+    {
+      name: 'Build or Expand PCCS Schools',
+      description: 'Major infrastructure development for PCCS schools in the Dominican Republic',
+      amount: 100000.00,
     },
   ];
 

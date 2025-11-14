@@ -170,63 +170,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
             ))}
           </div>
 
-          {/* Call to Action */}
-          <div className="text-center">
-            <div className="bg-gray-50 rounded-2xl p-8 mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {t.donations.readyToMakeDifference}
-              </h3>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                {t.donations.everyDonation}
-              </p>
-
-              {/* Donation Types List */}
-              {isLoadingTypes ? (
-                <div className="flex justify-center items-center py-12 mb-8">
-                  <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#1E1E8C' }}></div>
-                    <p className="text-gray-600">{t.donations.loadingDonationOptions}</p>
-                  </div>
-                </div>
-              ) : donationTypes.length === 0 ? (
-                <div className="text-center py-12 mb-8">
-                  <p className="text-gray-600">{t.donations.noDonationTypes}</p>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                  {donationTypes.map((type) => (
-                    <div
-                      key={type.id}
-                      className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6"
-                    >
-                      <h4 className="text-xl font-bold mb-2" style={{ color: '#1E1E8C' }}>
-                        {type.name}
-                      </h4>
-                      {type.description && (
-                        <p className="text-gray-600 text-sm mb-4">
-                          {type.description}
-                        </p>
-                      )}
-                      <div className="mb-4">
-                        <span className="text-3xl font-bold" style={{ color: '#2ECC40' }}>
-                          ${type.amount.toFixed(2)}
-                        </span>
-                      </div>
-                      <AzulPaymentButton
-                        amount={type.amount}
-                        description={`Donation - ${type.name}`}
-                        donationTypeId={type.id}
-                        className="w-full text-base py-3 px-6"
-                      >
-                        {t.donations.donateNow}
-                      </AzulPaymentButton>
-                    </div>
-                  ))}
-                </div>
-              )}
  
-            </div>
-          </div>
         </div>
       </section>
 
