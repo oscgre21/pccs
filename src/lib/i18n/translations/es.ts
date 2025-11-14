@@ -220,24 +220,95 @@ export const es: Translations = {
   },
 
   donations: {
+    // Hero
     title: 'Apoya a PCCS',
     subtitle: 'Tu donación hace la diferencia',
     heroTitle: 'Invierte en el Futuro',
     heroSubtitle: 'Tu apoyo nos ayuda a proporcionar educación cristiana de calidad a más estudiantes',
-    impactTitle: 'Tu Impacto',
-    impactDescription: 'Cada donación nos ayuda a proporcionar educación excelente',
-    qualityEducation: 'Educación de Calidad',
-    qualityEducationDesc: 'Apoya programas académicos y desarrollo curricular',
-    scholarships: 'Becas',
-    scholarshipsDesc: 'Ayuda a estudiantes merecedores a acceder a educación cristiana de calidad',
-    development: 'Desarrollo',
-    developmentDesc: 'Mejora las instalaciones y recursos de aprendizaje',
-    fundDistribution: 'Cómo se Usa Tu Donación',
+
+    // Impact Section
+    impactTitle: 'Tu Impacto de un Vistazo',
+    impactSubtitle: 'El Impacto de Tu Donación',
+    impactDescription: 'Tu generosidad transforma vidas a través de educación bilingüe de alta calidad centrada en Cristo para niños que de otra manera nunca tendrían esta oportunidad. Juntos construimos familias fuertes, valores fuertes y futuros brillantes.',
+    impactAreasTitle: 'Áreas de Impacto',
+
+    // Impact Areas (4 areas)
+    qualityBilingualEducation: 'Educación Bilingüe de Calidad',
+    qualityBilingualEducationDesc: 'Académicos rigurosos + dominio del inglés + formación cristiana que prepara a los estudiantes para oportunidades de la vida real.',
+    scholarshipsNeeded: 'Becas para los Más Necesitados',
+    scholarshipsNeededDesc: 'El 90% de nuestros 196 estudiantes dependen de becas financiadas por donantes.',
+    familyCharacterDevelopment: 'Desarrollo Familiar y de Carácter',
+    familyCharacterDevelopmentDesc: 'Cultivamos el crecimiento espiritual, social y emocional en asociación con las familias y la comunidad.',
+    futureEconomicOpportunity: 'Oportunidad Económica Futura',
+    futureEconomicOpportunityDesc: 'En una nación donde el desempleo juvenil es uno de los más altos de la región, y donde muchos no pueden acceder a empleos en la próspera industria turística por falta de inglés y habilidades básicas, tu apoyo crea caminos reales hacia un trabajo digno.',
+
+    // Fund Distribution
+    fundDistributionTitle: 'Cómo se Usa Tu Apoyo',
+    fundDistributionSubtitle: 'Transparencia completa en el uso de los fondos.',
     educationResources: 'Recursos Educativos',
+    scholarships: 'Becas',
     infrastructure: 'Infraestructura e Instalaciones',
     transparency: 'Mantenemos total transparencia en cómo se utilizan las donaciones',
+
+    // Future Vision Panel
+    futureVisionTitle: 'Ayúdanos a Abrir el Nuevo Edificio de Secundaria en 2026',
+    futureVisionSubtitle: 'Visión de Futuro',
+    futureVisionDescription: 'Tus donaciones pueden financiar:',
+    futureVisionItems: [
+      'Expansión estructural',
+      'Mobiliario de aulas',
+      'Tecnología y equipamiento',
+      'Materiales educativos',
+      'Programa de alimentación para estudiantes vulnerables',
+    ],
+
+    // Sponsorship Impact Panel
+    sponsorshipTitle: 'Cómo Tu Apoyo Transforma el Futuro de un Niño',
+    sponsorshipSubtitle: 'Impacto del Patrocinio',
+    sponsorshipLevels: [
+      { amount: '$50', description: 'Materiales escolares' },
+      { amount: '$150', description: 'Un mes de comidas escolares' },
+      { amount: '$500', description: 'Recursos de inglés y tecnología' },
+      { amount: '$2,000', description: 'Materiales de aula para un año' },
+      { amount: '$7,000', description: 'Patrocinar un estudiante (año completo)' },
+      { amount: '$18,000', description: 'Patrocinar el salario anual de un maestro' },
+      { amount: '$100,000+', description: 'Construir o expandir escuelas PCCS en la República Dominicana' },
+    ],
+
+    // DonationsSection
+    howYouCanHelp: 'Cómo Puedes Ayudar',
+    howYouCanHelpDescription: 'Tu donación hace la diferencia en las vidas de nuestros estudiantes. Conoce las diferentes formas en que puedes contribuir al futuro de la educación cristiana en Punta Cana.',
+    loadingDonationOptions: 'Cargando opciones de donación...',
+    noDonationTypes: 'No hay tipos de donación disponibles en este momento.',
+    donateNow: 'Donar Ahora',
+
+    // Donation Types (cards)
+    donationTypes: {
+      schoolSupplies: {
+        title: 'Útiles Escolares',
+        description: 'Tu donación ayuda a proporcionar útiles escolares esenciales a niños necesitados.',
+      },
+      scholarships: {
+        title: 'Becas',
+        description: 'Programa de becas para estudiantes con necesidades financieras.',
+      },
+      infrastructure: {
+        title: 'Infraestructura',
+        description: 'Mejoras a las instalaciones escolares para un mejor ambiente de aprendizaje.',
+      },
+      general: {
+        title: 'Donación General',
+        description: 'Apoya la misión general y las operaciones de nuestra escuela.',
+      },
+      sponsorChild: {
+        title: 'Apadrina un Niño',
+        description: 'Programa especial de apadrinamiento para transformar vidas a través de la educación.',
+      },
+    },
+
+    // CTA
     readyToMakeDifference: '¿Listo para Hacer la Diferencia?',
-    everyDonation: 'Cada contribución, sin importar el tamaño, nos ayuda a continuar nuestra misión',
+    everyDonation: 'Cada donación, sin importar su tamaño, contribuye directamente al futuro de nuestros estudiantes y fortalece nuestra misión educativa.',
   },
 
   contact: {

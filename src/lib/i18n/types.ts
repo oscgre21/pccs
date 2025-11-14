@@ -215,22 +215,67 @@ export interface Translations {
 
   // Donations Section
   donations: {
+    // Hero
     title: string;
     subtitle: string;
     heroTitle: string;
     heroSubtitle: string;
+
+    // Impact Section
     impactTitle: string;
+    impactSubtitle: string;
     impactDescription: string;
-    qualityEducation: string;
-    qualityEducationDesc: string;
-    scholarships: string;
-    scholarshipsDesc: string;
-    development: string;
-    developmentDesc: string;
-    fundDistribution: string;
+    impactAreasTitle: string;
+
+    // Impact Areas (4 areas)
+    qualityBilingualEducation: string;
+    qualityBilingualEducationDesc: string;
+    scholarshipsNeeded: string;
+    scholarshipsNeededDesc: string;
+    familyCharacterDevelopment: string;
+    familyCharacterDevelopmentDesc: string;
+    futureEconomicOpportunity: string;
+    futureEconomicOpportunityDesc: string;
+
+    // Fund Distribution
+    fundDistributionTitle: string;
+    fundDistributionSubtitle: string;
     educationResources: string;
+    scholarships: string;
     infrastructure: string;
     transparency: string;
+
+    // Future Vision Panel
+    futureVisionTitle: string;
+    futureVisionSubtitle: string;
+    futureVisionDescription: string;
+    futureVisionItems: string[];
+
+    // Sponsorship Impact Panel
+    sponsorshipTitle: string;
+    sponsorshipSubtitle: string;
+    sponsorshipLevels: Array<{
+      amount: string;
+      description: string;
+    }>;
+
+    // DonationsSection
+    howYouCanHelp: string;
+    howYouCanHelpDescription: string;
+    loadingDonationOptions: string;
+    noDonationTypes: string;
+    donateNow: string;
+
+    // Donation Types (cards)
+    donationTypes: {
+      schoolSupplies: { title: string; description: string };
+      scholarships: { title: string; description: string };
+      infrastructure: { title: string; description: string };
+      general: { title: string; description: string };
+      sponsorChild: { title: string; description: string };
+    };
+
+    // CTA
     readyToMakeDifference: string;
     everyDonation: string;
   };

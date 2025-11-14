@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { AzulPaymentButton } from '@/components/payment';
+import { useTranslation } from '@/contexts/LanguageContext';
 
 interface DonationType {
   id: string;
@@ -24,6 +25,7 @@ interface DonationsSectionProps {
 }
 
 export function DonationsSection({ className = '' }: DonationsSectionProps) {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<DonationImage | null>(null);
   const [donationTypes, setDonationTypes] = useState<DonationType[]>([]);
   const [isLoadingTypes, setIsLoadingTypes] = useState(true);
@@ -53,41 +55,41 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
     {
       id: 'school-supplies',
       src: '/images/donations/1.jpg',
-      alt: 'School Supplies',
-      title: 'School Supplies',
-      description: 'Your donation helps provide essential school supplies to children in need.',
+      alt: t.donations.donationTypes.schoolSupplies.title,
+      title: t.donations.donationTypes.schoolSupplies.title,
+      description: t.donations.donationTypes.schoolSupplies.description,
       donationTypeName: 'School Supplies'
     },
     {
       id: 'scholarships',
       src: '/images/donations/2.jpg',
-      alt: 'Scholarships',
-      title: 'Scholarships',
-      description: 'Scholarship program for students with financial needs.',
+      alt: t.donations.donationTypes.scholarships.title,
+      title: t.donations.donationTypes.scholarships.title,
+      description: t.donations.donationTypes.scholarships.description,
       donationTypeName: 'Scholarships'
     },
     {
       id: 'infrastructure',
-      src: '/images/donations/3.jpg',
-      alt: 'Infrastructure',
-      title: 'Infrastructure',
-      description: 'Improvements to school facilities for a better learning environment.',
+      src: '/images/donations/3.png',
+      alt: t.donations.donationTypes.infrastructure.title,
+      title: t.donations.donationTypes.infrastructure.title,
+      description: t.donations.donationTypes.infrastructure.description,
       donationTypeName: 'Infrastructure'
     },
     {
       id: 'general',
       src: '/images/donations/4.jpg',
-      alt: 'General Donation',
-      title: 'General Donation',
-      description: 'Support the overall mission and operations of our school.',
+      alt: t.donations.donationTypes.general.title,
+      title: t.donations.donationTypes.general.title,
+      description: t.donations.donationTypes.general.description,
       donationTypeName: 'General Donation'
     },
     {
       id: 'sponsor-child',
       src: '/images/donations/Apadrina un niño - Ingles.PNG',
-      alt: 'Sponsor a Child',
-      title: 'Sponsor a Child',
-      description: 'Special sponsorship program to transform lives through education.',
+      alt: t.donations.donationTypes.sponsorChild.title,
+      title: t.donations.donationTypes.sponsorChild.title,
+      description: t.donations.donationTypes.sponsorChild.description,
       donationTypeName: 'Sponsor a Child'
     }
   ];
@@ -109,11 +111,10 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
           {/* Section Heading */}
           <div className="section-heading text-center mb-12">
             <h2 className="section-title text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">
-              How You Can Help
+              {t.donations.howYouCanHelp}
             </h2>
             <p className="heading-sub-txt text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
-              Your donation makes a difference in the lives of our students. Learn about the different ways
-              you can contribute to the future of Christian education in Punta Cana.
+              {t.donations.howYouCanHelpDescription}
             </p>
           </div>
 
@@ -173,11 +174,10 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
           <div className="text-center">
             <div className="bg-gray-50 rounded-2xl p-8 mb-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Ready to Make a Difference?
+                {t.donations.readyToMakeDifference}
               </h3>
               <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                Every donation, regardless of size, contributes directly to the future
-                of our students and strengthens our educational mission.
+                {t.donations.everyDonation}
               </p>
 
               {/* Donation Types List */}
@@ -185,12 +185,12 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                 <div className="flex justify-center items-center py-12 mb-8">
                   <div className="text-center">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#1E1E8C' }}></div>
-                    <p className="text-gray-600">Loading donation options...</p>
+                    <p className="text-gray-600">{t.donations.loadingDonationOptions}</p>
                   </div>
                 </div>
               ) : donationTypes.length === 0 ? (
                 <div className="text-center py-12 mb-8">
-                  <p className="text-gray-600">No donation types available at the moment.</p>
+                  <p className="text-gray-600">{t.donations.noDonationTypes}</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -218,7 +218,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                         donationTypeId={type.id}
                         className="w-full text-base py-3 px-6"
                       >
-                        Donate Now
+                        {t.donations.donateNow}
                       </AzulPaymentButton>
                     </div>
                   ))}
@@ -271,15 +271,15 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                 </p>
 
                 {/* Donation Button with pre-selected type */}
-                {donationTypes.find(t => t.name === selectedImage.donationTypeName) && (
+                {donationTypes.find(type => type.name === selectedImage.donationTypeName) && (
                   <div className="flex justify-center" onClick={(e) => e.stopPropagation()}>
                     <AzulPaymentButton
                       amount={50}
                       description={`Donation - ${selectedImage.title}`}
-                      donationTypeId={donationTypes.find(t => t.name === selectedImage.donationTypeName)?.id}
+                      donationTypeId={donationTypes.find(type => type.name === selectedImage.donationTypeName)?.id}
                       className="text-lg py-4 px-8"
                     >
-                      Donate Now
+                      {t.donations.donateNow}
                     </AzulPaymentButton>
                   </div>
                 )}

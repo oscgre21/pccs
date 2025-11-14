@@ -220,24 +220,95 @@ export const en: Translations = {
   },
 
   donations: {
+    // Hero
     title: 'Support PCCS',
     subtitle: 'Your gift makes a difference',
     heroTitle: 'Invest in the Future',
     heroSubtitle: 'Your support helps us provide quality Christian education to more students',
-    impactTitle: 'Your Impact',
-    impactDescription: 'Every donation helps us provide excellent education',
-    qualityEducation: 'Quality Education',
-    qualityEducationDesc: 'Support academic programs and curriculum development',
-    scholarships: 'Scholarships',
-    scholarshipsDesc: 'Help deserving students access quality Christian education',
-    development: 'Development',
-    developmentDesc: 'Improve facilities and learning resources',
-    fundDistribution: 'How Your Donation is Used',
+
+    // Impact Section
+    impactTitle: 'Your Impact at a Glance',
+    impactSubtitle: 'The Impact of Your Donation',
+    impactDescription: 'Your generosity transforms lives through Christ-centered, high-quality, bilingual education for children who would otherwise never have this opportunity. Together we build strong families, strong values, and strong futures.',
+    impactAreasTitle: 'Impact Areas',
+
+    // Impact Areas (4 areas)
+    qualityBilingualEducation: 'Quality Bilingual Education',
+    qualityBilingualEducationDesc: 'Rigorous academics + English proficiency + Christian formation that prepares students for real-life opportunities.',
+    scholarshipsNeeded: 'Scholarships for Those Most in Need',
+    scholarshipsNeededDesc: '90% of our 196 students rely on donor-funded scholarships.',
+    familyCharacterDevelopment: 'Family & Character Development',
+    familyCharacterDevelopmentDesc: 'We cultivate spiritual, social, and emotional growth in partnership with families and the community.',
+    futureEconomicOpportunity: 'Future Economic Opportunity',
+    futureEconomicOpportunityDesc: 'In a nation where youth unemployment is among the highest in the region, and where many cannot access jobs in the thriving tourism industry due to lack of English and basic skills, your support creates real pathways to dignified work.',
+
+    // Fund Distribution
+    fundDistributionTitle: 'How Your Support Is Used',
+    fundDistributionSubtitle: 'Complete transparency in the use of funds.',
     educationResources: 'Educational Resources',
+    scholarships: 'Scholarships',
     infrastructure: 'Infrastructure & Facilities',
     transparency: 'We maintain full transparency in how donations are used',
+
+    // Future Vision Panel
+    futureVisionTitle: 'Help Us Open the New High School Building in 2026',
+    futureVisionSubtitle: 'Future Vision',
+    futureVisionDescription: 'Your donations can fund:',
+    futureVisionItems: [
+      'Structural expansion',
+      'Classroom furniture',
+      'Technology & equipment',
+      'Educational materials',
+      'Food program for vulnerable students',
+    ],
+
+    // Sponsorship Impact Panel
+    sponsorshipTitle: 'How Your Support Transforms a Child\'s Future',
+    sponsorshipSubtitle: 'Sponsorship Impact',
+    sponsorshipLevels: [
+      { amount: '$50', description: 'School materials' },
+      { amount: '$150', description: 'One month of school meals' },
+      { amount: '$500', description: 'English & technology resources' },
+      { amount: '$2,000', description: 'Classroom materials for a year' },
+      { amount: '$7,000', description: 'Sponsor one student (full year)' },
+      { amount: '$18,000', description: 'Sponsor one teacher\'s annual salary' },
+      { amount: '$100,000+', description: 'Build or expand PCCS schools in the Dominican Republic' },
+    ],
+
+    // DonationsSection
+    howYouCanHelp: 'How You Can Help',
+    howYouCanHelpDescription: 'Your donation makes a difference in the lives of our students. Learn about the different ways you can contribute to the future of Christian education in Punta Cana.',
+    loadingDonationOptions: 'Loading donation options...',
+    noDonationTypes: 'No donation types available at the moment.',
+    donateNow: 'Donate Now',
+
+    // Donation Types (cards)
+    donationTypes: {
+      schoolSupplies: {
+        title: 'School Supplies',
+        description: 'Your donation helps provide essential school supplies to children in need.',
+      },
+      scholarships: {
+        title: 'Scholarships',
+        description: 'Scholarship program for students with financial needs.',
+      },
+      infrastructure: {
+        title: 'Infrastructure',
+        description: 'Improvements to school facilities for a better learning environment.',
+      },
+      general: {
+        title: 'General Donation',
+        description: 'Support the overall mission and operations of our school.',
+      },
+      sponsorChild: {
+        title: 'Sponsor a Child',
+        description: 'Special sponsorship program to transform lives through education.',
+      },
+    },
+
+    // CTA
     readyToMakeDifference: 'Ready to Make a Difference?',
-    everyDonation: 'Every contribution, no matter the size, helps us continue our mission',
+    everyDonation: 'Every donation, regardless of size, contributes directly to the future of our students and strengthens our educational mission.',
   },
 
   contact: {
