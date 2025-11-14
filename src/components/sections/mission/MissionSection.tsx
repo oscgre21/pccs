@@ -13,7 +13,7 @@ export function MissionSection({ className = '' }: MissionSectionProps) {
   ];
 
   return (
-    <section id="mision" className={`mission-area py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-purple-50 ${className}`}>
+    <section id="mission" className={`mission-area py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-purple-50 ${className}`}>
       <div className="container mx-auto px-4">
         <div className="tp-el-content tp-el-widget-mission">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

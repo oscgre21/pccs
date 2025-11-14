@@ -19,24 +19,26 @@ const footerSections: FooterSection[] = [
       { title: 'Home', href: '/' },
       { title: 'About Us', href: '/about' },
       { title: 'Courses', href: '/courses' },
+      { title: 'Admissions', href: '/admissions' },
       { title: 'Contact', href: '/contact' }
     ]
   },
   {
-    title: 'Services',
+    title: 'Explore',
     links: [
-      { title: 'Early Childhood Education', href: '/services/educacion-infantil' },
-      { title: 'Extracurricular Activities', href: '/services/actividades' },
-      { title: 'Family Support', href: '/services/apoyo-familiar' },
-      { title: 'Workshops', href: '/services/talleres' }
+      { title: 'Gallery', href: '/gallery' },
+      { title: 'Our Staff', href: '/staff' },
+      { title: 'Donations', href: '/donations' },
+      { title: 'Blog', href: '/blog' }
     ]
   },
   {
-    title: 'Resources',
+    title: 'Quick Links',
     links: [
-      //{ title: 'Blog', href: '/blog' },
-      //{ title: 'Events', href: '/events' },
-      { title: 'Gallery', href: '/gallery' }, 
+      { title: 'Mission', href: '/#mission' },
+      { title: 'Vision', href: '/#vision' },
+      { title: 'Values', href: '/#values' },
+      { title: 'Purpose', href: '/#purpose' }
     ]
   }
 ];

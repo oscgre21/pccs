@@ -89,7 +89,7 @@ export function ValuesSection({ className = '' }: ValuesSectionProps) {
   ];
 
   return (
-    <section id="valores" className={`values-area py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50 ${className}`}>
+    <section id="values" className={`values-area py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50 ${className}`}>
       <div className="container mx-auto px-4">
         <div className="tp-el-content tp-el-widget-values">
           {/* Section Header */}

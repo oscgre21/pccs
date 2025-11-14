@@ -12,41 +12,38 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   {
-    id: 'inicio',
+    id: 'home',
     title: 'HOME',
     href: '/',
-    /*
-    children: [
-      { id: 'home-1', title: 'Home 01', href: '/' },
-      { id: 'home-2', title: 'Home 02', href: '/home-2' },
-      { id: 'home-3', title: 'Home 03', href: '/home-3' },
-      { id: 'home-4', title: 'Home 04', href: '/home-4' },
-      { id: 'home-5', title: 'Home 05', href: '/home-5' }
-    ]*/
   },
   {
-    id: 'nosotros',
+    id: 'about',
     title: 'ABOUT US',
-    href: '/nosotros',
+    href: '/about',
     children: [
-      { id: 'mision', title: 'Mission', href: '/#mision' },
+      { id: 'mission', title: 'Mission', href: '/#mission' },
       { id: 'vision', title: 'Vision', href: '/#vision' },
-      { id: 'valores', title: 'Values', href: '/#valores' },
-      { id: 'proposito', title: 'Purpose', href: '/#proposito' }
+      { id: 'values', title: 'Values', href: '/#values' },
+      { id: 'purpose', title: 'Purpose', href: '/#purpose' }
     ]
   },
   {
-    id: 'admisiones',
+    id: 'courses',
+    title: 'COURSES',
+    href: '/courses',
+  },
+  {
+    id: 'admissions',
     title: 'ADMISSIONS',
-    href: '/admisiones',
+    href: '/admissions',
   },
   {
-    id: 'galeria',
+    id: 'gallery',
     title: 'GALLERY',
-    href: '/galeria',
+    href: '/gallery',
   },
   {
-    id: 'contacto',
+    id: 'contact',
     title: 'CONTACT US',
     href: '/contact'
   }

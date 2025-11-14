@@ -13,36 +13,38 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   {
-    id: 'inicio',
+    id: 'home',
     title: 'Home',
     href: '/',
-    children: [
-      { id: 'home-1', title: 'Home 01', href: '/' },
-      { id: 'home-2', title: 'Home 02', href: '/home-2' },
-      { id: 'home-3', title: 'Home 03', href: '/home-3' },
-      { id: 'home-4', title: 'Home 04', href: '/home-4' },
-      { id: 'home-5', title: 'Home 05', href: '/home-5' }
-    ]
   },
   {
-    id: 'nosotros',
+    id: 'about',
     title: 'About Us',
-    href: '/nosotros',
+    href: '/about',
     children: [
-      { id: 'courses', title: 'Courses Default', href: '/courses' },
-      { id: 'course-details', title: 'Course Details', href: '/courses/course-details' }
+      { id: 'mission', title: 'Mission', href: '/#mission' },
+      { id: 'vision', title: 'Vision', href: '/#vision' },
+      { id: 'values', title: 'Values', href: '/#values' },
+      { id: 'purpose', title: 'Purpose', href: '/#purpose' }
     ]
   },
   {
-    id: 'admisiones',
+    id: 'courses',
+    title: 'Courses',
+    href: '/courses',
+  },
+  {
+    id: 'admissions',
     title: 'Admissions',
-    href: '/admisiones',
-    children: [
-      { id: 'shop', title: 'Shop', href: '/shop' }
-    ]
+    href: '/admissions',
   },
   {
-    id: 'contacto',
+    id: 'gallery',
+    title: 'Gallery',
+    href: '/gallery',
+  },
+  {
+    id: 'contact',
     title: 'Contact Us',
     href: '/contact'
   }
@@ -173,7 +175,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {/* Sponsor Button */}
         <div className="px-4 mb-6">
           <a
-            href="/donaciones"
+            href="/donations"
             className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-semibold transition-colors inline-flex items-center justify-center w-full"
           >
             <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">

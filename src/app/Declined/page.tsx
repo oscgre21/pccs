@@ -176,7 +176,7 @@ function DeclinedContent() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="/donaciones"
+            href="/donations"
             className="inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             style={{ backgroundColor: '#1E1E8C' }}
           >

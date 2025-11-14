@@ -265,7 +265,7 @@ export default function ApprovedTransactionPage() {
             </svg>
           </a>
           <a
-            href="/donaciones"
+            href="/donations"
             className="inline-flex items-center justify-center px-8 py-4 border-2 font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
             style={{
               borderColor: '#2ECC40',
