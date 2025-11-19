@@ -282,7 +282,7 @@ export interface Translations {
         contactButton: string;
         contactOptions: {
           email: string;
-          phone: string;
+          googleForm: string;
         };
       };
     };

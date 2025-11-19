@@ -358,7 +358,7 @@ export const es: Translations = {
         contactButton: 'Contáctanos',
         contactOptions: {
           email: 'Correo',
-          phone: 'Teléfono'
+          googleForm: 'Formulario Google'
         }
       },
     },
