@@ -285,25 +285,96 @@ export const es: Translations = {
     // Donation Types (cards)
     donationTypes: {
       schoolSupplies: {
-        title: 'Útiles Escolares',
-        description: 'Tu donación ayuda a proporcionar útiles escolares esenciales a niños necesitados.',
+        title: 'Materiales Escolares',
+        amount: '$50',
+        benefits: [
+          'Cuadernos, lápices y útiles esenciales',
+          'Mochilas y materiales escolares',
+          'Apoyo para necesidades básicas de un estudiante'
+        ]
       },
-      scholarships: {
-        title: 'Becas',
-        description: 'Programa de becas para estudiantes con necesidades financieras.',
+      schoolMeals: {
+        title: 'Comidas Escolares',
+        amount: '$150',
+        benefits: [
+          'Un mes de comidas nutritivas',
+          'Mejor concentración y aprendizaje',
+          'Apoyo para la salud del estudiante'
+        ]
       },
-      infrastructure: {
-        title: 'Infraestructura',
-        description: 'Mejoras a las instalaciones escolares para un mejor ambiente de aprendizaje.',
+      englishTech: {
+        title: 'Inglés y Tecnología',
+        amount: '$500',
+        benefits: [
+          'Recursos de aprendizaje de inglés',
+          'Herramientas tecnológicas y digitales',
+          'Oportunidades futuras a través del idioma'
+        ]
       },
-      general: {
-        title: 'Donación General',
-        description: 'Apoya la misión general y las operaciones de nuestra escuela.',
+      classroomMaterials: {
+        title: 'Materiales de Aula',
+        amount: '$2,000',
+        benefits: [
+          'Materiales de aula para un año completo',
+          'Recursos educativos para múltiples estudiantes',
+          'Ambiente de aprendizaje mejorado'
+        ]
       },
       sponsorChild: {
-        title: 'Apadrina un Niño',
-        description: 'Programa especial de apadrinamiento para transformar vidas a través de la educación.',
+        title: 'Apadrina un Estudiante',
+        amount: '$7,000',
+        benefits: [
+          'Año completo de educación de calidad',
+          'Materiales escolares y comidas',
+          'Transforma el futuro de un niño'
+        ]
       },
+      sponsorTeacher: {
+        title: 'Apadrina un Maestro',
+        amount: '$18,000',
+        benefits: [
+          'Salario anual de un maestro',
+          'Impacta a docenas de estudiantes',
+          'Educación cristiana de calidad'
+        ]
+      },
+      infrastructure: {
+        title: 'Construye Nuestro Futuro',
+        amount: '$100,000+',
+        benefits: [
+          'Construir o expandir escuelas PCCS',
+          'Nuevas aulas e instalaciones',
+          'Impacto a largo plazo en República Dominicana'
+        ]
+      },
+      volunteering: {
+        title: 'Voluntariado',
+        amount: 'Tu Tiempo',
+        benefits: [
+          'Voluntario hoy y ayuda a formar los líderes guiados por Dios del mañana',
+          'Presta tus manos, habilidades y corazón',
+          'Comparte tus habilidades y talentos para ayudar a construir espacios donde los futuros líderes puedan crecer'
+        ],
+        contactButton: 'Contáctanos',
+        contactOptions: {
+          googleForm: 'Formulario Google',
+          phone: 'Teléfono'
+        }
+      },
+    },
+
+    // Custom Donation Card
+    customDonation: {
+      title: 'Donación Personalizada',
+      badge: 'Tu Monto',
+      amountLabel: 'Ingresa Tu Monto',
+      amountPlaceholder: '50.00',
+      commentLabel: 'Agregar un Mensaje (Opcional)',
+      commentPlaceholder: 'Deja un mensaje, dedicatoria o nota...',
+      donateButton: 'Donar',
+      minimumAmount: 'Mínimo: $10',
+      errorMinimum: 'El monto debe ser al menos $10',
+      errorInvalidAmount: 'Por favor ingresa un monto válido',
     },
 
     // CTA

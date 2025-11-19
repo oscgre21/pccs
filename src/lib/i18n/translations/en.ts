@@ -285,25 +285,96 @@ export const en: Translations = {
     // Donation Types (cards)
     donationTypes: {
       schoolSupplies: {
-        title: 'School Supplies',
-        description: 'Your donation helps provide essential school supplies to children in need.',
+        title: 'School Materials',
+        amount: '$50',
+        benefits: [
+          'Notebooks, pencils, and essential supplies',
+          'Backpacks and school materials',
+          'Support for one student\'s basic needs'
+        ]
       },
-      scholarships: {
-        title: 'Scholarships',
-        description: 'Scholarship program for students with financial needs.',
+      schoolMeals: {
+        title: 'School Meals',
+        amount: '$150',
+        benefits: [
+          'One month of nutritious meals',
+          'Better concentration and learning',
+          'Support for a student\'s health'
+        ]
       },
-      infrastructure: {
-        title: 'Infrastructure',
-        description: 'Improvements to school facilities for a better learning environment.',
+      englishTech: {
+        title: 'English & Technology',
+        amount: '$500',
+        benefits: [
+          'English learning resources',
+          'Technology and digital tools',
+          'Future opportunities through language skills'
+        ]
       },
-      general: {
-        title: 'General Donation',
-        description: 'Support the overall mission and operations of our school.',
+      classroomMaterials: {
+        title: 'Classroom Materials',
+        amount: '$2,000',
+        benefits: [
+          'Classroom materials for an entire year',
+          'Educational resources for multiple students',
+          'Enhanced learning environment'
+        ]
       },
       sponsorChild: {
-        title: 'Sponsor a Child',
-        description: 'Special sponsorship program to transform lives through education.',
+        title: 'Sponsor a Student',
+        amount: '$7,000',
+        benefits: [
+          'Full year of quality education',
+          'School materials and meals',
+          'Transform a child\'s future'
+        ]
       },
+      sponsorTeacher: {
+        title: 'Sponsor a Teacher',
+        amount: '$18,000',
+        benefits: [
+          'One teacher\'s annual salary',
+          'Impact dozens of students',
+          'Quality Christian education'
+        ]
+      },
+      infrastructure: {
+        title: 'Help build our future',
+        amount: '$100,000+',
+        benefits: [
+          'Build or expand PCCS schools',
+          'New classrooms and facilities',
+          'Long-term impact in the Dominican Republic'
+        ]
+      },
+      volunteering: {
+        title: 'Volunteering',
+        amount: 'Your Time',
+        benefits: [
+          `Help shape tomorrow's God-guided leaders`,
+          'Lend your hands, skills, and hearts',
+          'Share your talents to build spaces where future leaders can grow'
+        ],
+        contactButton: 'Contact Us',
+        contactOptions: {
+          googleForm: 'Google Form',
+          phone: 'Phone'
+        }
+      },
+    },
+
+    // Custom Donation Card
+    customDonation: {
+      title: 'Donation',
+      badge: 'Your Amount',
+      amountLabel: 'Enter Your Amount',
+      amountPlaceholder: '50.00',
+      commentLabel: 'Message (Optional)',
+      commentPlaceholder: 'Leave a message, dedication, or note...',
+      donateButton: 'Donate',
+      minimumAmount: 'Minimum: $10',
+      errorMinimum: 'Amount must be at least $10',
+      errorInvalidAmount: 'Please enter a valid amount',
     },
 
     // CTA

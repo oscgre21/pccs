@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { AzulPaymentButton } from '@/components/payment';
+import { CustomDonationCard } from '@/components/donations';
 import { useTranslation } from '@/contexts/LanguageContext';
 
 interface DonationType {
@@ -16,8 +17,14 @@ interface DonationImage {
   src: string;
   alt: string;
   title: string;
-  description: string;
+  amount: string;
+  benefits: string[];
   donationTypeName: string; // Maps to DonationType.name
+  contactButton?: string; // Optional: for volunteering card
+  contactOptions?: {
+    googleForm: string;
+    phone: string;
+  };
 }
 
 interface DonationsSectionProps {
@@ -29,6 +36,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
   const [selectedImage, setSelectedImage] = useState<DonationImage | null>(null);
   const [donationTypes, setDonationTypes] = useState<DonationType[]>([]);
   const [isLoadingTypes, setIsLoadingTypes] = useState(true);
+  const [showContactDropdown, setShowContactDropdown] = useState(false);
 
   useEffect(() => {
     const loadDonationTypes = async () => {
@@ -51,48 +59,88 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
   }, []);
 
   // Array of donation images with descriptions mapped to donation types
-  const donationImages: DonationImage[] = [
+  // Ordered by donation amount: $50 → $150 → $500 → $2,000 → $7,000 → $18,000 → $100,000+
+  const donationImages: DonationImage[] = t?.donations?.donationTypes ? [
     {
       id: 'school-supplies',
       src: '/images/donations/1.jpg',
       alt: t.donations.donationTypes.schoolSupplies.title,
       title: t.donations.donationTypes.schoolSupplies.title,
-      description: t.donations.donationTypes.schoolSupplies.description,
+      amount: t.donations.donationTypes.schoolSupplies.amount,
+      benefits: t.donations.donationTypes.schoolSupplies.benefits,
       donationTypeName: 'School Supplies'
     },
     {
-      id: 'scholarships',
+      id: 'school-meals',
       src: '/images/donations/2.jpg',
-      alt: t.donations.donationTypes.scholarships.title,
-      title: t.donations.donationTypes.scholarships.title,
-      description: t.donations.donationTypes.scholarships.description,
-      donationTypeName: 'Scholarships'
+      alt: t.donations.donationTypes.schoolMeals.title,
+      title: t.donations.donationTypes.schoolMeals.title,
+      amount: t.donations.donationTypes.schoolMeals.amount,
+      benefits: t.donations.donationTypes.schoolMeals.benefits,
+      donationTypeName: 'School Meals'
     },
     {
-      id: 'infrastructure',
-      src: '/images/donations/3.png',
-      alt: t.donations.donationTypes.infrastructure.title,
-      title: t.donations.donationTypes.infrastructure.title,
-      description: t.donations.donationTypes.infrastructure.description,
-      donationTypeName: 'Infrastructure'
-    },
-    {
-      id: 'general',
+      id: 'english-tech',
       src: '/images/donations/4.jpg',
-      alt: t.donations.donationTypes.general.title,
-      title: t.donations.donationTypes.general.title,
-      description: t.donations.donationTypes.general.description,
-      donationTypeName: 'General Donation'
+      alt: t.donations.donationTypes.englishTech.title,
+      title: t.donations.donationTypes.englishTech.title,
+      amount: t.donations.donationTypes.englishTech.amount,
+      benefits: t.donations.donationTypes.englishTech.benefits,
+      donationTypeName: 'English & Technology'
+    },
+    {
+      id: 'classroom-materials',
+      src: '/images/donations/5.jpg',
+      alt: t.donations.donationTypes.classroomMaterials.title,
+      title: t.donations.donationTypes.classroomMaterials.title,
+      amount: t.donations.donationTypes.classroomMaterials.amount,
+      benefits: t.donations.donationTypes.classroomMaterials.benefits,
+      donationTypeName: 'Classroom Materials'
     },
     {
       id: 'sponsor-child',
       src: '/images/donations/Apadrina un niño - Ingles.PNG',
       alt: t.donations.donationTypes.sponsorChild.title,
       title: t.donations.donationTypes.sponsorChild.title,
-      description: t.donations.donationTypes.sponsorChild.description,
+      amount: t.donations.donationTypes.sponsorChild.amount,
+      benefits: t.donations.donationTypes.sponsorChild.benefits,
       donationTypeName: 'Sponsor a Child'
+    },
+    {
+      id: 'sponsor-teacher',
+      src: '/images/donations/3.png',
+      alt: t.donations.donationTypes.sponsorTeacher.title,
+      title: t.donations.donationTypes.sponsorTeacher.title,
+      amount: t.donations.donationTypes.sponsorTeacher.amount,
+      benefits: t.donations.donationTypes.sponsorTeacher.benefits,
+      donationTypeName: 'Sponsor a Teacher'
+    },
+    {
+      id: 'infrastructure',
+      src: '/images/donations/6.jpg',
+      alt: t.donations.donationTypes.infrastructure.title,
+      title: t.donations.donationTypes.infrastructure.title,
+      amount: t.donations.donationTypes.infrastructure.amount,
+      benefits: t.donations.donationTypes.infrastructure.benefits,
+      donationTypeName: 'Infrastructure'
+    },
+    {
+      id: 'volunteering',
+      src: '/images/pic/PCCS-103.JPG',
+      alt: t.donations.donationTypes.volunteering.title,
+      title: t.donations.donationTypes.volunteering.title,
+      amount: t.donations.donationTypes.volunteering.amount,
+      benefits: t.donations.donationTypes.volunteering.benefits,
+      donationTypeName: 'Volunteering',
+      contactButton: t.donations.donationTypes.volunteering.contactButton,
+      contactOptions: t.donations.donationTypes.volunteering.contactOptions
     }
-  ];
+  ] : [];
+
+  // Safety check: Ensure translations are loaded
+  if (!t?.donations?.donationTypes || donationImages.length === 0) {
+    return <div className="py-16 text-center">Loading translations...</div>;
+  }
 
   const openModal = (image: DonationImage) => {
     setSelectedImage(image);
@@ -154,23 +202,51 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
 
                   {/* Content */}
                   <div className="p-6">
+                    {/* Amount Badge with optional Contact Button */}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="inline-block px-4 py-2 rounded-full text-white font-bold text-lg" style={{ backgroundColor: '#2ECC40' }}>
+                        {donation.amount}
+                      </div>
+                      {donation.contactButton && (
+                        <a
+                          href="/contact"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white rounded-lg transition-all duration-300 hover:opacity-90 hover:scale-105"
+                          style={{ backgroundColor: '#1E1E8C' }}
+                        >
+                          {donation.contactButton}
+                        </a>
+                      )}
+                    </div>
+
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       {donation.title}
                     </h3>
 
                     {/* Divider */}
-                    <div className="w-12 h-1 rounded-full mb-4" style={{ backgroundColor: '#2ECC40' }}></div>
+                    <div className="w-12 h-1 rounded-full mb-4" style={{ backgroundColor: '#1E1E8C' }}></div>
 
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {donation.description}
-                    </p>
+                    {/* Benefits List */}
+                    <ul className="space-y-2">
+                      {donation.benefits.map((benefit, index) => (
+                        <li key={index} className="flex items-start text-gray-600 text-sm">
+                          <svg className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" style={{ color: '#2ECC40' }} fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                          </svg>
+                          <span className="leading-relaxed">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
             ))}
+
+            {/* Custom Donation Card */}
+            <CustomDonationCard />
           </div>
 
- 
+
         </div>
       </section>
 
@@ -206,16 +282,40 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
 
               {/* Modal Content */}
               <div className="p-6">
+                {/* Amount Badge */}
+                <div className="inline-block mb-4 px-5 py-3 rounded-full text-white font-bold text-2xl" style={{ backgroundColor: '#2ECC40' }}>
+                  {selectedImage.amount}
+                </div>
+
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   {selectedImage.title}
                 </h3>
-                <div className="w-16 h-1 rounded-full mb-4" style={{ backgroundColor: '#2ECC40' }}></div>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  {selectedImage.description}
-                </p>
+                <div className="w-16 h-1 rounded-full mb-4" style={{ backgroundColor: '#1E1E8C' }}></div>
 
-                {/* Donation Button with pre-selected type */}
-                {donationTypes.find(type => type.name === selectedImage.donationTypeName) && (
+                {/* Benefits List */}
+                <ul className="space-y-3 mb-6">
+                  {selectedImage.benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-start text-gray-600 text-base">
+                      <svg className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5" style={{ color: '#2ECC40' }} fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                      </svg>
+                      <span className="leading-relaxed">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Contact Button for Volunteering or Donation Button for others */}
+                {selectedImage.contactButton ? (
+                  <div className="flex justify-center" onClick={(e) => e.stopPropagation()}>
+                    <a
+                      href="/contact"
+                      className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-lg transition-all duration-300 hover:opacity-90 hover:scale-105"
+                      style={{ backgroundColor: '#1E1E8C' }}
+                    >
+                      {selectedImage.contactButton}
+                    </a>
+                  </div>
+                ) : donationTypes.find(type => type.name === selectedImage.donationTypeName) && (
                   <div className="flex justify-center" onClick={(e) => e.stopPropagation()}>
                     <AzulPaymentButton
                       amount={50}

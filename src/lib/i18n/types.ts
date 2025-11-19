@@ -268,11 +268,37 @@ export interface Translations {
 
     // Donation Types (cards)
     donationTypes: {
-      schoolSupplies: { title: string; description: string };
-      scholarships: { title: string; description: string };
-      infrastructure: { title: string; description: string };
-      general: { title: string; description: string };
-      sponsorChild: { title: string; description: string };
+      schoolSupplies: { title: string; amount: string; benefits: string[] };
+      schoolMeals: { title: string; amount: string; benefits: string[] };
+      englishTech: { title: string; amount: string; benefits: string[] };
+      classroomMaterials: { title: string; amount: string; benefits: string[] };
+      sponsorChild: { title: string; amount: string; benefits: string[] };
+      sponsorTeacher: { title: string; amount: string; benefits: string[] };
+      infrastructure: { title: string; amount: string; benefits: string[] };
+      volunteering: {
+        title: string;
+        amount: string;
+        benefits: string[];
+        contactButton: string;
+        contactOptions: {
+          googleForm: string;
+          phone: string;
+        };
+      };
+    };
+
+    // Custom Donation Card
+    customDonation: {
+      title: string;
+      badge: string;
+      amountLabel: string;
+      amountPlaceholder: string;
+      commentLabel: string;
+      commentPlaceholder: string;
+      donateButton: string;
+      minimumAmount: string;
+      errorMinimum: string;
+      errorInvalidAmount: string;
     };
 
     // CTA
