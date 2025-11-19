@@ -357,7 +357,7 @@ export const en: Translations = {
         ],
         contactButton: 'Contact Us',
         contactOptions: {
-          googleForm: 'Google Form',
+          email: 'Email',
           phone: 'Phone'
         }
       },

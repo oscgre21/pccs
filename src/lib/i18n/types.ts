@@ -281,7 +281,7 @@ export interface Translations {
         benefits: string[];
         contactButton: string;
         contactOptions: {
-          googleForm: string;
+          email: string;
           phone: string;
         };
       };

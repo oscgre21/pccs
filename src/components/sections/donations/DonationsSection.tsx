@@ -22,7 +22,7 @@ interface DonationImage {
   donationTypeName: string; // Maps to DonationType.name
   contactButton?: string; // Optional: for volunteering card
   contactOptions?: {
-    googleForm: string;
+    email: string;
     phone: string;
   };
 }
@@ -57,6 +57,19 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
     };
     loadDonationTypes();
   }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (showContactDropdown) {
+        setShowContactDropdown(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showContactDropdown]);
 
   // Array of donation images with descriptions mapped to donation types
   // Ordered by donation amount: $50 → $150 → $500 → $2,000 → $7,000 → $18,000 → $100,000+
@@ -207,15 +220,52 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                       <div className="inline-block px-4 py-2 rounded-full text-white font-bold text-lg" style={{ backgroundColor: '#2ECC40' }}>
                         {donation.amount}
                       </div>
-                      {donation.contactButton && (
-                        <a
-                          href="/contact"
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white rounded-lg transition-all duration-300 hover:opacity-90 hover:scale-105"
-                          style={{ backgroundColor: '#1E1E8C' }}
-                        >
-                          {donation.contactButton}
-                        </a>
+                      {donation.contactButton && donation.contactOptions && (
+                        <div className="relative">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setShowContactDropdown(!showContactDropdown);
+                            }}
+                            className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white rounded-lg transition-all duration-300 hover:opacity-90"
+                            style={{ backgroundColor: '#1E1E8C' }}
+                          >
+                            {donation.contactButton}
+                            <svg className="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
+                            </svg>
+                          </button>
+                          {showContactDropdown && (
+                            <div
+                              className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl z-10 overflow-hidden"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <a
+                                href="mailto:info@pccs.edu.do?subject=Volunteering Inquiry"
+                                className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                              >
+                                <div className="flex items-center">
+                                  <svg className="w-5 h-5 mr-2" style={{ color: '#1E1E8C' }} fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                  </svg>
+                                  {donation.contactOptions.email}
+                                </div>
+                              </a>
+                              <a
+                                href="tel:+18095652929"
+                                className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors border-t border-gray-200"
+                              >
+                                <div className="flex items-center">
+                                  <svg className="w-5 h-5 mr-2" style={{ color: '#1E1E8C' }} fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                  </svg>
+                                  {donation.contactOptions.phone}
+                                </div>
+                              </a>
+                            </div>
+                          )}
+                        </div>
                       )}
                     </div>
 
