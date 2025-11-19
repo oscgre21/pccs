@@ -64,8 +64,6 @@ export default function DonacionesPage() {
       {/* Donations Section */}
       <DonationsSection />
 
- 
-
       {/* Future Vision Panel */}
       <section className="py-16 lg:py-24 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
         <div className="container mx-auto px-4">
