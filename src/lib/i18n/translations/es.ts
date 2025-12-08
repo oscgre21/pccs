@@ -37,9 +37,9 @@ export const es: Translations = {
   hero: {
     subtitle: 'Colegio Cristiano Punta Cana',
     title: {
-      studyOf: 'Estudio de',
+      studyOf: 'Educación integral para',
       kids: 'Niños',
-      child: 'Niño',
+      child: 'Niños',
       youth: 'Jóvenes',
     },
     description: 'Nutriendo corazones, mentes y espíritus a través de la excelencia académica y valores cristianos. Únete a nuestra comunidad donde la fe y el aprendizaje se unen.',

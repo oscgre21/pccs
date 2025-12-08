@@ -5,6 +5,8 @@ export { AboutSection } from './about/AboutSection';
 export { StatsSection } from './stats/StatsSection';
 export { StaffSection } from './staff/StaffSection';
 export { AdmissionsSection } from './admissions/AdmissionsSection';
+export { AdmissionsHeroSection } from './admissions/AdmissionsHeroSection';
+export { AdmissionsContentSection } from './admissions/AdmissionsContentSection';
 export { GallerySection } from './gallery/GallerySection';
 export { DonationsSection } from './donations/DonationsSection';
 

@@ -8,7 +8,10 @@ import {
   MissionSection,
   VisionSection,
   ValuesSection,
-  PurposeSection
+  PurposeSection,
+  DonationsSection,
+  AdmissionsSection,
+  AdmissionsHeroSection
 } from '@/components/sections';
 
 export default function HomePage() {
@@ -34,9 +37,12 @@ export default function HomePage() {
       <main className="min-h-screen">
         {/* Hero Section */}
         <HeroSection />
+        <br/>      <br/>
+        <AdmissionsHeroSection />
 
-        {/* Features Section */}
-        <FeaturesSection />
+        {/* Donations Section */}
+        <DonationsSection />
+
 
         {/* About Section       <AboutSection /> */}
 
