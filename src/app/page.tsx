@@ -10,8 +10,7 @@ import {
   ValuesSection,
   PurposeSection,
   DonationsSection,
-  AdmissionsSection,
-  AdmissionsHeroSection
+  AdmissionsPreviewSection
 } from '@/components/sections';
 
 export default function HomePage() {
@@ -37,15 +36,12 @@ export default function HomePage() {
       <main className="min-h-screen">
         {/* Hero Section */}
         <HeroSection />
-        <br/>      <br/>
-        <AdmissionsHeroSection />
+
+        {/* Admissions Preview - Puedes cambiar variant a: 'split', 'banner', o 'card' */}
+        <AdmissionsPreviewSection variant="split" />
 
         {/* Donations Section */}
-        <DonationsSection />
-
-
-        {/* About Section       <AboutSection /> */}
-
+        <DonationsSection />  
 
         {/* Mission Section */}
         <MissionSection />

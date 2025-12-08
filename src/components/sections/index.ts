@@ -7,6 +7,7 @@ export { StaffSection } from './staff/StaffSection';
 export { AdmissionsSection } from './admissions/AdmissionsSection';
 export { AdmissionsHeroSection } from './admissions/AdmissionsHeroSection';
 export { AdmissionsContentSection } from './admissions/AdmissionsContentSection';
+export { AdmissionsPreviewSection } from './admissions/AdmissionsPreviewSection';
 export { GallerySection } from './gallery/GallerySection';
 export { DonationsSection } from './donations/DonationsSection';
 
