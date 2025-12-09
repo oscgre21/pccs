@@ -153,33 +153,7 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gray-50 py-16 lg:py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            {t.courses.readyToEnroll}
-          </h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            {t.courses.readyToEnrollDesc}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/admissions"
-              className="inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              style={{ backgroundColor: "#1E1E8C" }}
-            >
-              {t.common.applyNow}
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
-              style={{ borderColor: "#1E1E8C", color: "#1E1E8C" }}
-            >
-              {t.common.contactUs}
-            </a>
-          </div>
-        </div>
-      </section>
+ 
     </main>
   );
 }
