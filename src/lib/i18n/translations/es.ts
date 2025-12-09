@@ -534,4 +534,15 @@ export const es: Translations = {
     enterEmail: 'Ingresa tu correo',
     subscribe: 'Suscribirse',
   },
+
+  impact: {
+    title: 'Nuestro Impacto',
+    subtitle: 'Transformando Vidas Juntos',
+    description: 'Mira cómo tu apoyo está marcando la diferencia en la vida de nuestros estudiantes y comunidad.',
+    watchTestimonial: 'Ver Testimonio',
+    moreStories: 'Más Historias Próximamente',
+    ctaTitle: 'Sé Parte del Cambio',
+    ctaDescription: 'Cada donación, sin importar el tamaño, nos ayuda a continuar transformando vidas a través de la educación.',
+    donateButton: 'Hacer una Donación',
+  },
 };

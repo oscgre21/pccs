@@ -10,7 +10,8 @@ import {
   ValuesSection,
   PurposeSection,
   DonationsSection,
-  AdmissionsPreviewSection
+  AdmissionsPreviewSection,
+  ImpactSection
 } from '@/components/sections';
 
 export default function HomePage() {
@@ -39,6 +40,9 @@ export default function HomePage() {
 
         {/* Admissions Preview - Puedes cambiar variant a: 'split', 'banner', o 'card' */}
         <AdmissionsPreviewSection variant="split" />
+
+        {/* Impact Section - Testimonials */}
+        <ImpactSection />
 
         {/* Donations Section */}
         <DonationsSection />  

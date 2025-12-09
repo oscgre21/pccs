@@ -465,6 +465,18 @@ export interface Translations {
     enterEmail: string;
     subscribe: string;
   };
+
+  // Impact Section (Testimonials)
+  impact: {
+    title: string;
+    subtitle: string;
+    description: string;
+    watchTestimonial: string;
+    moreStories: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    donateButton: string;
+  };
 }
 
 // Context type

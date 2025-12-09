@@ -534,4 +534,15 @@ export const en: Translations = {
     enterEmail: 'Enter your email',
     subscribe: 'Subscribe',
   },
+
+  impact: {
+    title: 'Our Impact',
+    subtitle: 'Transforming Lives Together',
+    description: 'See how your support is making a difference in the lives of our students and community.',
+    watchTestimonial: 'Watch Testimonial',
+    moreStories: 'More Stories Coming Soon',
+    ctaTitle: 'Be Part of the Change',
+    ctaDescription: 'Every donation, no matter the size, helps us continue transforming lives through education.',
+    donateButton: 'Make a Donation',
+  },
 };
