@@ -528,9 +528,17 @@ export const es: Translations = {
   staff: {
     title: 'Nuestro Personal',
     subtitle: 'Conoce a los profesionales dedicados que hacen de PCCS un lugar de excelencia, compasión y crecimiento.',
+    viewAll: 'Ver Todo el Personal',
     joinTeam: 'Únete a Nuestro Equipo',
     joinTeamDesc: '¿Te apasiona la educación cristiana y hacer la diferencia en la vida de los estudiantes? Siempre estamos buscando educadores dedicados para unirse a nuestro equipo.',
     contactAboutOpportunities: 'Contáctanos Sobre Oportunidades',
+    positions: {
+      nationalDirector: 'Director Nacional',
+      academicDirector: 'Directora Académica',
+      registrationCoordinator: 'Coordinadora de Registro',
+      adminCoordinator: 'Coordinadora de Administración',
+      englishCoordinator: 'Coordinadora de Inglés',
+    },
   },
 
   blog: {

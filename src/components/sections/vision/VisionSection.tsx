@@ -98,20 +98,7 @@ export function VisionSection({ className = '' }: VisionSectionProps) {
                   </div>
                 ))}
               </div>
-
-              {/* Call to Action */}
-              <div className="vision-cta">
-                <a
-                  href="/admisiones"
-                  className="inline-flex items-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  style={{ backgroundColor: '#2ECC40' }}
-                >
-                  {t.vision.ctaButton}
-                  <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </a>
-              </div>
+ 
             </div>
           </div>
         </div>

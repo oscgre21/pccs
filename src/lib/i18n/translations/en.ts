@@ -528,9 +528,17 @@ export const en: Translations = {
   staff: {
     title: 'Our Staff',
     subtitle: 'Meet the dedicated professionals who make PCCS a place of excellence, compassion, and growth.',
+    viewAll: 'View All Staff Members',
     joinTeam: 'Join Our Team',
     joinTeamDesc: 'Are you passionate about Christian education and making a difference in students\' lives? We\'re always looking for dedicated educators to join our team.',
     contactAboutOpportunities: 'Contact Us About Opportunities',
+    positions: {
+      nationalDirector: 'National Director',
+      academicDirector: 'Academic Director',
+      registrationCoordinator: 'Registration Coordinator',
+      adminCoordinator: 'Administration Coordinator',
+      englishCoordinator: 'English Coordinator',
+    },
   },
 
   blog: {

@@ -458,9 +458,17 @@ export interface Translations {
   staff: {
     title: string;
     subtitle: string;
+    viewAll: string;
     joinTeam: string;
     joinTeamDesc: string;
     contactAboutOpportunities: string;
+    positions: {
+      nationalDirector: string;
+      academicDirector: string;
+      registrationCoordinator: string;
+      adminCoordinator: string;
+      englishCoordinator: string;
+    };
   };
 
   // Blog Page
