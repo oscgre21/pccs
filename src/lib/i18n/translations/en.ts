@@ -37,7 +37,7 @@ export const en: Translations = {
   hero: {
     subtitle: 'Punta Cana Christian School',
     title: {
-      studyOf: 'Comprehensive education for',
+      studyOf: '',
       kids: 'Faith',
       child: 'Character',
       youth: 'Excellence',

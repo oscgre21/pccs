@@ -37,7 +37,7 @@ export const es: Translations = {
   hero: {
     subtitle: 'Colegio Cristiano Punta Cana',
     title: {
-      studyOf: 'Educación integral para',
+      studyOf: '',
       kids: 'Fe',
       child: 'Carácter',
       youth: 'Excelencia',
