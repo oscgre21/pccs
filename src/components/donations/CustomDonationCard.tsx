@@ -72,14 +72,15 @@ export function CustomDonationCard({ className = '' }: CustomDonationCardProps) 
       <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden h-full flex flex-col">
         {/* Content */}
         <div className="p-6 flex-1 flex flex-col">
-          {/* Amount Badge */}
-          <div className="inline-block mb-3 px-4 py-2 rounded-full text-white font-bold text-lg self-start" style={{ backgroundColor: '#2ECC40' }}>
-            {t.donations.customDonation.badge}
+          {/* Title with Badge */}
+          <div className="flex items-center gap-3 mb-3">
+            <h3 className="text-xl font-semibold text-gray-900">
+              {t.donations.customDonation.title}
+            </h3>
+            <span className="px-3 py-1 rounded-full text-white font-bold text-sm" style={{ backgroundColor: '#2ECC40' }}>
+              {t.donations.customDonation.badge}
+            </span>
           </div>
-
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">
-            {t.donations.customDonation.title}
-          </h3>
 
           {/* Divider */}
           <div className="w-12 h-1 rounded-full mb-4" style={{ backgroundColor: '#1E1E8C' }}></div>
