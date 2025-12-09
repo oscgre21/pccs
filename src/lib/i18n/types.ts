@@ -540,6 +540,9 @@ export interface Translations {
       title: string;
       serviceLabel: string;
       amountLabel: string;
+      amountUSD: string;
+      amountDOP: string;
+      exchangeRate: string;
       studentName: string;
       studentNamePlaceholder: string;
       parentName: string;

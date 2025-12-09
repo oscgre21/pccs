@@ -14,9 +14,13 @@ interface SelectedService {
   amount: number;
 }
 
+// Default exchange rate USD to DOP
+const DEFAULT_EXCHANGE_RATE = 60.50;
+
 export function StudentServicesSection({ className = '' }: StudentServicesSectionProps) {
   const { t } = useTranslation();
   const [selectedService, setSelectedService] = useState<SelectedService | null>(null);
+  const exchangeRate = DEFAULT_EXCHANGE_RATE;
 
   if (!t.studentServices) {
     return null;
@@ -62,60 +66,76 @@ export function StudentServicesSection({ className = '' }: StudentServicesSectio
         </div>
 
         {/* Payment Table */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
+          {/* Exchange Rate Display (Read Only) */}
+          <div className="mb-4 flex items-center justify-end gap-3 text-sm text-gray-600">
+            <span>{t.studentServices.paymentForm.exchangeRate}:</span>
+            <div className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg border border-gray-200">
+              <span>1 USD = <span className="font-semibold">{exchangeRate.toFixed(2)}</span> DOP</span>
+            </div>
+          </div>
+
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             {/* Table Header */}
-            <div className="grid grid-cols-4 gap-4 p-4 text-white font-semibold text-sm lg:text-base" style={{ backgroundColor: '#1E1E8C' }}>
+            <div className="grid grid-cols-5 gap-2 p-4 text-white font-semibold text-xs lg:text-sm" style={{ backgroundColor: '#1E1E8C' }}>
               <div className="col-span-1">{t.studentServices.tableHeaders.description}</div>
               <div className="col-span-1 text-center">{t.studentServices.tableHeaders.frequency}</div>
-              <div className="col-span-1 text-center">{t.studentServices.tableHeaders.amount}</div>
+              <div className="col-span-1 text-center">{t.studentServices.paymentForm.amountUSD}</div>
+              <div className="col-span-1 text-center">{t.studentServices.paymentForm.amountDOP}</div>
               <div className="col-span-1 text-center">{t.studentServices.tableHeaders.action}</div>
             </div>
 
             {/* Table Body */}
-            {services.map((service, index) => (
-              <div
-                key={service.id}
-                className={`grid grid-cols-4 gap-4 p-4 items-center border-b border-gray-100 ${
-                  index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                } hover:bg-pccs-primary/5 transition-colors duration-200`}
-              >
-                {/* Service Name */}
-                <div className="col-span-1">
-                  <span className="font-semibold text-gray-900 text-sm lg:text-base">
-                    {service.name}
-                  </span>
-                </div>
+            {services.map((service, index) => {
+              const amountDOP = Math.round(service.amount * exchangeRate);
+              return (
+                <div
+                  key={service.id}
+                  className={`grid grid-cols-5 gap-2 p-4 items-center border-b border-gray-100 ${
+                    index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                  } hover:bg-pccs-primary/5 transition-colors duration-200`}
+                >
+                  {/* Service Name */}
+                  <div className="col-span-1">
+                    <span className="font-semibold text-gray-900 text-sm lg:text-base">
+                      {service.name}
+                    </span>
+                  </div>
 
-                {/* Frequency */}
-                <div className="col-span-1 text-center">
-                  <span className="text-gray-600 text-sm lg:text-base">
-                    {service.frequency}
-                  </span>
-                </div>
+                  {/* Frequency */}
+                  <div className="col-span-1 text-center">
+                    <span className="text-gray-600 text-xs lg:text-sm">
+                      {service.frequency}
+                    </span>
+                  </div>
 
-                {/* Amount */}
-                <div className="col-span-1 text-center">
-                  <span className="font-bold text-lg lg:text-xl" style={{ color: '#2ECC40' }}>
-                    ${service.amount}
-                  </span>
-                  <span className="text-gray-500 text-xs ml-1">
-                    {t.studentServices.currency}
-                  </span>
-                </div>
+                  {/* Amount USD */}
+                  <div className="col-span-1 text-center">
+                    <span className="font-bold text-base lg:text-lg text-gray-700">
+                      ${service.amount.toLocaleString()}
+                    </span>
+                  </div>
 
-                {/* Pay Button */}
-                <div className="col-span-1 text-center">
-                  <button
-                    onClick={() => handlePayClick(service)}
-                    className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                    style={{ backgroundColor: '#1E1E8C' }}
-                  >
-                    {t.studentServices.payButton}
-                  </button>
+                  {/* Amount DOP */}
+                  <div className="col-span-1 text-center">
+                    <span className="font-bold text-base lg:text-lg" style={{ color: '#2ECC40' }}>
+                      RD${amountDOP.toLocaleString()}
+                    </span>
+                  </div>
+
+                  {/* Pay Button */}
+                  <div className="col-span-1 text-center">
+                    <button
+                      onClick={() => handlePayClick(service)}
+                      className="inline-flex items-center justify-center px-3 py-2 text-xs lg:text-sm font-semibold text-white rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      style={{ backgroundColor: '#1E1E8C' }}
+                    >
+                      {t.studentServices.payButton}
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Note */}
@@ -174,6 +194,7 @@ export function StudentServicesSection({ className = '' }: StudentServicesSectio
             serviceName={selectedService?.name || ''}
             serviceId={selectedService?.id || ''}
             amount={selectedService?.amount || 0}
+            initialExchangeRate={exchangeRate}
           />
         </div>
       </div>

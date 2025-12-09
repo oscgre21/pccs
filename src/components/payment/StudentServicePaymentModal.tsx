@@ -4,12 +4,16 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from '@/contexts/LanguageContext';
 
+// Default exchange rate USD to DOP
+const DEFAULT_EXCHANGE_RATE = 60.50;
+
 interface StudentServicePaymentModalProps {
   isOpen: boolean;
   onClose: () => void;
   serviceName: string;
   serviceId: string;
   amount: number;
+  initialExchangeRate?: number;
 }
 
 type PaymentStatus = 'idle' | 'processing' | 'error';
@@ -20,6 +24,7 @@ export function StudentServicePaymentModal({
   serviceName,
   serviceId,
   amount,
+  initialExchangeRate = DEFAULT_EXCHANGE_RATE,
 }: StudentServicePaymentModalProps) {
   const { t } = useTranslation();
   const [mounted, setMounted] = useState(false);
@@ -33,6 +38,10 @@ export function StudentServicePaymentModal({
   const [phone, setPhone] = useState('');
   const [grade, setGrade] = useState('');
   const [comment, setComment] = useState('');
+
+  // Exchange rate (USD to DOP) - Fixed rate from parent, not editable
+  const exchangeRate = initialExchangeRate;
+  const amountDOP = Math.round(amount * exchangeRate);
 
   useEffect(() => {
     setMounted(true);
@@ -81,14 +90,16 @@ export function StudentServicePaymentModal({
     try {
       setStatus('processing');
 
-      // Call server API to initiate student payment
+      // Call server API to initiate student payment (amount in DOP)
       const response = await fetch('/api/azul/student-payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount,
+          amount: amountDOP, // Send amount in DOP for payment
+          amountUSD: amount, // Original USD amount for reference
+          exchangeRate,
           description: `${serviceName} - PCCS`,
           studentName,
           parentName,
@@ -168,20 +179,36 @@ export function StudentServicePaymentModal({
 
           {/* Service Info Card */}
           <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-xl border border-blue-100 mb-6">
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="text-sm text-gray-600">{t.studentServices.paymentForm.serviceLabel}</p>
-                <p className="text-lg font-semibold" style={{ color: '#1E1E8C' }}>
-                  {serviceName}
+            {/* Service Name */}
+            <div className="mb-4">
+              <p className="text-sm text-gray-600">{t.studentServices.paymentForm.serviceLabel}</p>
+              <p className="text-lg font-semibold" style={{ color: '#1E1E8C' }}>
+                {serviceName}
+              </p>
+            </div>
+
+            {/* Amount Cards */}
+            <div className="grid grid-cols-2 gap-4">
+              {/* USD Amount */}
+              <div className="bg-white p-3 rounded-lg border border-gray-200">
+                <p className="text-xs text-gray-500 mb-1">{t.studentServices.paymentForm.amountUSD}</p>
+                <p className="text-xl font-bold text-gray-700">
+                  ${amount.toLocaleString()}
                 </p>
               </div>
-              <div className="text-right">
-                <p className="text-sm text-gray-600">{t.studentServices.paymentForm.amountLabel}</p>
-                <p className="text-3xl font-bold" style={{ color: '#2ECC40' }}>
-                  ${amount}
+
+              {/* DOP Amount */}
+              <div className="bg-white p-3 rounded-lg border-2" style={{ borderColor: '#2ECC40' }}>
+                <p className="text-xs text-gray-500 mb-1">{t.studentServices.paymentForm.amountDOP}</p>
+                <p className="text-xl font-bold" style={{ color: '#2ECC40' }}>
+                  RD${amountDOP.toLocaleString()}
                 </p>
-                <p className="text-xs text-gray-500">{t.studentServices.currency}</p>
               </div>
+            </div>
+
+            {/* Exchange Rate - Read Only */}
+            <div className="mt-3 text-center text-xs text-gray-500">
+              <span>{t.studentServices.paymentForm.exchangeRate}: 1 USD = {exchangeRate.toFixed(2)} DOP</span>
             </div>
           </div>
 
@@ -327,7 +354,7 @@ export function StudentServicePaymentModal({
                 </span>
               ) : (
                 <span className="flex items-center justify-center">
-                  {t.studentServices.paymentForm.proceedToPayment} - ${amount}
+                  {t.studentServices.paymentForm.proceedToPayment} - RD${amountDOP.toLocaleString()}
                   <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
