@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { useTranslation } from '@/contexts/LanguageContext';
 
 interface GalleryImage {
@@ -74,11 +75,14 @@ export function GallerySection({ className = '', maxImages, showExpandButton = t
                 onClick={() => openModal(image)}
               >
                 <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.alt}
+                    width={400}
+                    height={256}
                     className="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    quality={85}
                     loading="lazy"
                   />
 
@@ -154,13 +158,21 @@ export function GallerySection({ className = '', maxImages, showExpandButton = t
             </button>
 
             {/* Image */}
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-              style={{ objectFit: 'contain', maxHeight: '90vh', maxWidth: '90vw' }}
+            <div
+              className="relative"
+              style={{ maxHeight: '90vh', maxWidth: '90vw', width: '100%', height: '90vh' }}
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                fill
+                className="object-contain rounded-lg shadow-2xl"
+                sizes="90vw"
+                quality={90}
+                priority
+              />
+            </div>
           </div>
         </div>
       )}
