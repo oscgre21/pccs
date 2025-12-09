@@ -64,12 +64,11 @@ export function Navigation() {
     {
       id: 'about',
       titleKey: 'aboutUs',
-      href: '/about',
+      href: '#',
       children: [
         { id: 'mission', titleKey: 'mission', href: '/#mission' },
         { id: 'vision', titleKey: 'vision', href: '/#vision' },
-        { id: 'values', titleKey: 'values', href: '/#values' },
-        { id: 'purpose', titleKey: 'purpose', href: '/#purpose' }
+        { id: 'values', titleKey: 'values', href: '/#values' }
       ]
     },
     {
