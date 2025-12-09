@@ -38,9 +38,9 @@ export const en: Translations = {
     subtitle: 'Punta Cana Christian School',
     title: {
       studyOf: 'Comprehensive education for',
-      kids: 'Children',
-      child: 'Children',
-      youth: 'Youth',
+      kids: 'Faith',
+      child: 'Character',
+      youth: 'Excellence',
     },
     description: 'Nurturing hearts, minds, and spirits through academic excellence and Christian values. Join our community where faith and learning come together.',
     applyButton: 'APPLY NOW',
