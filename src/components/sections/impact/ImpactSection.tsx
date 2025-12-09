@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
 import { useTranslation } from '@/contexts/LanguageContext';
 
 // Lista de videos de testimonios
@@ -99,7 +98,7 @@ export function ImpactSection({ className = '' }: ImpactSectionProps) {
   }
 
   return (
-    <section className={`py-16 lg:py-24 bg-white ${className}`}>
+    <section className={`py-5 lg:py-24 bg-white ${className}`}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -191,25 +190,6 @@ export function ImpactSection({ className = '' }: ImpactSectionProps) {
               )}
             </button>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <h3 className="text-2xl lg:text-3xl font-bold text-pccs-primary mb-4">
-            {t.impact.ctaTitle}
-          </h3>
-          <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-            {t.impact.ctaDescription}
-          </p>
-          <Link
-            href="/donations"
-            className="inline-flex items-center justify-center px-8 py-4 bg-pccs-primary text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            {t.impact.donateButton}
-            <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </Link>
         </div>
       </div>
     </section>

@@ -167,7 +167,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
 
   return (
     <>
-      <section className={`donations-section py-16 lg:py-24 bg-white ${className}`}>
+      <section className={`donations-section py-5 lg:py-24 bg-white ${className}`}>
         <div className="container mx-auto px-4">
           {/* Section Heading */}
           <div className="section-heading text-center mb-12">

@@ -276,7 +276,7 @@ export const en: Translations = {
     ],
 
     // DonationsSection
-    howYouCanHelp: 'How You Can Help',
+    howYouCanHelp: 'Be Part of the Change',
     howYouCanHelpDescription: 'Your donation makes a difference in the lives of our students. Learn about the different ways you can contribute to the future of Christian education in Punta Cana.',
     loadingDonationOptions: 'Loading donation options...',
     noDonationTypes: 'No donation types available at the moment.',
