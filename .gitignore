@@ -13,7 +13,9 @@
 # testing
 /coverage
 
+# Ignore mp4 files except in public/video
 *.mp4
+!public/video/*.mp4
 
 # next.js
 /.next/
