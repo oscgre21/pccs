@@ -45,6 +45,7 @@ export const es: Translations = {
     description: 'Nutriendo corazones, mentes y espíritus a través de la excelencia académica y valores cristianos. Únete a nuestra comunidad donde la fe y el aprendizaje se unen.',
     applyButton: 'APLICAR AHORA',
     coursesButton: 'NUESTRAS CLASES',
+    studentServicesButton: 'SERVICIOS ESTUDIANTILES',
   },
 
   features: {
@@ -551,5 +552,64 @@ export const es: Translations = {
     ctaTitle: 'Sé Parte del Cambio',
     ctaDescription: 'Cada donación, sin importar el tamaño, nos ayuda a continuar transformando vidas a través de la educación.',
     donateButton: 'Hacer una Donación',
+  },
+
+  studentServices: {
+    title: 'Plan de Pago General PCCS',
+    subtitle: 'Servicios Estudiantiles',
+    description: 'Realiza tus pagos de manera segura y conveniente a través de nuestra plataforma.',
+    tableHeaders: {
+      description: 'Descripción',
+      frequency: 'Cuotas',
+      amount: 'Monto',
+      action: 'Acción',
+    },
+    services: {
+      inscription: {
+        name: 'Inscripción',
+        frequency: '1 al año',
+        amount: 500,
+      },
+      reInscription: {
+        name: 'Re-inscripción',
+        frequency: '1 al año',
+        amount: 500,
+      },
+      monthlyTuition: {
+        name: 'Mensualidad Colegiatura',
+        frequency: '10 veces al año (Sept-Jun)',
+        amount: 400,
+      },
+    },
+    payButton: 'Pagar',
+    currency: 'USD',
+    note: 'Los pagos se procesan de forma segura a través de AZUL.',
+    paymentForm: {
+      title: 'Completar Pago',
+      serviceLabel: 'Servicio',
+      amountLabel: 'Monto a Pagar',
+      studentName: 'Nombre del Estudiante',
+      studentNamePlaceholder: 'Nombre completo del estudiante',
+      parentName: 'Nombre del Padre/Tutor',
+      parentNamePlaceholder: 'Nombre completo del padre o tutor',
+      email: 'Correo Electrónico',
+      emailPlaceholder: 'correo@ejemplo.com',
+      phone: 'Teléfono (Opcional)',
+      phonePlaceholder: '+1 (809) 555-1234',
+      grade: 'Grado (Opcional)',
+      gradePlaceholder: 'Ej: 5to grado',
+      comment: 'Comentario (Opcional)',
+      commentPlaceholder: 'Información adicional...',
+      proceedToPayment: 'Proceder al Pago',
+      processing: 'Procesando...',
+      close: 'Cerrar',
+      requiredField: '*',
+      errors: {
+        studentNameRequired: 'El nombre del estudiante es requerido',
+        parentNameRequired: 'El nombre del padre/tutor es requerido',
+        emailRequired: 'El correo electrónico es requerido',
+        emailInvalid: 'Por favor ingrese un correo electrónico válido',
+      },
+    },
   },
 };

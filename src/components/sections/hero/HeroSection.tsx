@@ -134,6 +134,16 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
               >
                 {t.hero.coursesButton}
               </a>
+              <a
+                href="/student-services"
+                className="def-btn btn-4 inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center focus:outline-none focus:ring-2 focus:ring-offset-2"
+                style={{ backgroundColor: '#FF851B' }}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#E6760F'}
+                onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#FF851B'}
+                aria-label="View student services and payments"
+              >
+                {t.hero.studentServicesButton}
+              </a>
             </div>
           </div>
         </div>

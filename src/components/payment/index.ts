@@ -4,3 +4,4 @@
  */
 
 export { AzulPaymentButton } from './AzulPaymentButton';
+export { StudentServicePaymentModal } from './StudentServicePaymentModal';

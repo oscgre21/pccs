@@ -45,6 +45,7 @@ export const en: Translations = {
     description: 'Nurturing hearts, minds, and spirits through academic excellence and Christian values. Join our community where faith and learning come together.',
     applyButton: 'APPLY NOW',
     coursesButton: 'OUR CLASSES',
+    studentServicesButton: 'STUDENT SERVICES',
   },
 
   features: {
@@ -551,5 +552,64 @@ export const en: Translations = {
     ctaTitle: 'Be Part of the Change',
     ctaDescription: 'Every donation, no matter the size, helps us continue transforming lives through education.',
     donateButton: 'Make a Donation',
+  },
+
+  studentServices: {
+    title: 'PCCS General Payment Plan',
+    subtitle: 'Student Services',
+    description: 'Make your payments securely and conveniently through our platform.',
+    tableHeaders: {
+      description: 'Description',
+      frequency: 'Installments',
+      amount: 'Amount',
+      action: 'Action',
+    },
+    services: {
+      inscription: {
+        name: 'Inscription',
+        frequency: '1 per year',
+        amount: 500,
+      },
+      reInscription: {
+        name: 'Re-inscription',
+        frequency: '1 per year',
+        amount: 500,
+      },
+      monthlyTuition: {
+        name: 'Monthly Tuition',
+        frequency: '10 times per year (Sept-Jun)',
+        amount: 400,
+      },
+    },
+    payButton: 'Pay',
+    currency: 'USD',
+    note: 'Payments are processed securely through AZUL.',
+    paymentForm: {
+      title: 'Complete Payment',
+      serviceLabel: 'Service',
+      amountLabel: 'Amount to Pay',
+      studentName: 'Student Name',
+      studentNamePlaceholder: 'Full name of student',
+      parentName: 'Parent/Guardian Name',
+      parentNamePlaceholder: 'Full name of parent or guardian',
+      email: 'Email Address',
+      emailPlaceholder: 'email@example.com',
+      phone: 'Phone (Optional)',
+      phonePlaceholder: '+1 (809) 555-1234',
+      grade: 'Grade (Optional)',
+      gradePlaceholder: 'Ex: 5th grade',
+      comment: 'Comment (Optional)',
+      commentPlaceholder: 'Additional information...',
+      proceedToPayment: 'Proceed to Payment',
+      processing: 'Processing...',
+      close: 'Close',
+      requiredField: '*',
+      errors: {
+        studentNameRequired: 'Student name is required',
+        parentNameRequired: 'Parent/guardian name is required',
+        emailRequired: 'Email address is required',
+        emailInvalid: 'Please enter a valid email address',
+      },
+    },
   },
 };

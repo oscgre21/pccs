@@ -11,6 +11,7 @@ export { AdmissionsPreviewSection } from './admissions/AdmissionsPreviewSection'
 export { GallerySection } from './gallery/GallerySection';
 export { DonationsSection } from './donations/DonationsSection';
 export { ImpactSection } from './impact/ImpactSection';
+export { StudentServicesSection } from './student-services/StudentServicesSection';
 
 // About Us Sections
 export { MissionSection } from './mission/MissionSection';

@@ -50,6 +50,7 @@ export interface Translations {
     description: string;
     applyButton: string;
     coursesButton: string;
+    studentServicesButton: string;
   };
 
   // Features Section
@@ -483,6 +484,66 @@ export interface Translations {
     ctaTitle: string;
     ctaDescription: string;
     donateButton: string;
+  };
+
+  // Student Services Section
+  studentServices: {
+    title: string;
+    subtitle: string;
+    description: string;
+    tableHeaders: {
+      description: string;
+      frequency: string;
+      amount: string;
+      action: string;
+    };
+    services: {
+      inscription: {
+        name: string;
+        frequency: string;
+        amount: number;
+      };
+      reInscription: {
+        name: string;
+        frequency: string;
+        amount: number;
+      };
+      monthlyTuition: {
+        name: string;
+        frequency: string;
+        amount: number;
+      };
+    };
+    payButton: string;
+    currency: string;
+    note: string;
+    paymentForm: {
+      title: string;
+      serviceLabel: string;
+      amountLabel: string;
+      studentName: string;
+      studentNamePlaceholder: string;
+      parentName: string;
+      parentNamePlaceholder: string;
+      email: string;
+      emailPlaceholder: string;
+      phone: string;
+      phonePlaceholder: string;
+      grade: string;
+      gradePlaceholder: string;
+      comment: string;
+      commentPlaceholder: string;
+      proceedToPayment: string;
+      processing: string;
+      close: string;
+      requiredField: string;
+      errors: {
+        studentNameRequired: string;
+        parentNameRequired: string;
+        emailRequired: string;
+        emailInvalid: string;
+      };
+    };
   };
 }
 
