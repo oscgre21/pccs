@@ -52,19 +52,6 @@ export function StudentServicesSection({ className = '' }: StudentServicesSectio
   return (
     <section className={`py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50 ${className}`}>
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1 bg-pccs-tropical/10 text-pccs-tropical rounded-full text-sm font-medium mb-4">
-            {t.studentServices.subtitle}
-          </span>
-          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-pccs-primary mb-4">
-            {t.studentServices.title}
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {t.studentServices.description}
-          </p>
-        </div>
-
         {/* Payment Table */}
         <div className="max-w-5xl mx-auto">
           {/* Exchange Rate Display (Read Only) */}
