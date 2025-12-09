@@ -162,7 +162,7 @@ export function AdmissionsContentSection({ className = '' }: AdmissionsContentSe
                     {t.admissions.needHelp}
                   </p>
                   <a
-                    href="tel:+1-484-298-9317"
+                    href="tel:+1-849-855-1635"
                     className="inline-flex items-center justify-center px-6 py-3 font-semibold rounded-full border-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-pccs-accent border-pccs-accent bg-pccs-white hover:bg-pccs-accent hover:text-pccs-white"
                   >
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">

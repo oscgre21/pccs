@@ -80,7 +80,7 @@ export function AdmissionsHeroSection({ className = '' }: AdmissionsHeroSectionP
                   </svg>
                 </button>
                 <a
-                  href="tel:+1-484-298-9317"
+                  href="tel:+1-849-855-1635"
                   className="inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center focus:outline-none focus:ring-2 focus:ring-offset-2"
                   style={{ backgroundColor: '#2ECC40' }}
                   onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#26A235'}

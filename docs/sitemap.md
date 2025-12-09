@@ -37,7 +37,7 @@
   - Consultas (Google Forms): `https://docs.google.com/forms/d/e/1FAIpQLScO1ts3uRkswZxvGm3QFC7-fYgyCysE7qZEKDSAvx5OnFCB3g/viewform`
 - **Links internos**:
   - `#formularios` (ancla interna)
-  - `tel:+1-484-298-9317` (teléfono)
+  - `tel:+1-849-855-1635` (teléfono)
 - **Descripción**: Información sobre proceso de admisión y documentos requeridos.
 
 ### 3. **Gallery (`/galeria`)**
@@ -129,7 +129,7 @@ Estas rutas están en `src/app/sitemap.ts` pero no tienen páginas correspondien
 - **Links**:
   - Logo → `/`
   - Botón "Sponsor" → `/donaciones`
-- **Teléfono**: `+1-484-298-9317`
+- **Teléfono**: `+1-849-855-1635`
 - **Email**: `info@pccs.edu.do`
 
 #### **Navigation** (`Navigation.tsx`)
@@ -360,7 +360,7 @@ Todas las redes sociales actualmente tienen `href="#"` (no configuradas):
 ### Teléfonos
 | Número | Formato Link | Ubicación |
 |--------|--------------|-----------|
-| +1-484-298-9317 | `tel:+1-484-298-9317` | Header, AdmissionsSection |
+| +1-849-855-1635 | `tel:+1-849-855-1635` | Header, AdmissionsSection |
 | +1 (849) 855 1635 | `tel:+18498551635` | Footer |
 
 ### Emails
@@ -450,7 +450,7 @@ Las siguientes rutas están definidas en el sitemap pero no tienen páginas:
 ### ⚠️ Inconsistencias
 1. Footer links apuntan a `/gallery` pero la ruta real es `/galeria`
 2. Redes sociales no configuradas (todos apuntan a `#`)
-3. Teléfonos diferentes en Header (+1-484-298-9317) y Footer (+1-849-855-1635)
+3. Teléfonos diferentes en Header (+1-849-855-1635) y Footer (+1-849-855-1635)
 
 ### ✅ Características Destacadas
 1. Sistema completo de pago integrado con Azul

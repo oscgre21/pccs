@@ -50,7 +50,7 @@ COURSES (/courses)                                             ├─ Email: inf
 ADMISSIONS (/admissions)
 ├─ Hero Section with CTA
 │  ├─ View Forms → #formularios
-│  └─ Call Now → tel:+1-484-298-9317
+│  └─ Call Now → tel:+1-849-855-1635
 ├─ Documents List
 ├─ Forms Section (#formularios)
 │  ├─ Schedule Appointment (WhatsApp)
