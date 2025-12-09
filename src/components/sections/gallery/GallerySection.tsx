@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslation } from '@/contexts/LanguageContext';
 
 interface GalleryImage {
   id: string;
@@ -13,6 +14,7 @@ interface GallerySectionProps {
 }
 
 export function GallerySection({ className = '' }: GallerySectionProps) {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [showMore, setShowMore] = useState(false);
 
@@ -23,7 +25,7 @@ export function GallerySection({ className = '' }: GallerySectionProps) {
     allImages.push({
       id: `pccs-${i}`,
       src: `/images/pic/PCCS-${i}.${extension}`,
-      alt: `PCCS Galería ${i}`
+      alt: `${t.gallery.imageAlt} ${i}`
     });
   }
 
@@ -47,11 +49,10 @@ export function GallerySection({ className = '' }: GallerySectionProps) {
           {/* Section Heading */}
           <div className="section-heading text-center mb-12">
             <h2 className="section-title text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">
-              Nuestra Galería
+              {t.gallery.title}
             </h2>
             <p className="heading-sub-txt text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Descubre los momentos especiales, actividades educativas y la vida escolar
-              que hacen de PCCS un lugar extraordinario para crecer y aprender.
+              {t.gallery.subtitle}
             </p>
           </div>
 
@@ -98,7 +99,7 @@ export function GallerySection({ className = '' }: GallerySectionProps) {
                 className="inline-flex items-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 style={{ backgroundColor: '#1E1E8C' }}
               >
-                Ver Más Fotos
+                {t.gallery.showMore}
                 <span className="ml-2 text-sm" style={{ color: '#2ECC40' }}>
                   (+{allImages.length - 12})
                 </span>
@@ -117,7 +118,7 @@ export function GallerySection({ className = '' }: GallerySectionProps) {
                   color: '#1E1E8C'
                 }}
               >
-                Ver Menos
+                {t.gallery.showLess}
               </button>
             </div>
           )}

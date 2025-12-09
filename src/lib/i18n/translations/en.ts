@@ -217,7 +217,10 @@ export const en: Translations = {
 
   gallery: {
     title: 'Our Gallery',
-    subtitle: 'Moments that define our community',
+    subtitle: 'Discover special moments, educational activities, and school life that make PCCS an extraordinary place to grow and learn.',
+    imageAlt: 'PCCS Gallery',
+    showMore: 'Show More Photos',
+    showLess: 'Show Less',
   },
 
   donations: {

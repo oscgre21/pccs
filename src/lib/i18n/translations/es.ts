@@ -217,7 +217,10 @@ export const es: Translations = {
 
   gallery: {
     title: 'Nuestra Galería',
-    subtitle: 'Momentos que definen nuestra comunidad',
+    subtitle: 'Descubre los momentos especiales, actividades educativas y la vida escolar que hacen de PCCS un lugar extraordinario para crecer y aprender.',
+    imageAlt: 'PCCS Galería',
+    showMore: 'Ver Más Fotos',
+    showLess: 'Ver Menos',
   },
 
   donations: {

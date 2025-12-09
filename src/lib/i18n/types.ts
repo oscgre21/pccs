@@ -212,6 +212,9 @@ export interface Translations {
   gallery: {
     title: string;
     subtitle: string;
+    imageAlt: string;
+    showMore: string;
+    showLess: string;
   };
 
   // Donations Section
