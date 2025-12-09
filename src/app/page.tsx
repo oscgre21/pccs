@@ -11,7 +11,8 @@ import {
   PurposeSection,
   DonationsSection,
   AdmissionsPreviewSection,
-  ImpactSection
+  ImpactSection,
+  GallerySection
 } from '@/components/sections';
 
 export default function HomePage() {
@@ -47,17 +48,12 @@ export default function HomePage() {
         {/* Donations Section */}
         <DonationsSection />  
 
-        {/* Mission Section */}
-        <MissionSection />
+        <GallerySection/>
+        <MissionSection/>
+        <VisionSection/>
+        <ValuesSection/>
 
-        {/* Vision Section */}
-        <VisionSection />
-
-        {/* Values Section */}
-        <ValuesSection />
-
-        {/* Purpose Section */}
-        <PurposeSection />
+ 
       </main>
 
       {/* Loading Screen - overlay que se desvanece */}

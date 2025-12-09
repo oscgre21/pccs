@@ -38,7 +38,7 @@ export const en: Translations = {
     subtitle: 'Punta Cana Christian School',
     title: {
       studyOf: 'Comprehensive education for',
-      kids: 'Kids',
+      kids: 'Children',
       child: 'Children',
       youth: 'Youth',
     },
@@ -367,6 +367,13 @@ export const en: Translations = {
     customDonation: {
       title: 'Donation',
       badge: 'Your Amount',
+      frequencyLabel: 'Frequency',
+      frequencies: {
+        oneTime: 'One-time',
+        weekly: 'Weekly',
+        monthly: 'Monthly',
+        everyTwoWeeks: 'Every two weeks',
+      },
       amountLabel: 'Enter Your Amount',
       amountPlaceholder: '50.00',
       commentLabel: 'Message (Optional)',

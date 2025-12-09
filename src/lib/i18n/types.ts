@@ -291,6 +291,13 @@ export interface Translations {
     customDonation: {
       title: string;
       badge: string;
+      frequencyLabel: string;
+      frequencies: {
+        oneTime: string;
+        weekly: string;
+        monthly: string;
+        everyTwoWeeks: string;
+      };
       amountLabel: string;
       amountPlaceholder: string;
       commentLabel: string;

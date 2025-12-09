@@ -98,7 +98,7 @@ export function ImpactSection({ className = '' }: ImpactSectionProps) {
   }
 
   return (
-    <section className={`py-5 lg:py-24 bg-white ${className}`}>
+    <section className={`pt-5 pb-2 lg:pt-24 lg:pb-8 bg-white ${className}`}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">

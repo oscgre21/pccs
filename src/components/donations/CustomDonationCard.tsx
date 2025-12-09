@@ -10,11 +10,21 @@ interface CustomDonationCardProps {
 const MAX_COMMENT_LENGTH = 200;
 const MIN_AMOUNT = 10;
 
+type FrequencyType = 'one-time' | 'weekly' | 'monthly' | 'every-two-weeks';
+
+const frequencies: { id: FrequencyType; labelKey: string }[] = [
+  { id: 'one-time', labelKey: 'oneTime' },
+  { id: 'weekly', labelKey: 'weekly' },
+  { id: 'monthly', labelKey: 'monthly' },
+  { id: 'every-two-weeks', labelKey: 'everyTwoWeeks' },
+];
+
 export function CustomDonationCard({ className = '' }: CustomDonationCardProps) {
   const { t } = useTranslation();
   const [amount, setAmount] = useState<string>('');
   const [comment, setComment] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [frequency, setFrequency] = useState<FrequencyType>('one-time');
 
   const formatNumberWithCommas = (value: string): string => {
     // Remove all non-numeric characters except decimal point
@@ -73,6 +83,29 @@ export function CustomDonationCard({ className = '' }: CustomDonationCardProps) 
 
           {/* Divider */}
           <div className="w-12 h-1 rounded-full mb-4" style={{ backgroundColor: '#1E1E8C' }}></div>
+
+          {/* Frequency Selector */}
+          <div className="mb-4">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              {t.donations.customDonation.frequencyLabel}
+            </label>
+            <div className="flex flex-wrap gap-2">
+              {frequencies.map((freq) => (
+                <button
+                  key={freq.id}
+                  type="button"
+                  onClick={() => setFrequency(freq.id)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium border-2 transition-all duration-200 ${
+                    frequency === freq.id
+                      ? 'border-pccs-primary bg-pccs-primary/5 text-pccs-primary'
+                      : 'border-gray-300 bg-white text-gray-600 hover:border-gray-400'
+                  }`}
+                >
+                  {t.donations.customDonation.frequencies[freq.labelKey as keyof typeof t.donations.customDonation.frequencies]}
+                </button>
+              ))}
+            </div>
+          </div>
 
           {/* Amount Input */}
           <div className="mb-3">

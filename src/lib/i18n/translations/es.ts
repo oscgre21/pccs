@@ -367,6 +367,13 @@ export const es: Translations = {
     customDonation: {
       title: 'Donación Personalizada',
       badge: 'Tu Monto',
+      frequencyLabel: 'Frecuencia',
+      frequencies: {
+        oneTime: 'Una vez',
+        weekly: 'Semanal',
+        monthly: 'Mensual',
+        everyTwoWeeks: 'Quincenal',
+      },
       amountLabel: 'Ingresa Tu Monto',
       amountPlaceholder: '50.00',
       commentLabel: 'Agregar un Mensaje (Opcional)',
