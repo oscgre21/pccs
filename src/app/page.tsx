@@ -57,7 +57,7 @@ export default function HomePage() {
         </div>
 
         <div id="gallery">
-          <GallerySection/>
+          <GallerySection maxImages={8} />
         </div>
 
         <div id="mission">

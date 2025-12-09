@@ -11,9 +11,11 @@ interface GalleryImage {
 
 interface GallerySectionProps {
   className?: string;
+  maxImages?: number;
+  showExpandButton?: boolean;
 }
 
-export function GallerySection({ className = '' }: GallerySectionProps) {
+export function GallerySection({ className = '', maxImages, showExpandButton = true }: GallerySectionProps) {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [showMore, setShowMore] = useState(false);
@@ -29,8 +31,15 @@ export function GallerySection({ className = '' }: GallerySectionProps) {
     });
   }
 
-  // Show only first 12 images initially
-  const displayedImages = showMore ? allImages : allImages.slice(0, 12);
+  // If maxImages is set, limit the total images and disable expand functionality
+  const availableImages = maxImages ? allImages.slice(0, maxImages) : allImages;
+
+  // Show only first 12 images initially (or all if maxImages is set)
+  const displayedImages = maxImages
+    ? availableImages
+    : showMore
+      ? allImages
+      : allImages.slice(0, 12);
 
   const openModal = (image: GalleryImage) => {
     setSelectedImage(image);
@@ -92,7 +101,7 @@ export function GallerySection({ className = '' }: GallerySectionProps) {
           </div>
 
           {/* Show More Button */}
-          {!showMore && allImages.length > 12 && (
+          {showExpandButton && !maxImages && !showMore && allImages.length > 12 && (
             <div className="text-center">
               <button
                 onClick={() => setShowMore(true)}
@@ -108,7 +117,7 @@ export function GallerySection({ className = '' }: GallerySectionProps) {
           )}
 
           {/* Show Less Button */}
-          {showMore && (
+          {showExpandButton && !maxImages && showMore && (
             <div className="text-center">
               <button
                 onClick={() => setShowMore(false)}
