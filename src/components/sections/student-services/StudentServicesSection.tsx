@@ -15,7 +15,7 @@ interface SelectedService {
 }
 
 // Default exchange rate USD to DOP
-const DEFAULT_EXCHANGE_RATE = 64.25;
+const DEFAULT_EXCHANGE_RATE = 63;
 
 export function StudentServicesSection({ className = '' }: StudentServicesSectionProps) {
   const { t } = useTranslation();
