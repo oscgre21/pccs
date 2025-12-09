@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from '@/contexts/LanguageContext';
 
@@ -14,6 +15,45 @@ interface MenuItem {
 export function Navigation() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const { t } = useTranslation();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Check if it's a hash link
+    if (href.includes('#')) {
+      e.preventDefault();
+      const hash = href.split('#')[1];
+      const basePath = href.split('#')[0] || '/';
+
+      // If we're on the same page or going to home page, scroll to section
+      if (pathname === basePath || (pathname === '/' && basePath === '/') || basePath === '/') {
+        // If not on home page, navigate first
+        if (pathname !== '/' && basePath === '/') {
+          router.push('/');
+          // Wait for navigation then scroll
+          setTimeout(() => {
+            const element = document.getElementById(hash);
+            if (element) {
+              const headerOffset = 100;
+              const elementPosition = element.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 100);
+        } else {
+          const element = document.getElementById(hash);
+          if (element) {
+            const headerOffset = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        }
+      } else {
+        router.push(href);
+      }
+    }
+  };
 
   const menuItems: MenuItem[] = [
     {
@@ -35,7 +75,7 @@ export function Navigation() {
     {
       id: 'courses',
       titleKey: 'courses',
-      href: '/courses',
+      href: '/student-services',
     },
     {
       id: 'admissions',
@@ -45,7 +85,7 @@ export function Navigation() {
     {
       id: 'gallery',
       titleKey: 'gallery',
-      href: '/gallery',
+      href: '/#gallery',
     },
     {
       id: 'contact',
@@ -74,6 +114,7 @@ export function Navigation() {
           >
             <a
               href={item.href}
+              onClick={(e) => scrollToSection(e, item.href)}
               className="nav-link flex items-center px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-bold uppercase"
             >
               {t.navigation[item.titleKey as keyof typeof t.navigation]}
@@ -96,6 +137,7 @@ export function Navigation() {
                   <a
                     key={child.id}
                     href={child.href}
+                    onClick={(e) => scrollToSection(e, child.href)}
                     className="block px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors"
                   >
                     {t.navigation[child.titleKey as keyof typeof t.navigation]}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { contactInfo } from '@/app/constant';
 import { useTranslation } from '@/contexts/LanguageContext';
@@ -21,6 +22,52 @@ interface MobileMenuProps {
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const { t } = useTranslation();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Check if it's a hash link
+    if (href.includes('#')) {
+      e.preventDefault();
+      const hash = href.split('#')[1];
+      const basePath = href.split('#')[0] || '/';
+
+      onClose(); // Close menu first
+
+      // If we're on the same page or going to home page, scroll to section
+      if (pathname === basePath || (pathname === '/' && basePath === '/') || basePath === '/') {
+        // If not on home page, navigate first
+        if (pathname !== '/' && basePath === '/') {
+          router.push('/');
+          // Wait for navigation then scroll
+          setTimeout(() => {
+            const element = document.getElementById(hash);
+            if (element) {
+              const headerOffset = 100;
+              const elementPosition = element.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 300);
+        } else {
+          // Small delay to allow menu to close
+          setTimeout(() => {
+            const element = document.getElementById(hash);
+            if (element) {
+              const headerOffset = 100;
+              const elementPosition = element.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      } else {
+        router.push(href);
+      }
+    } else {
+      onClose();
+    }
+  };
 
   const menuItems: MenuItem[] = [
     {
@@ -42,7 +89,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     {
       id: 'courses',
       titleKey: 'courses',
-      href: '/courses',
+      href: '/student-services',
     },
     {
       id: 'admissions',
@@ -52,7 +99,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     {
       id: 'gallery',
       titleKey: 'gallery',
-      href: '/gallery',
+      href: '/#gallery',
     },
     {
       id: 'contact',
@@ -138,7 +185,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     ) : (
                       <a
                         href={item.href}
-                        onClick={onClose}
+                        onClick={(e) => scrollToSection(e, item.href)}
                         className="block py-3 text-white transition-colors font-medium"
                         onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#2ECC40'}
                         onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#FFFFFF'}
@@ -154,7 +201,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                           <li key={child.id}>
                             <a
                               href={child.href}
-                              onClick={onClose}
+                              onClick={(e) => scrollToSection(e, child.href)}
                               className="block py-2 text-white opacity-80 transition-all"
                               onMouseEnter={(e) => {
                                 (e.target as HTMLElement).style.color = '#4A90E2';

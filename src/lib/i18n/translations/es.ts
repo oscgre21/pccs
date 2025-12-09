@@ -21,7 +21,7 @@ export const es: Translations = {
   navigation: {
     home: 'INICIO',
     aboutUs: 'NOSOTROS',
-    courses: 'CURSOS',
+    courses: 'SERVICIOS ESTUDIANTILES',
     admissions: 'ADMISIONES',
     gallery: 'GALERÍA',
     contact: 'CONTACTO',

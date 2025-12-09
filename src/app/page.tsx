@@ -37,23 +37,40 @@ export default function HomePage() {
       {/* Contenido principal - siempre visible */}
       <main className="min-h-screen">
         {/* Hero Section */}
-        <HeroSection />
+        <div id="home">
+          <HeroSection />
+        </div>
 
-        {/* Admissions Preview - Puedes cambiar variant a: 'split', 'banner', o 'card' */}
-        <AdmissionsPreviewSection variant="split" />
+        {/* Admissions Preview */}
+        <div id="admissions-preview">
+          <AdmissionsPreviewSection variant="split" />
+        </div>
 
         {/* Impact Section - Testimonials */}
-        <ImpactSection />
+        <div id="testimonials">
+          <ImpactSection />
+        </div>
 
         {/* Donations Section */}
-        <DonationsSection />  
+        <div id="donations">
+          <DonationsSection />
+        </div>
 
-        <GallerySection/>
-        <MissionSection/>
-        <VisionSection/>
-        <ValuesSection/>
+        <div id="gallery">
+          <GallerySection/>
+        </div>
 
- 
+        <div id="mission">
+          <MissionSection/>
+        </div>
+
+        <div id="vision">
+          <VisionSection/>
+        </div>
+
+        <div id="values">
+          <ValuesSection/>
+        </div>
       </main>
 
       {/* Loading Screen - overlay que se desvanece */}

@@ -25,7 +25,7 @@ export function Footer() {
       links: [
         { titleKey: 'home', href: '/' },
         { titleKey: 'aboutUs', href: '/about' },
-        { titleKey: 'courses', href: '/courses' },
+        { titleKey: 'courses', href: '/student-services' },
         { titleKey: 'admissions', href: '/admissions' },
         { titleKey: 'contact', href: '/contact' }
       ]
