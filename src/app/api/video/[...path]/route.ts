@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFile, stat } from 'fs/promises';
+import { readFile, stat, readdir } from 'fs/promises';
 import path from 'path';
+
+// Get the base directory for public files
+const getPublicDir = () => {
+  // In standalone mode, public folder is at the same level as server.js
+  const cwd = process.cwd();
+  return path.join(cwd, 'public');
+};
 
 export async function GET(
   request: NextRequest,
@@ -11,14 +18,53 @@ export async function GET(
     const fileName = pathSegments.join('/');
 
     // Sanitize the path to prevent directory traversal
-    const sanitizedFileName = fileName.replace(/\.\./g, '');
-    const filePath = path.join(process.cwd(), 'public', 'video', sanitizedFileName);
+    const sanitizedFileName = fileName.replace(/\.\./g, '').replace(/^\/+/, '');
 
-    // Check if file exists
-    try {
-      await stat(filePath);
-    } catch {
-      return NextResponse.json({ error: 'File not found' }, { status: 404 });
+    // Try multiple possible paths for the video
+    const possiblePaths = [
+      path.join(getPublicDir(), 'video', sanitizedFileName),
+      path.join(process.cwd(), 'public', 'video', sanitizedFileName),
+      path.join(process.cwd(), '..', 'public', 'video', sanitizedFileName),
+    ];
+
+    let filePath: string | null = null;
+
+    // Find the first path that exists
+    for (const tryPath of possiblePaths) {
+      try {
+        await stat(tryPath);
+        filePath = tryPath;
+        break;
+      } catch {
+        // Try next path
+      }
+    }
+
+    if (!filePath) {
+      // List available files for debugging
+      let availableFiles: string[] = [];
+      for (const tryPath of possiblePaths) {
+        const videoDir = path.dirname(tryPath);
+        try {
+          const files = await readdir(videoDir);
+          availableFiles = files;
+          break;
+        } catch {
+          // Directory doesn't exist
+        }
+      }
+
+      console.error('Video not found. Tried paths:', possiblePaths);
+      console.error('CWD:', process.cwd());
+      console.error('Requested file:', sanitizedFileName);
+      console.error('Available files:', availableFiles);
+
+      return NextResponse.json({
+        error: 'File not found',
+        requested: sanitizedFileName,
+        availableFiles,
+        cwd: process.cwd(),
+      }, { status: 404 });
     }
 
     // Read the file
