@@ -224,10 +224,11 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </nav>
         </div>
 
-        {/* Sponsor Button */}
+        {/* Donate Button */}
         <div className="px-4 mb-6">
           <a
-            href="/donations"
+            href="/#donations"
+            onClick={(e) => scrollToSection(e, '/#donations')}
             className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-semibold transition-colors inline-flex items-center justify-center w-full"
           >
             <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">

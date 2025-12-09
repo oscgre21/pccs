@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { Navigation } from '../navigation/Navigation';
 import { ContactInfo } from './ContactInfo';
 import { SocialLinks } from './SocialLinks';
@@ -15,6 +16,35 @@ interface HeaderProps {
 export function Header({ className = '' }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const scrollToDonations = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    if (pathname === '/') {
+      // Already on home page, just scroll
+      const element = document.getElementById('donations');
+      if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to home page first, then scroll
+      router.push('/');
+      setTimeout(() => {
+        const element = document.getElementById('donations');
+        if (element) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 300);
+    }
+  };
 
   return (
     <header className={`header header-style-1 ${className}`}>
@@ -51,10 +81,11 @@ export function Header({ className = '' }: HeaderProps) {
               <Navigation />
             </div>
 
-            {/* Admit Now Button - Desktop */}
+            {/* Donate Button - Desktop */}
             <div className="hidden lg:flex flex-shrink-0">
               <a
-                href="/donations"
+                href="/#donations"
+                onClick={scrollToDonations}
                 className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-semibold transition-colors inline-flex items-center"
               >
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
