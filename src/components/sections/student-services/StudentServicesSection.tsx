@@ -128,6 +128,45 @@ export function StudentServicesSection({ className = '' }: StudentServicesSectio
             </p>
           </div>
 
+ 
+
+          {/* Other Services Section */}
+          <div className="mt-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+              {t.studentServices.otherServicesTitle}
+            </h3>
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 p-6">
+              <div className="flex flex-wrap justify-center gap-4">
+                {/* Day-Care */}
+                <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full">
+                  <svg className="w-5 h-5 text-pccs-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="font-semibold text-gray-800">
+                    {t.studentServices.otherServices.dayCare.name}
+                  </span>
+                </div>
+
+                {/* Lecto-Escritura */}
+                <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full">
+                  <svg className="w-5 h-5 text-pccs-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="font-semibold text-gray-800">
+                    {t.studentServices.otherServices.lectoEscritura.name}
+                  </span>
+                </div>
+              </div>
+
+              {/* Info note for other services */}
+              <div className="mt-4 text-center">
+                <p className="text-sm text-gray-500 italic">
+                  {t.studentServices.otherServicesNote}
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Payment Modal */}
           <StudentServicePaymentModal
             isOpen={selectedService !== null}

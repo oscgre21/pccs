@@ -555,7 +555,7 @@ export const es: Translations = {
   },
 
   studentServices: {
-    title: 'Plan de Pago General PCCS',
+    title: 'Pago General',
     subtitle: 'Servicios Estudiantiles',
     description: 'Realiza tus pagos de manera segura y conveniente a través de nuestra plataforma.',
     tableHeaders: {
@@ -581,6 +581,23 @@ export const es: Translations = {
         amount: 400,
       },
     },
+    englishClassesTitle: 'Clases de Inglés',
+    englishClassesNote: 'Obligatoria para no inglés hablantes',
+    otherServicesTitle: 'Otros Servicios',
+    otherServices: {
+      dayCare: {
+        name: 'Day-Care',
+        frequency: 'Dependerá del acuerdo',
+        amount: '3,000',
+      },
+      lectoEscritura: {
+        name: 'Lecto-Escritura',
+        frequency: '8 veces al año',
+        amount: '2,000',
+      },
+    },
+    otherServicesCurrency: 'DOP',
+    otherServicesNote: '* Estos servicios son opcionales y no aceptan pagos en línea. Contacte a la administración para más información.',
     payButton: 'Pagar',
     currency: 'USD',
     note: 'Los pagos se procesan de forma segura a través de AZUL.',

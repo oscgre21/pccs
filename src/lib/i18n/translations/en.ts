@@ -581,6 +581,23 @@ export const en: Translations = {
         amount: 400,
       },
     },
+    englishClassesTitle: 'English Classes',
+    englishClassesNote: 'Mandatory for non-English speakers',
+    otherServicesTitle: 'Other Services',
+    otherServices: {
+      dayCare: {
+        name: 'Day-Care',
+        frequency: 'Depends on agreement',
+        amount: '3,000',
+      },
+      lectoEscritura: {
+        name: 'Reading & Writing',
+        frequency: '8 times per year',
+        amount: '2,000',
+      },
+    },
+    otherServicesCurrency: 'DOP',
+    otherServicesNote: '* These services are optional and do not accept online payments. Contact administration for more information.',
     payButton: 'Pay',
     currency: 'USD',
     note: 'Payments are processed securely through AZUL.',

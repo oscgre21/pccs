@@ -514,6 +514,25 @@ export interface Translations {
         amount: number;
       };
     };
+    // Mandatory English classes section
+    englishClassesTitle: string;
+    englishClassesNote: string;
+    // Other optional services section
+    otherServicesTitle: string;
+    otherServices: {
+      dayCare: {
+        name: string;
+        frequency: string;
+        amount: string;
+      };
+      lectoEscritura: {
+        name: string;
+        frequency: string;
+        amount: string;
+      };
+    };
+    otherServicesCurrency: string;
+    otherServicesNote: string;
     payButton: string;
     currency: string;
     note: string;
