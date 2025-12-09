@@ -555,7 +555,7 @@ export const en: Translations = {
   },
 
   studentServices: {
-    title: 'PCCS General Payment Plan',
+    title: 'General Payment',
     subtitle: 'Student Services',
     description: 'Make your payments securely and conveniently through our platform.',
     tableHeaders: {
