@@ -587,13 +587,12 @@ export const es: Translations = {
     otherServices: {
       dayCare: {
         name: 'Day-Care',
-        frequency: 'Dependerá del acuerdo',
-        amount: '3,000',
       },
-      lectoEscritura: {
-        name: 'Lecto-Escritura',
-        frequency: '8 veces al año',
-        amount: '2,000',
+      salaDeTareas: {
+        name: 'Sala de Tareas',
+      },
+      claseDeIngles: {
+        name: 'Clase de Inglés',
       },
     },
     otherServicesCurrency: 'DOP',

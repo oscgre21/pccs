@@ -522,13 +522,12 @@ export interface Translations {
     otherServices: {
       dayCare: {
         name: string;
-        frequency: string;
-        amount: string;
       };
-      lectoEscritura: {
+      salaDeTareas: {
         name: string;
-        frequency: string;
-        amount: string;
+      };
+      claseDeIngles: {
+        name: string;
       };
     };
     otherServicesCurrency: string;
