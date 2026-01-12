@@ -24,7 +24,7 @@ export function getStripeInstance(): Stripe {
     }
 
     stripeInstance = new Stripe(secretKey, {
-      apiVersion: '2025-11-17.clover',
+      apiVersion: '2024-12-18.acacia',
       typescript: true,
     });
   }
