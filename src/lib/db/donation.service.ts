@@ -238,7 +238,7 @@ export async function ensureDonationTypes(): Promise<DonationType[]> {
       amount: 50.00,
     },
     {
-      name: 'One Month of School Meals',
+      name: 'School Meals',
       description: 'Feed students for one month',
       amount: 150.00,
     },

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AzulPaymentButton } from '@/components/payment';
+import { StripePaymentButton } from '@/components/payment';
 import { CustomDonationCard } from '@/components/donations';
 import { useTranslation } from '@/contexts/LanguageContext';
 
@@ -41,17 +41,22 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
   useEffect(() => {
     const loadDonationTypes = async () => {
       try {
+        console.log('[DonationsSection] Loading donation types...');
         const response = await fetch('/api/donation-types');
         const data = await response.json();
+        console.log('[DonationsSection] API Response:', data);
+
         if (data.success && data.types) {
+          console.log('[DonationsSection] Setting donation types:', data.types.length, 'types');
           setDonationTypes(data.types);
           // Wait for next tick to ensure state is updated before hiding loader
           setTimeout(() => setIsLoadingTypes(false), 0);
         } else {
+          console.warn('[DonationsSection] API returned no types');
           setIsLoadingTypes(false);
         }
       } catch (error) {
-        console.error('Failed to load donation types:', error);
+        console.error('[DonationsSection] Failed to load donation types:', error);
         setIsLoadingTypes(false);
       }
     };
@@ -81,7 +86,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
       title: t.donations.donationTypes.schoolSupplies.title,
       amount: t.donations.donationTypes.schoolSupplies.amount,
       benefits: t.donations.donationTypes.schoolSupplies.benefits,
-      donationTypeName: 'School Supplies'
+      donationTypeName: 'School Supplies' // Matches DB
     },
     {
       id: 'school-meals',
@@ -90,7 +95,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
       title: t.donations.donationTypes.schoolMeals.title,
       amount: t.donations.donationTypes.schoolMeals.amount,
       benefits: t.donations.donationTypes.schoolMeals.benefits,
-      donationTypeName: 'School Meals'
+      donationTypeName: 'One Month of School Meals' // Matches DB exactly
     },
     {
       id: 'english-tech',
@@ -99,7 +104,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
       title: t.donations.donationTypes.englishTech.title,
       amount: t.donations.donationTypes.englishTech.amount,
       benefits: t.donations.donationTypes.englishTech.benefits,
-      donationTypeName: 'English & Technology'
+      donationTypeName: 'English & Technology Resources' // Matches DB exactly
     },
     {
       id: 'classroom-materials',
@@ -108,7 +113,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
       title: t.donations.donationTypes.classroomMaterials.title,
       amount: t.donations.donationTypes.classroomMaterials.amount,
       benefits: t.donations.donationTypes.classroomMaterials.benefits,
-      donationTypeName: 'Classroom Materials'
+      donationTypeName: 'Classroom Materials for a Year' // Matches DB exactly
     },
     {
       id: 'sponsor-child',
@@ -117,7 +122,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
       title: t.donations.donationTypes.sponsorChild.title,
       amount: t.donations.donationTypes.sponsorChild.amount,
       benefits: t.donations.donationTypes.sponsorChild.benefits,
-      donationTypeName: 'Sponsor a Child'
+      donationTypeName: 'Sponsor One Student (Full Year)' // Matches DB exactly
     },
     {
       id: 'sponsor-teacher',
@@ -126,7 +131,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
       title: t.donations.donationTypes.sponsorTeacher.title,
       amount: t.donations.donationTypes.sponsorTeacher.amount,
       benefits: t.donations.donationTypes.sponsorTeacher.benefits,
-      donationTypeName: 'Sponsor a Teacher'
+      donationTypeName: "Sponsor One Teacher's Annual Salary" // Matches DB exactly
     },
     {
       id: 'infrastructure',
@@ -135,7 +140,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
       title: t.donations.donationTypes.infrastructure.title,
       amount: t.donations.donationTypes.infrastructure.amount,
       benefits: t.donations.donationTypes.infrastructure.benefits,
-      donationTypeName: 'Infrastructure'
+      donationTypeName: 'Build or Expand PCCS Schools' // Matches DB exactly
     },
     {
       id: 'volunteering',
@@ -144,7 +149,7 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
       title: t.donations.donationTypes.volunteering.title,
       amount: t.donations.donationTypes.volunteering.amount,
       benefits: t.donations.donationTypes.volunteering.benefits,
-      donationTypeName: 'Volunteering',
+      donationTypeName: 'Volunteering', // No donation type in DB (contact only)
       contactButton: t.donations.donationTypes.volunteering.contactButton,
       contactOptions: t.donations.donationTypes.volunteering.contactOptions
     }
@@ -156,6 +161,9 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
   }
 
   const openModal = (image: DonationImage) => {
+    console.log('[DonationsSection] Opening modal for:', image.donationTypeName);
+    console.log('[DonationsSection] Current donationTypes state:', donationTypes.length, 'types');
+    console.log('[DonationsSection] donationTypes:', donationTypes);
     setSelectedImage(image);
     document.body.style.overflow = 'hidden';
   };
@@ -367,18 +375,44 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                       {selectedImage.contactButton}
                     </a>
                   </div>
-                ) : donationTypes.find(type => type.name === selectedImage.donationTypeName) && (
-                  <div className="flex justify-center" onClick={(e) => e.stopPropagation()}>
-                    <AzulPaymentButton
-                      amount={50}
-                      description={`Donation - ${selectedImage.title}`}
-                      donationTypeId={donationTypes.find(type => type.name === selectedImage.donationTypeName)?.id}
-                      className="text-lg py-4 px-8"
-                    >
-                      {t.donations.donateNow}
-                    </AzulPaymentButton>
-                  </div>
-                )}
+                ) : (() => {
+                    console.log('[DonationsSection RENDER] Modal rendering for:', selectedImage.donationTypeName);
+                    console.log('[DonationsSection RENDER] donationTypes available:', donationTypes.length);
+                    console.log('[DonationsSection RENDER] All donation types:', donationTypes.map(t => t.name));
+
+                    const matchedDonationType = donationTypes.find(type => type.name === selectedImage.donationTypeName);
+
+                    console.log('[DonationsSection RENDER] Looking for:', selectedImage.donationTypeName);
+                    console.log('[DonationsSection RENDER] Found match:', matchedDonationType);
+                    console.log('[DonationsSection RENDER] Will render button:', !!matchedDonationType);
+
+                    if (!matchedDonationType) {
+                      console.error('[DonationsSection ERROR] No match found for:', selectedImage.donationTypeName);
+                      console.error('[DonationsSection ERROR] Available types:', donationTypes.map(t => t.name));
+                      return (
+                        <div className="text-center text-red-600 p-4">
+                          <p className="font-bold">Debug Info:</p>
+                          <p>Looking for: {selectedImage.donationTypeName}</p>
+                          <p>Types loaded: {donationTypes.length}</p>
+                          <p className="text-xs mt-2">Check console for details</p>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div className="flex justify-center" onClick={(e) => e.stopPropagation()}>
+                        <StripePaymentButton
+                          amount={matchedDonationType.amount}
+                          description={`Donation - ${selectedImage.title}`}
+                          donationTypeId={matchedDonationType.id}
+                          frequency="one-time"
+                          className="text-lg py-4 px-8"
+                        >
+                          {t.donations.donateNow}
+                        </StripePaymentButton>
+                      </div>
+                    );
+                  })()}
               </div>
             </div>
           </div>
