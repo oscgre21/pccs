@@ -44,11 +44,21 @@ export function AdmissionsPreviewSection({
                 {t.admissions.heroSubtitle}
               </span>
 
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-6 leading-tight">
+              <h2
+                className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-6 leading-tight"
+                style={{
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), 0px 0px 12px rgba(0, 0, 0, 0.6)'
+                }}
+              >
                 {t.admissions.heroTitle}
               </h2>
 
-              <p className="text-lg text-gray-200 mb-8 leading-relaxed">
+              <p
+                className="text-lg text-gray-200 mb-8 leading-relaxed"
+                style={{
+                  textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7), 0px 0px 6px rgba(0, 0, 0, 0.5)'
+                }}
+              >
                 {t.admissions.description}
               </p>
 
@@ -98,11 +108,21 @@ export function AdmissionsPreviewSection({
               {t.admissions.heroSubtitle}
             </span>
 
-            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6">
+            <h2
+              className="text-3xl lg:text-5xl font-bold text-white mb-6"
+              style={{
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), 0px 0px 12px rgba(0, 0, 0, 0.6)'
+              }}
+            >
               {t.admissions.heroTitle}
             </h2>
 
-            <p className="text-lg lg:text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
+            <p
+              className="text-lg lg:text-xl text-gray-200 mb-10 max-w-2xl mx-auto"
+              style={{
+                textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7), 0px 0px 6px rgba(0, 0, 0, 0.5)'
+              }}
+            >
               {t.admissions.description}
             </p>
 

@@ -87,12 +87,23 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
         <div className="max-w-4xl">
           <div className="banner-txt text-white">
             {/* Subtitle */}
-            <h3 className="banner-subtitle text-lg md:text-xl lg:text-2xl font-medium mb-4" style={{ color: '#2ECC40' }}>
+            <h3
+              className="banner-subtitle text-lg md:text-xl lg:text-2xl font-bold mb-4"
+              style={{
+                color: '#2ECC40',
+                textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7), 0px 0px 8px rgba(0, 0, 0, 0.5)'
+              }}
+            >
               {t.hero.subtitle}
             </h3>
 
             {/* Animated Title */}
-            <h1 className="banner-title text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
+            <h1
+              className="banner-title text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
+              style={{
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), 0px 0px 12px rgba(0, 0, 0, 0.6)'
+              }}
+            >
               <span className="block">{t.hero.title.studyOf}</span>
               <span className="block mt-2">
                 <span
@@ -108,7 +119,12 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
             </h1>
 
             {/* Description */}
-            <p className="banner-paragraph text-lg md:text-xl lg:text-2xl mb-8 lg:mb-12 leading-relaxed text-gray-100 max-w-2xl">
+            <p
+              className="banner-paragraph text-lg md:text-xl lg:text-2xl mb-8 lg:mb-12 leading-relaxed text-gray-100 max-w-2xl"
+              style={{
+                textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7), 0px 0px 6px rgba(0, 0, 0, 0.5)'
+              }}
+            >
               {t.hero.description}
             </p>
 

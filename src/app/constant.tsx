@@ -18,6 +18,7 @@ export const contactInfo: ContactInfo[] = [
   },
   {
     icon: 'M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z',
-    text: 'Av. Barcelo, Punta Cana, C. Edgar Allan Poe, No. 1'
+    text: 'Av. Barcelo, Punta Cana, C. Edgar Allan Poe, No. 1',
+    href: 'https://www.google.com/maps/place//@18.6078045,-68.4190694,1055m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D'
   }
 ];
