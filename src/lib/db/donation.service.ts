@@ -3,7 +3,7 @@
  */
 
 import { prisma } from './prisma';
-import { PaymentStatus, Donation, DonationType } from '@prisma/client';
+import { PaymentStatus, PaymentProvider, DonationFrequency, Donation, DonationType } from '@prisma/client';
 
 export interface CreateDonationInput {
   donorName: string;
@@ -13,20 +13,31 @@ export interface CreateDonationInput {
   amount: number;
   orderNumber: string;
   donationTypeId: string;
+  // New fields for multi-provider support
+  paymentProvider?: PaymentProvider;
+  frequency?: DonationFrequency;
+  stripeSessionId?: string;
 }
 
 export interface UpdateDonationStatusInput {
   orderNumber: string;
   status: PaymentStatus;
+  // Azul-specific fields
   authorizationCode?: string;
   azulOrderId?: string;
   rrn?: string;
   isoCode?: string;
+  // Stripe-specific fields
+  stripePaymentIntentId?: string;
+  stripeSubscriptionId?: string;
+  stripeCustomerId?: string;
+  nextPaymentDate?: Date;
+  // Common fields
   responseCode?: string;
   responseMessage?: string;
   errorDescription?: string;
   validationErrors?: string[];
-  rawAzulResponse?: Record<string, any>;
+  rawProviderResponse?: object;
 }
 
 /**
@@ -45,6 +56,10 @@ export async function createDonation(
       orderNumber: input.orderNumber,
       donationTypeId: input.donationTypeId,
       status: PaymentStatus.PENDING,
+      // Multi-provider support
+      paymentProvider: input.paymentProvider || PaymentProvider.AZUL,
+      frequency: input.frequency || DonationFrequency.ONE_TIME,
+      stripeSessionId: input.stripeSessionId,
     },
     include: {
       donationType: true,
@@ -56,7 +71,7 @@ export async function createDonation(
     data: {
       donationId: donation.id,
       newStatus: PaymentStatus.PENDING,
-      reason: 'Donation initiated',
+      reason: `Donation initiated via ${input.paymentProvider || 'AZUL'}`,
     },
   });
 
@@ -80,7 +95,7 @@ export async function updateDonationStatus(
   const previousStatus = donation.status;
 
   // Determine timestamp field to update
-  const timestampUpdate: any = {};
+  const timestampUpdate: Record<string, Date> = {};
   if (input.status === PaymentStatus.APPROVED) {
     timestampUpdate.approvedAt = new Date();
   } else if (input.status === PaymentStatus.DECLINED) {
@@ -93,15 +108,22 @@ export async function updateDonationStatus(
     where: { orderNumber: input.orderNumber },
     data: {
       status: input.status,
+      // Azul-specific fields
       authorizationCode: input.authorizationCode,
       azulOrderId: input.azulOrderId,
       rrn: input.rrn,
       isoCode: input.isoCode,
+      // Stripe-specific fields
+      stripePaymentIntentId: input.stripePaymentIntentId,
+      stripeSubscriptionId: input.stripeSubscriptionId,
+      stripeCustomerId: input.stripeCustomerId,
+      nextPaymentDate: input.nextPaymentDate,
+      // Common fields
       responseCode: input.responseCode,
       responseMessage: input.responseMessage,
       errorDescription: input.errorDescription,
       validationErrors: input.validationErrors || [],
-      rawAzulResponse: input.rawAzulResponse,
+      rawProviderResponse: input.rawProviderResponse as object | undefined,
       ...timestampUpdate,
     },
     include: {
@@ -116,7 +138,7 @@ export async function updateDonationStatus(
       previousStatus,
       newStatus: input.status,
       reason: input.responseMessage || input.errorDescription,
-      metadata: input.rawAzulResponse,
+      metadata: input.rawProviderResponse as object | undefined,
     },
   });
 
@@ -268,5 +290,75 @@ export async function getActiveDonationTypes(): Promise<DonationType[]> {
   return prisma.donationType.findMany({
     where: { isActive: true },
     orderBy: { name: 'asc' },
+  });
+}
+
+/**
+ * Get donation by Stripe Session ID
+ */
+export async function getDonationByStripeSessionId(sessionId: string) {
+  return prisma.donation.findFirst({
+    where: { stripeSessionId: sessionId },
+    include: {
+      donationType: true,
+      statusHistory: {
+        orderBy: { createdAt: 'desc' },
+      },
+    },
+  });
+}
+
+/**
+ * Get donation by Stripe Payment Intent ID
+ */
+export async function getDonationByStripePaymentIntent(paymentIntentId: string) {
+  return prisma.donation.findUnique({
+    where: { stripePaymentIntentId: paymentIntentId },
+    include: {
+      donationType: true,
+      statusHistory: {
+        orderBy: { createdAt: 'desc' },
+      },
+    },
+  });
+}
+
+/**
+ * Get donation by Stripe Subscription ID
+ */
+export async function getDonationByStripeSubscription(subscriptionId: string) {
+  return prisma.donation.findUnique({
+    where: { stripeSubscriptionId: subscriptionId },
+    include: {
+      donationType: true,
+      statusHistory: {
+        orderBy: { createdAt: 'desc' },
+      },
+    },
+  });
+}
+
+/**
+ * Get donations by payment provider
+ */
+export async function getDonationsByProvider(params: {
+  provider: PaymentProvider;
+  status?: PaymentStatus;
+  limit?: number;
+  offset?: number;
+}) {
+  return prisma.donation.findMany({
+    where: {
+      paymentProvider: params.provider,
+      status: params.status,
+    },
+    include: {
+      donationType: true,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+    take: params.limit,
+    skip: params.offset,
   });
 }

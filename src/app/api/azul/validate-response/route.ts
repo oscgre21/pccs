@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
         responseMessage: paymentResponse.ResponseMessage,
         errorDescription: paymentResponse.ErrorDescription,
         validationErrors: validation.errors,
-        rawAzulResponse: Object.fromEntries(searchParams),
+        rawProviderResponse: Object.fromEntries(searchParams),
       });
 
       transactionId = updatedDonation.id;

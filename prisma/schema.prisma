@@ -43,6 +43,16 @@ model Donation {
   rrn               String?
   isoCode           String?
 
+  // Payment Provider (AZUL or STRIPE)
+  paymentProvider PaymentProvider   @default(AZUL)
+  frequency       DonationFrequency @default(ONE_TIME)
+
+  // Stripe-specific fields
+  stripeSessionId       String?
+  stripePaymentIntentId String?   @unique
+  stripeSubscriptionId  String?   @unique
+  stripeCustomerId      String?
+
   // Transaction Status
   status           PaymentStatus @default(PENDING)
   responseCode     String?
@@ -54,8 +64,11 @@ model Donation {
   donationType   DonationType @relation(fields: [donationTypeId], references: [id])
   donationTypeId String
 
-  // Metadata
-  rawAzulResponse Json? // Store complete AZUL response
+  // Metadata - Generic for both providers
+  rawProviderResponse Json? // Store complete provider response (Azul or Stripe)
+
+  // Subscription tracking
+  nextPaymentDate DateTime?
 
   // Timestamps
   createdAt   DateTime  @default(now())
@@ -71,6 +84,8 @@ model Donation {
   @@index([donorEmail])
   @@index([orderNumber])
   @@index([createdAt])
+  @@index([paymentProvider])
+  @@index([stripeCustomerId])
 }
 
 // Payment Status History - Track all status changes
@@ -95,4 +110,18 @@ enum PaymentStatus {
   DECLINED
   CANCELLED
   FAILED
+}
+
+// Enum for Payment Provider
+enum PaymentProvider {
+  AZUL
+  STRIPE
+}
+
+// Enum for Donation Frequency
+enum DonationFrequency {
+  ONE_TIME
+  WEEKLY
+  EVERY_TWO_WEEKS
+  MONTHLY
 }

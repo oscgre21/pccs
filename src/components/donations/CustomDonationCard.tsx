@@ -1,10 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from '@/contexts/LanguageContext';
+import { StripePaymentButton } from '@/components/payment/StripePaymentButton';
 
 interface CustomDonationCardProps {
   className?: string;
+}
+
+interface DonationType {
+  id: string;
+  name: string;
+  description: string | null;
+  amount: number;
 }
 
 const MAX_COMMENT_LENGTH = 200;
@@ -25,6 +33,35 @@ export function CustomDonationCard({ className = '' }: CustomDonationCardProps) 
   const [comment, setComment] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [frequency, setFrequency] = useState<FrequencyType>('one-time');
+  const [customDonationTypeId, setCustomDonationTypeId] = useState<string>('');
+  const [isLoadingTypes, setIsLoadingTypes] = useState(true);
+
+  // Load donation types to find the "General Donation" or custom type
+  useEffect(() => {
+    const loadDonationTypes = async () => {
+      try {
+        const response = await fetch('/api/donation-types');
+        const data = await response.json();
+        if (data.success && data.types) {
+          // Find a suitable donation type for custom donations
+          const generalType = data.types.find((t: DonationType) =>
+            t.name.toLowerCase().includes('general') ||
+            t.name.toLowerCase().includes('custom')
+          );
+          if (generalType) {
+            setCustomDonationTypeId(generalType.id);
+          } else if (data.types.length > 0) {
+            setCustomDonationTypeId(data.types[0].id);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load donation types:', err);
+      } finally {
+        setIsLoadingTypes(false);
+      }
+    };
+    loadDonationTypes();
+  }, []);
 
   const formatNumberWithCommas = (value: string): string => {
     // Remove all non-numeric characters except decimal point
@@ -185,24 +222,30 @@ export function CustomDonationCard({ className = '' }: CustomDonationCardProps) 
 
           {/* Donate Button */}
           <div className="mt-auto">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                // Disabled for now - no action on click
-              }}
-              disabled={!amount || parseFloat(amount) < MIN_AMOUNT}
-              className="w-full py-3 px-4 rounded-lg font-semibold text-white text-base transition-all"
-              style={{
-                backgroundColor: (amount && parseFloat(amount) >= MIN_AMOUNT) ? '#2ECC40' : '#D1D5DB',
-                cursor: (amount && parseFloat(amount) >= MIN_AMOUNT) ? 'pointer' : 'not-allowed',
-                opacity: (amount && parseFloat(amount) >= MIN_AMOUNT) ? 1 : 0.6
-              }}
-            >
-              {amount && parseFloat(amount) >= MIN_AMOUNT
-                ? `${t.donations.customDonation.donateButton} $${parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
-                : t.donations.customDonation.donateButton
-              }
-            </button>
+            {amount && parseFloat(amount) >= MIN_AMOUNT && customDonationTypeId && !isLoadingTypes ? (
+              <StripePaymentButton
+                amount={parseFloat(amount)}
+                description={`Custom Donation - ${frequency}`}
+                donationTypeId={customDonationTypeId}
+                frequency={frequency}
+                comment={comment}
+                className="w-full py-3 px-4 rounded-lg font-semibold text-white text-base"
+              >
+                {`${t.donations.customDonation.donateButton} $${parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+              </StripePaymentButton>
+            ) : (
+              <button
+                disabled
+                className="w-full py-3 px-4 rounded-lg font-semibold text-white text-base transition-all"
+                style={{
+                  backgroundColor: '#D1D5DB',
+                  cursor: 'not-allowed',
+                  opacity: 0.6
+                }}
+              >
+                {isLoadingTypes ? 'Loading...' : t.donations.customDonation.donateButton}
+              </button>
+            )}
           </div>
         </div>
       </div>
