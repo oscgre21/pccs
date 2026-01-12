@@ -41,22 +41,18 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
   useEffect(() => {
     const loadDonationTypes = async () => {
       try {
-        console.log('[DonationsSection] Loading donation types...');
         const response = await fetch('/api/donation-types');
         const data = await response.json();
-        console.log('[DonationsSection] API Response:', data);
 
         if (data.success && data.types) {
-          console.log('[DonationsSection] Setting donation types:', data.types.length, 'types');
           setDonationTypes(data.types);
           // Wait for next tick to ensure state is updated before hiding loader
           setTimeout(() => setIsLoadingTypes(false), 0);
         } else {
-          console.warn('[DonationsSection] API returned no types');
           setIsLoadingTypes(false);
         }
       } catch (error) {
-        console.error('[DonationsSection] Failed to load donation types:', error);
+        console.error('Failed to load donation types:', error);
         setIsLoadingTypes(false);
       }
     };
@@ -161,9 +157,6 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
   }
 
   const openModal = (image: DonationImage) => {
-    console.log('[DonationsSection] Opening modal for:', image.donationTypeName);
-    console.log('[DonationsSection] Current donationTypes state:', donationTypes.length, 'types');
-    console.log('[DonationsSection] donationTypes:', donationTypes);
     setSelectedImage(image);
     document.body.style.overflow = 'hidden';
   };
@@ -376,30 +369,9 @@ export function DonationsSection({ className = '' }: DonationsSectionProps) {
                     </a>
                   </div>
                 ) : (() => {
-                    console.log('[DonationsSection RENDER] Modal rendering for:', selectedImage.donationTypeName);
-                    console.log('[DonationsSection RENDER] donationTypes available:', donationTypes.length);
-                    console.log('[DonationsSection RENDER] All donation types:', donationTypes.map(t => t.name));
-
                     const matchedDonationType = donationTypes.find(type => type.name === selectedImage.donationTypeName);
 
-                    console.log('[DonationsSection RENDER] Looking for:', selectedImage.donationTypeName);
-                    console.log('[DonationsSection RENDER] Found match:', matchedDonationType);
-                    console.log('[DonationsSection RENDER] Will render button:', !!matchedDonationType);
-
-                    if (!matchedDonationType) {
-                      console.error('[DonationsSection ERROR] No match found for:', selectedImage.donationTypeName);
-                      console.error('[DonationsSection ERROR] Available types:', donationTypes.map(t => t.name));
-                      return (
-                        <div className="text-center text-red-600 p-4">
-                          <p className="font-bold">Debug Info:</p>
-                          <p>Looking for: {selectedImage.donationTypeName}</p>
-                          <p>Types loaded: {donationTypes.length}</p>
-                          <p className="text-xs mt-2">Check console for details</p>
-                        </div>
-                      );
-                    }
-
-                    return (
+                    return matchedDonationType && (
                       <div className="flex justify-center" onClick={(e) => e.stopPropagation()}>
                         <StripePaymentButton
                           amount={matchedDonationType.amount}
