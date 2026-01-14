@@ -73,7 +73,7 @@ export function AdmissionsPreviewSection({
                   </svg>
                 </Link>
                 <a
-                  href="tel:+1-849-855-1635"
+                  href="tel:+1-809-917-7855"
                   className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-full transition-all duration-300 hover:bg-white hover:text-pccs-primary"
                 >
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -137,7 +137,7 @@ export function AdmissionsPreviewSection({
                 </svg>
               </Link>
               <a
-                href="tel:+1-849-855-1635"
+                href="tel:+1-809-917-7855"
                 className="inline-flex items-center justify-center px-8 py-4 bg-pccs-tropical text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -189,7 +189,7 @@ export function AdmissionsPreviewSection({
                     </svg>
                   </Link>
                   <a
-                    href="tel:+1-849-855-1635"
+                    href="tel:+1-809-917-7855"
                     className="inline-flex items-center justify-center px-6 py-3 border-2 border-pccs-primary text-pccs-primary font-semibold rounded-full transition-all duration-300 hover:bg-pccs-primary hover:text-white"
                   >
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">

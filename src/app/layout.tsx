@@ -155,7 +155,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               url: 'https://pccs.edu.do',
               logo: 'https://pccs.edu.do/logos/logo_land.png',
               image: 'https://pccs.edu.do/logos/logo_land.png',
-              telephone: '+1-849-855-1635',
+              telephone: '+1-809-917-7855',
               email: 'info@pccs.edu.do',
               address: {
                 '@type': 'PostalAddress',
