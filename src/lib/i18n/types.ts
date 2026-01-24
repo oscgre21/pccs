@@ -569,11 +569,19 @@ export interface Translations {
       processing: string;
       close: string;
       requiredField: string;
+      acceptedCards: string;
+      securePayment: string;
+      termsCheckbox: string;
+      termsAndConditions: string;
+      andThe: string;
+      privacyPolicy: string;
+      securityNote: string;
       errors: {
         studentNameRequired: string;
         parentNameRequired: string;
         emailRequired: string;
         emailInvalid: string;
+        termsRequired: string;
       };
     };
   };
