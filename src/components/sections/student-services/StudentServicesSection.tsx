@@ -135,7 +135,20 @@ export function StudentServicesSection({ className = '' }: StudentServicesSectio
             </p>
           </div>
 
- 
+          {/* Payment Logos - 3D Secure */}
+          <div className="mt-6 flex flex-wrap justify-center items-center gap-6">
+            <div className="flex items-center gap-4">
+              <img src="/images/payment/visa-logo.svg" alt="Visa" className="h-8" />
+              <img src="/images/payment/mastercard-logo.svg" alt="MasterCard" className="h-8" />
+            </div>
+            <div className="h-8 w-px bg-gray-300 hidden md:block"></div>
+            <div className="flex items-center gap-4">
+              <img src="/images/payment/visa-secure-logo.svg" alt="Visa Secure" className="h-8" />
+              <img src="/images/payment/mastercard-id-check-logo.svg" alt="MasterCard ID Check" className="h-10" />
+            </div>
+          </div>
+
+
 
           {/* Other Services Section */}
           <div className="mt-8">

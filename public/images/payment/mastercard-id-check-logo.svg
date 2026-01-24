@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40" width="140" height="40">
+  <rect width="140" height="40" rx="4" fill="#f5f5f5"/>
+  <circle cx="30" cy="20" r="10" fill="#EB001B"/>
+  <circle cx="48" cy="20" r="10" fill="#F79E1B"/>
+  <path d="M39 12a10 10 0 0 0 0 16" fill="#FF5F00"/>
+  <path d="M39 28a10 10 0 0 0 0-16" fill="#FF5F00"/>
+  <text x="95" y="18" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#1A1F71" text-anchor="middle">Identity</text>
+  <text x="95" y="28" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#1A1F71" text-anchor="middle">Check</text>
+  <circle cx="125" cy="20" r="8" fill="none" stroke="#EB001B" stroke-width="2"/>
+  <path d="M122 20l2 2 4-4" fill="none" stroke="#EB001B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

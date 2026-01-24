@@ -38,6 +38,7 @@ export function StudentServicePaymentModal({
   const [phone, setPhone] = useState('');
   const [grade, setGrade] = useState('');
   const [comment, setComment] = useState('');
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   // Exchange rate (USD to DOP) - Fixed rate from parent, not editable
   const exchangeRate = initialExchangeRate;
@@ -84,6 +85,10 @@ export function StudentServicePaymentModal({
     }
     if (!validateEmail(email)) {
       setError(t.studentServices.paymentForm.errors.emailInvalid);
+      return;
+    }
+    if (!acceptedTerms) {
+      setError(t.studentServices.paymentForm.errors.termsRequired);
       return;
     }
 
@@ -319,13 +324,55 @@ export function StudentServicePaymentModal({
               </div>
             )}
 
+            {/* Accepted Cards and Secure Payment Logos */}
+            <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+              {/* Accepted Cards */}
+              <div className="mb-3">
+                <p className="text-xs text-gray-500 mb-2">{t.studentServices.paymentForm.acceptedCards}:</p>
+                <div className="flex items-center gap-3">
+                  <img src="/images/payment/visa-logo.svg" alt="Visa" className="h-8" />
+                  <img src="/images/payment/mastercard-logo.svg" alt="MasterCard" className="h-8" />
+                </div>
+              </div>
+              {/* 3D Secure Logos */}
+              <div>
+                <p className="text-xs text-gray-500 mb-2">{t.studentServices.paymentForm.securePayment}:</p>
+                <div className="flex items-center gap-3">
+                  <img src="/images/payment/visa-secure-logo.svg" alt="Visa Secure" className="h-8" />
+                  <img src="/images/payment/mastercard-id-check-logo.svg" alt="MasterCard ID Check" className="h-10" />
+                </div>
+              </div>
+            </div>
+
+            {/* Terms and Conditions Checkbox */}
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="acceptTerms"
+                checked={acceptedTerms}
+                onChange={(e) => setAcceptedTerms(e.target.checked)}
+                className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <label htmlFor="acceptTerms" className="text-sm text-gray-600">
+                {t.studentServices.paymentForm.termsCheckbox}{' '}
+                <a href="/terminos-condiciones" target="_blank" className="text-blue-600 hover:underline">
+                  {t.studentServices.paymentForm.termsAndConditions}
+                </a>{' '}
+                {t.studentServices.paymentForm.andThe}{' '}
+                <a href="/politica-privacidad" target="_blank" className="text-blue-600 hover:underline">
+                  {t.studentServices.paymentForm.privacyPolicy}
+                </a>
+                <span className="text-red-500 ml-1">{t.studentServices.paymentForm.requiredField}</span>
+              </label>
+            </div>
+
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={status === 'processing'}
+              disabled={status === 'processing' || !acceptedTerms}
               className="w-full py-4 font-semibold text-white rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               style={{
-                backgroundColor: status === 'processing' ? '#6B7280' : '#2ECC40',
+                backgroundColor: (status === 'processing' || !acceptedTerms) ? '#6B7280' : '#2ECC40',
               }}
             >
               {status === 'processing' ? (
@@ -369,7 +416,7 @@ export function StudentServicePaymentModal({
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
               </svg>
-              {t.studentServices.note}
+              {t.studentServices.paymentForm.securityNote}
             </p>
           </div>
         </div>

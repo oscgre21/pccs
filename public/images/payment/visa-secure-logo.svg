@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40">
+  <rect width="120" height="40" rx="4" fill="#1A1F71"/>
+  <text x="60" y="18" font-family="Arial, sans-serif" font-size="12" font-weight="bold" font-style="italic" fill="white" text-anchor="middle">VISA</text>
+  <text x="60" y="32" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Secure</text>
+  <circle cx="95" cy="20" r="8" fill="none" stroke="#FFD700" stroke-width="2"/>
+  <path d="M92 20l2 2 4-4" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

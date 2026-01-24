@@ -152,24 +152,47 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Copyright 
+      {/* Payment Logos */}
+      <div className="border-t py-6" style={{ borderColor: '#665555' }}>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-purple-200 text-sm">
+              {t.footer.callUs === 'Llámanos' ? 'Tarjetas aceptadas' : 'Accepted cards'}
+            </p>
+            <div className="flex items-center gap-4">
+              <img src="/images/payment/visa-logo.svg" alt="Visa" className="h-8" />
+              <img src="/images/payment/mastercard-logo.svg" alt="MasterCard" className="h-8" />
+              <img src="/images/payment/visa-secure-logo.svg" alt="Visa Secure" className="h-8" />
+              <img src="/images/payment/mastercard-id-check-logo.svg" alt="MasterCard ID Check" className="h-10" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright */}
       <div className="border-t py-6" style={{ borderColor: '#665555' }}>
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-purple-200 text-sm">
-              © {currentYear} PCCS. All rights reserved.
+              © {currentYear} PCCS. {t.footer.callUs === 'Llámanos' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="/privacy" className="text-purple-200 hover:text-white text-sm transition-colors">
-                Privacy Policy
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-4 md:mt-0">
+              <a href="/politica-privacidad" className="text-purple-200 hover:text-white text-sm transition-colors">
+                {t.footer.callUs === 'Llámanos' ? 'Política de Privacidad' : 'Privacy Policy'}
               </a>
-              <a href="/terms" className="text-purple-200 hover:text-white text-sm transition-colors">
-                Terms of Use
+              <a href="/terminos-condiciones" className="text-purple-200 hover:text-white text-sm transition-colors">
+                {t.footer.callUs === 'Llámanos' ? 'Términos y Condiciones' : 'Terms & Conditions'}
+              </a>
+              <a href="/politica-devoluciones" className="text-purple-200 hover:text-white text-sm transition-colors">
+                {t.footer.callUs === 'Llámanos' ? 'Devoluciones' : 'Refunds'}
+              </a>
+              <a href="/politica-seguridad" className="text-purple-200 hover:text-white text-sm transition-colors">
+                {t.footer.callUs === 'Llámanos' ? 'Seguridad' : 'Security'}
               </a>
             </div>
           </div>
         </div>
-      </div>*/}
+      </div>
     </footer>
   );
 }
