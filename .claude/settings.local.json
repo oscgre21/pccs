@@ -2,7 +2,32 @@
   "permissions": {
     "allow": [
       "Bash(npm run build:*)",
-      "Bash(docker build:*)"
+      "Bash(docker build:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(python3:*)",
+      "Bash(ls:*)",
+      "Bash(rm:*)",
+      "Bash(chmod:*)",
+      "Bash(agent-browser open:*)",
+      "Bash(agent-browser snapshot:*)",
+      "Bash(agent-browser click:*)",
+      "Bash(agent-browser wait:*)",
+      "Bash(agent-browser get:*)",
+      "Bash(agent-browser screenshot:*)",
+      "Bash(agent-browser close:*)",
+      "Bash(agent-browser:*)",
+      "Bash(curl:*)",
+      "Bash(killall:*)",
+      "Bash(pgrep:*)",
+      "Bash(lsof:*)",
+      "Bash(pkill:*)",
+      "Bash(launchctl list:*)",
+      "Bash(launchctl stop:*)",
+      "Bash(launchctl remove:*)",
+      "Bash(PGPASSWORD='dgii_oscgre' psql -h manager.oscgre.com -p 5432 -U dgii_oscgre -d pccs -c \"SELECT id, \"\"orderNumber\"\", status, \"\"donorEmail\"\", amount, \"\"createdAt\"\", \"\"approvedAt\"\" FROM \"\"Donation\"\" WHERE \"\"orderNumber\"\" LIKE ''%STUDENT-inscription-1769627397329%'' OR \"\"orderNumber\"\" LIKE ''%inscription-1769627397329%'';\")",
+      "Bash(PGPASSWORD='dgii_oscgre' psql -h manager.oscgre.com -p 5432 -U dgii_oscgre -d pccs -c \"SELECT id, \"\"orderNumber\"\", status, \"\"donorEmail\"\", amount, \"\"createdAt\"\" FROM \"\"Donation\"\" ORDER BY \"\"createdAt\"\" DESC LIMIT 10;\")",
+      "Bash(PGPASSWORD='dgii_oscgre' psql:*)",
+      "Bash(PGPASSWORD='dgii_oscgre' psql -h manager.oscgre.com -p 5432 -U dgii_oscgre -d pccs -c \"SELECT id, name, description, amount, \"\"isActive\"\" FROM \"\"DonationType\"\" WHERE name LIKE ''Student%'';\")"
     ]
   }
 }

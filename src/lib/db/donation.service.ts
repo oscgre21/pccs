@@ -267,6 +267,22 @@ export async function ensureDonationTypes(): Promise<DonationType[]> {
       description: 'Major infrastructure development for PCCS schools in the Dominican Republic',
       amount: 100000.00,
     },
+    // Student Service Payment Types
+    {
+      name: 'Student Inscription',
+      description: 'Inscripción de Estudiante',
+      amount: 0.00,
+    },
+    {
+      name: 'Student Re-Inscription',
+      description: 'Re-inscripción de Estudiante',
+      amount: 0.00,
+    },
+    {
+      name: 'Student Monthly Tuition',
+      description: 'Mensualidad Escolar',
+      amount: 0.00,
+    },
   ];
 
   const results: DonationType[] = [];
@@ -290,6 +306,24 @@ export async function getActiveDonationTypes(): Promise<DonationType[]> {
   return prisma.donationType.findMany({
     where: { isActive: true },
     orderBy: { name: 'asc' },
+  });
+}
+
+/**
+ * Get donation type by service ID
+ */
+export async function getDonationTypeByServiceId(serviceId: string): Promise<DonationType | null> {
+  const mapping: Record<string, string> = {
+    'inscription': 'Student Inscription',
+    'reInscription': 'Student Re-Inscription',
+    'monthlyTuition': 'Student Monthly Tuition',
+  };
+
+  const typeName = mapping[serviceId];
+  if (!typeName) return null;
+
+  return prisma.donationType.findUnique({
+    where: { name: typeName },
   });
 }
 

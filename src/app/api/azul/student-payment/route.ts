@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { buildPaymentRequest, generatePaymentFormHtml, getServerAzulConfig } from '@/lib/azul/server';
+import { createDonation, getDonationTypeByServiceId } from '@/lib/db/donation.service';
 
 /**
  * API Route: Initiate AZUL Payment for Student Services
@@ -96,6 +97,44 @@ export async function POST(request: NextRequest) {
           success: false,
           error: result.error || 'Failed to build payment request',
           errors: result.errors,
+        },
+        { status: 500 }
+      );
+    }
+
+    // Get donation type for this service
+    const donationType = await getDonationTypeByServiceId(serviceId);
+    if (!donationType) {
+      console.error('[Student Payment] Unknown service type:', serviceId);
+      return NextResponse.json(
+        { success: false, error: 'Invalid service type' },
+        { status: 400 }
+      );
+    }
+
+    // Save payment record to database with PENDING status
+    try {
+      await createDonation({
+        donorName: parentName,        // Parent is the payer
+        donorEmail: email,
+        donorPhone: phone,
+        comment: comment ? `Student: ${studentName}${grade ? ` (${grade})` : ''} - ${comment}` : `Student: ${studentName}${grade ? ` (${grade})` : ''}`,
+        amount,
+        orderNumber: result.orderNumber!,
+        donationTypeId: donationType.id,
+      });
+
+      console.log('[Student Payment] Payment record saved to database:', {
+        orderNumber: result.orderNumber,
+        email,
+        serviceId,
+      });
+    } catch (dbError) {
+      console.error('[Student Payment] Database error:', dbError);
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Failed to save payment record',
         },
         { status: 500 }
       );
