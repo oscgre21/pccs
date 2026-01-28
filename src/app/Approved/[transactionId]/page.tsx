@@ -73,7 +73,7 @@ export default function ApprovedTransactionPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 mx-auto mb-4" style={{ borderColor: '#1E1E8C' }}></div>
-          <p className="text-gray-600">Loading donation details...</p>
+          <p className="text-gray-600">Cargando detalles de la donación...</p>
         </div>
       </div>
     );
@@ -88,14 +88,14 @@ export default function ApprovedTransactionPage() {
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Donation Not Found</h1>
-          <p className="text-gray-600 mb-6">{error || 'The requested donation could not be found.'}</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Donación No Encontrada</h1>
+          <p className="text-gray-600 mb-6">{error || 'No se pudo encontrar la donación solicitada.'}</p>
           <a
             href="/"
             className="inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             style={{ backgroundColor: '#1E1E8C' }}
           >
-            Return to Home
+            Volver al Inicio
           </a>
         </div>
       </div>
@@ -138,12 +138,12 @@ export default function ApprovedTransactionPage() {
             </svg>
           </div>
           <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            {isValid ? 'Donation Received!' : 'Donation Received'}
+            {isValid ? '¡Donación Recibida!' : 'Donación Recibida'}
           </h1>
           <p className="text-lg text-gray-600">
             {isValid
-              ? 'Thank you for your generous donation to Punta Cana Christian School'
-              : 'Your donation is being verified'}
+              ? 'Gracias por su generosa donación a Punta Cana Christian School'
+              : 'Su donación está siendo verificada'}
           </p>
         </div>
 
@@ -163,7 +163,7 @@ export default function ApprovedTransactionPage() {
                 />
               </svg>
               <div>
-                <h3 className="text-yellow-800 font-semibold mb-2">Validation Issues</h3>
+                <h3 className="text-yellow-800 font-semibold mb-2">Problemas de Validación</h3>
                 <ul className="list-disc list-inside text-yellow-700 text-sm">
                   {donation.validationErrors.map((error, index) => (
                     <li key={index}>{error}</li>
@@ -176,31 +176,31 @@ export default function ApprovedTransactionPage() {
 
         {/* Donor Information */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Donor Information</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Información del Donante</h2>
           <div className="space-y-4">
             <div className="flex justify-between py-3 border-b border-gray-200">
-              <span className="text-gray-600">Name</span>
+              <span className="text-gray-600">Nombre</span>
               <span className="font-semibold text-gray-900">{donation.donorName}</span>
             </div>
             <div className="flex justify-between py-3 border-b border-gray-200">
-              <span className="text-gray-600">Email</span>
+              <span className="text-gray-600">Correo Electrónico</span>
               <span className="font-semibold text-gray-900">{donation.donorEmail}</span>
             </div>
             {donation.donorPhone && (
               <div className="flex justify-between py-3 border-b border-gray-200">
-                <span className="text-gray-600">Phone</span>
+                <span className="text-gray-600">Teléfono</span>
                 <span className="font-semibold text-gray-900">{donation.donorPhone}</span>
               </div>
             )}
             {donation.donationType && (
               <div className="flex justify-between py-3 border-b border-gray-200">
-                <span className="text-gray-600">Donation Type</span>
+                <span className="text-gray-600">Tipo de Donación</span>
                 <span className="font-semibold text-gray-900">{donation.donationType.name}</span>
               </div>
             )}
             {donation.comment && (
               <div className="py-3">
-                <span className="text-gray-600 block mb-2">Comment</span>
+                <span className="text-gray-600 block mb-2">Comentario</span>
                 <p className="text-gray-900 bg-gray-50 p-4 rounded-lg">{donation.comment}</p>
               </div>
             )}
@@ -209,32 +209,32 @@ export default function ApprovedTransactionPage() {
 
         {/* Payment Details */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Payment Details</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Detalles del Pago</h2>
           <div className="space-y-4">
             <div className="flex justify-between py-3 border-b border-gray-200">
-              <span className="text-gray-600">Transaction ID</span>
+              <span className="text-gray-600">ID de Transacción</span>
               <span className="font-mono text-sm text-gray-900">{donation.id}</span>
             </div>
             <div className="flex justify-between py-3 border-b border-gray-200">
-              <span className="text-gray-600">Order Number</span>
+              <span className="text-gray-600">Número de Orden</span>
               <span className="font-semibold text-gray-900">{donation.orderNumber}</span>
             </div>
             <div className="flex justify-between py-3 border-b border-gray-200">
-              <span className="text-gray-600">Amount</span>
+              <span className="text-gray-600">Monto</span>
               <span className="font-semibold text-gray-900 text-lg">${displayAmount}</span>
             </div>
             <div className="flex justify-between py-3 border-b border-gray-200">
-              <span className="text-gray-600">Date & Time</span>
+              <span className="text-gray-600">Fecha y Hora</span>
               <span className="font-semibold text-gray-900">{formattedDate}</span>
             </div>
             {donation.authorizationCode && (
               <div className="flex justify-between py-3 border-b border-gray-200">
-                <span className="text-gray-600">Authorization Code</span>
+                <span className="text-gray-600">Código de Autorización</span>
                 <span className="font-semibold text-gray-900">{donation.authorizationCode}</span>
               </div>
             )}
             <div className="flex justify-between py-3">
-              <span className="text-gray-600">Status</span>
+              <span className="text-gray-600">Estado</span>
               <span
                 className="font-semibold px-4 py-1 rounded-full text-sm"
                 style={{
@@ -255,7 +255,7 @@ export default function ApprovedTransactionPage() {
             className="inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             style={{ backgroundColor: '#1E1E8C' }}
           >
-            Return to Home
+            Volver al Inicio
             <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
@@ -272,7 +272,7 @@ export default function ApprovedTransactionPage() {
               color: '#2ECC40',
             }}
           >
-            Make Another Donation
+            Hacer Otra Donación
           </a>
         </div>
 
@@ -280,12 +280,12 @@ export default function ApprovedTransactionPage() {
         <div className="mt-12 text-center">
           <div className="bg-gray-50 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Your Support Makes a Difference
+              Su Apoyo Hace la Diferencia
             </h3>
             <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
-              Your generous donation helps us provide quality Christian education to children in
-              Punta Cana. Every contribution directly impacts the future of our students and
-              strengthens our educational mission.
+              Su generosa donación nos ayuda a brindar educación cristiana de calidad a los niños en
+              Punta Cana. Cada contribución impacta directamente el futuro de nuestros estudiantes y
+              fortalece nuestra misión educativa.
             </p>
           </div>
         </div>

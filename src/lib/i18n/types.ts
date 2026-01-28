@@ -374,6 +374,31 @@ export interface Translations {
       redirecting: string;
       returnHome: string;
       validationError: string;
+      // Transaction details page
+      loadingDetails: string;
+      donationNotFound: string;
+      donationNotFoundDesc: string;
+      donationReceived: string;
+      donationReceivedExclamation: string;
+      thankYouMessage: string;
+      verifyingMessage: string;
+      validationIssues: string;
+      donorInformation: string;
+      name: string;
+      email: string;
+      phone: string;
+      donationType: string;
+      comment: string;
+      paymentDetails: string;
+      transactionId: string;
+      orderNumber: string;
+      amount: string;
+      dateTime: string;
+      authorizationCode: string;
+      status: string;
+      makeAnotherDonation: string;
+      supportMakesDifference: string;
+      impactMessage: string;
     };
     declined: {
       title: string;
