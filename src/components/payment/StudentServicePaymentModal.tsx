@@ -7,12 +7,17 @@ import { useTranslation } from '@/contexts/LanguageContext';
 // Default exchange rate USD to DOP
 const DEFAULT_EXCHANGE_RATE = 60.50;
 
+interface ServiceOption {
+  id: string;
+  name: string;
+  amount: number;
+  frequency: string;
+}
+
 interface StudentServicePaymentModalProps {
   isOpen: boolean;
   onClose: () => void;
-  serviceName: string;
-  serviceId: string;
-  amount: number;
+  services: ServiceOption[];
   initialExchangeRate?: number;
 }
 
@@ -21,15 +26,17 @@ type PaymentStatus = 'idle' | 'processing' | 'error';
 export function StudentServicePaymentModal({
   isOpen,
   onClose,
-  serviceName,
-  serviceId,
-  amount,
+  services,
   initialExchangeRate = DEFAULT_EXCHANGE_RATE,
 }: StudentServicePaymentModalProps) {
   const { t } = useTranslation();
   const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState<PaymentStatus>('idle');
   const [error, setError] = useState<string | null>(null);
+
+  // Service selection & custom amount (in DOP)
+  const [selectedServiceId, setSelectedServiceId] = useState<string>('');
+  const [customAmountDOP, setCustomAmountDOP] = useState<number | ''>('');
 
   // Form fields
   const [studentName, setStudentName] = useState('');
@@ -42,7 +49,10 @@ export function StudentServicePaymentModal({
 
   // Exchange rate (USD to DOP) - Fixed rate from parent, not editable
   const exchangeRate = initialExchangeRate;
-  const amountDOP = Math.round(amount * exchangeRate);
+
+  const selectedService = services.find(s => s.id === selectedServiceId) || null;
+  const amountDOP = typeof customAmountDOP === 'number' ? customAmountDOP : 0;
+  const amountUSD = amountDOP > 0 ? +(amountDOP / exchangeRate).toFixed(2) : 0;
 
   useEffect(() => {
     setMounted(true);
@@ -61,6 +71,27 @@ export function StudentServicePaymentModal({
     };
   }, [isOpen]);
 
+  // Reset form when modal closes
+  useEffect(() => {
+    if (!isOpen) {
+      setSelectedServiceId('');
+      setCustomAmountDOP('');
+      setError(null);
+      setStatus('idle');
+    }
+  }, [isOpen]);
+
+  const handleServiceChange = (serviceId: string) => {
+    setSelectedServiceId(serviceId);
+    const service = services.find(s => s.id === serviceId);
+    if (service) {
+      setCustomAmountDOP(Math.round(service.amount * exchangeRate));
+    } else {
+      setCustomAmountDOP('');
+    }
+    setError(null);
+  };
+
   const validateEmail = (email: string): boolean => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -70,6 +101,16 @@ export function StudentServicePaymentModal({
     e.preventDefault();
     setError(null);
 
+    // Validate service selection
+    if (!selectedServiceId || !selectedService) {
+      setError(t.studentServices.paymentForm.errors.serviceRequired);
+      return;
+    }
+    // Validate amount
+    if (amountDOP <= 0) {
+      setError(t.studentServices.paymentForm.errors.amountMinError);
+      return;
+    }
     // Validate required fields
     if (!studentName.trim()) {
       setError(t.studentServices.paymentForm.errors.studentNameRequired);
@@ -103,16 +144,16 @@ export function StudentServicePaymentModal({
         },
         body: JSON.stringify({
           amount: amountDOP, // Send amount in DOP for payment
-          amountUSD: amount, // Original USD amount for reference
+          amountUSD: amountUSD, // USD equivalent for reference
           exchangeRate,
-          description: `${serviceName} - PCCS`,
+          description: `${selectedService.name} - PCCS`,
           studentName,
           parentName,
           email,
           phone: phone || undefined,
           grade: grade || undefined,
           comment: comment || undefined,
-          serviceId,
+          serviceId: selectedServiceId,
         }),
       });
 
@@ -180,41 +221,6 @@ export function StudentServicePaymentModal({
                 />
               </svg>
             </button>
-          </div>
-
-          {/* Service Info Card */}
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-xl border border-blue-100 mb-6">
-            {/* Service Name */}
-            <div className="mb-4">
-              <p className="text-sm text-gray-600">{t.studentServices.paymentForm.serviceLabel}</p>
-              <p className="text-lg font-semibold" style={{ color: '#1E1E8C' }}>
-                {serviceName}
-              </p>
-            </div>
-
-            {/* Amount Cards */}
-            <div className="grid grid-cols-2 gap-4">
-              {/* USD Amount */}
-              <div className="bg-white p-3 rounded-lg border border-gray-200">
-                <p className="text-xs text-gray-500 mb-1">{t.studentServices.paymentForm.amountUSD}</p>
-                <p className="text-xl font-bold text-gray-700">
-                  ${amount.toLocaleString()}
-                </p>
-              </div>
-
-              {/* DOP Amount */}
-              <div className="bg-white p-3 rounded-lg border-2" style={{ borderColor: '#2ECC40' }}>
-                <p className="text-xs text-gray-500 mb-1">{t.studentServices.paymentForm.amountDOP}</p>
-                <p className="text-xl font-bold" style={{ color: '#2ECC40' }}>
-                  RD${amountDOP.toLocaleString()}
-                </p>
-              </div>
-            </div>
-
-            {/* Exchange Rate - Read Only */}
-            <div className="mt-3 text-center text-xs text-gray-500">
-              <span>{t.studentServices.paymentForm.exchangeRate}: 1 USD = {exchangeRate.toFixed(2)} DOP</span>
-            </div>
           </div>
 
           {/* Form */}
@@ -324,6 +330,73 @@ export function StudentServicePaymentModal({
               </div>
             )}
 
+            {/* Service Selector */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                {t.studentServices.paymentForm.serviceLabel}
+                <span className="text-red-500 ml-1">{t.studentServices.paymentForm.requiredField}</span>
+              </label>
+              <select
+                value={selectedServiceId}
+                onChange={(e) => handleServiceChange(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+              >
+                <option value="">{t.studentServices.paymentForm.selectService}</option>
+                {services.map((service) => (
+                  <option key={service.id} value={service.id}>
+                    {service.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Service Info Card - only shown when service is selected */}
+            {selectedService && (
+              <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-xl border border-blue-100">
+                {/* Service Name */}
+                <div className="mb-4">
+                  <p className="text-sm text-gray-600">{t.studentServices.paymentForm.serviceLabel}</p>
+                  <p className="text-lg font-semibold" style={{ color: '#1E1E8C' }}>
+                    {selectedService.name}
+                  </p>
+                </div>
+
+                {/* Suggested Amount (DOP) */}
+                <div className="bg-white p-3 rounded-lg border border-gray-200">
+                  <p className="text-xs text-gray-500 mb-1">
+                    {t.studentServices.paymentForm.amountDOP} ({t.studentServices.paymentForm.suggested})
+                  </p>
+                  <p className="text-xl font-bold text-gray-500">
+                    RD${Math.round(selectedService.amount * exchangeRate).toLocaleString()}
+                  </p>
+                </div>
+
+                {/* Custom Amount Input (DOP) */}
+                <div className="mt-4 bg-white p-4 rounded-lg border-2 shadow-sm" style={{ borderColor: '#2ECC40' }}>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#1E1E8C' }}>
+                    {t.studentServices.paymentForm.amountToPay}
+                    <span className="text-red-500 ml-1">{t.studentServices.paymentForm.requiredField}</span>
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-lg" style={{ color: '#1E1E8C' }}>RD$</span>
+                    <input
+                      type="number"
+                      min="1"
+                      step="1"
+                      value={customAmountDOP}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setCustomAmountDOP(val === '' ? '' : Number(val));
+                      }}
+                      className="w-full pl-14 pr-4 py-4 text-2xl font-bold border-2 border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all"
+                      style={{ color: '#1E1E8C' }}
+                      placeholder={Math.round(selectedService.amount * exchangeRate).toString()}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Accepted Cards and Secure Payment Logos */}
             <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
               {/* Accepted Cards */}
@@ -369,10 +442,10 @@ export function StudentServicePaymentModal({
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={status === 'processing' || !acceptedTerms}
+              disabled={status === 'processing' || !acceptedTerms || !selectedServiceId || amountDOP <= 0}
               className="w-full py-4 font-semibold text-white rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               style={{
-                backgroundColor: (status === 'processing' || !acceptedTerms) ? '#6B7280' : '#2ECC40',
+                backgroundColor: (status === 'processing' || !acceptedTerms || !selectedServiceId || amountDOP <= 0) ? '#6B7280' : '#2ECC40',
               }}
             >
               {status === 'processing' ? (
@@ -401,7 +474,8 @@ export function StudentServicePaymentModal({
                 </span>
               ) : (
                 <span className="flex items-center justify-center">
-                  {t.studentServices.paymentForm.proceedToPayment} - RD${amountDOP.toLocaleString()}
+                  {t.studentServices.paymentForm.proceedToPayment}
+                  {amountDOP > 0 && ` - RD$${amountDOP.toLocaleString()}`}
                   <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>

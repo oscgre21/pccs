@@ -8,18 +8,12 @@ interface StudentServicesSectionProps {
   className?: string;
 }
 
-interface SelectedService {
-  id: string;
-  name: string;
-  amount: number;
-}
-
 // Default exchange rate USD to DOP
 const DEFAULT_EXCHANGE_RATE = 63;
 
 export function StudentServicesSection({ className = '' }: StudentServicesSectionProps) {
   const { t } = useTranslation();
-  const [selectedService, setSelectedService] = useState<SelectedService | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const exchangeRate = DEFAULT_EXCHANGE_RATE;
 
   if (!t.studentServices) {
@@ -41,92 +35,36 @@ export function StudentServicesSection({ className = '' }: StudentServicesSectio
     },
   ];
 
-  const handlePayClick = (service: { id: string; name: string; amount: number }) => {
-    setSelectedService(service);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedService(null);
-  };
-
   return (
     <section className={`py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50 ${className}`}>
       <div className="container mx-auto px-4">
-        {/* Payment Table */}
         <div className="max-w-5xl mx-auto">
-          {/* Exchange Rate Display (Read Only) */}
-          <div className="mb-4 flex items-center justify-end gap-3 text-sm text-gray-600">
-            <span>{t.studentServices.paymentForm.exchangeRate}:</span>
-            <div className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg border border-gray-200">
-              <span>1 USD = <span className="font-semibold">{exchangeRate.toFixed(2)}</span> DOP</span>
-            </div>
+          {/* Title & Description */}
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#1E1E8C' }}>
+              {t.studentServices.title}
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t.studentServices.description}
+            </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            {/* Table Header */}
-            <div className="grid grid-cols-5 gap-2 p-4 text-white font-semibold text-xs lg:text-sm" style={{ backgroundColor: '#1E1E8C' }}>
-              <div className="col-span-1">{t.studentServices.tableHeaders.description}</div>
-              <div className="col-span-1 text-center">{t.studentServices.tableHeaders.frequency}</div>
-              <div className="col-span-1 text-center">{t.studentServices.paymentForm.amountUSD}</div>
-              <div className="col-span-1 text-center">{t.studentServices.paymentForm.amountDOP}</div>
-              <div className="col-span-1 text-center">{t.studentServices.tableHeaders.action}</div>
-            </div>
-
-            {/* Table Body */}
-            {services.map((service, index) => {
-              const amountDOP = Math.round(service.amount * exchangeRate);
-              return (
-                <div
-                  key={service.id}
-                  className={`grid grid-cols-5 gap-2 p-4 items-center border-b border-gray-100 ${
-                    index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                  } hover:bg-pccs-primary/5 transition-colors duration-200`}
-                >
-                  {/* Service Name */}
-                  <div className="col-span-1">
-                    <span className="font-semibold text-gray-900 text-sm lg:text-base">
-                      {service.name}
-                    </span>
-                  </div>
-
-                  {/* Frequency */}
-                  <div className="col-span-1 text-center">
-                    <span className="text-gray-600 text-xs lg:text-sm">
-                      {service.frequency}
-                    </span>
-                  </div>
-
-                  {/* Amount USD */}
-                  <div className="col-span-1 text-center">
-                    <span className="font-bold text-base lg:text-lg text-gray-700">
-                      ${service.amount.toLocaleString()}
-                    </span>
-                  </div>
-
-                  {/* Amount DOP */}
-                  <div className="col-span-1 text-center">
-                    <span className="font-bold text-base lg:text-lg" style={{ color: '#2ECC40' }}>
-                      RD${amountDOP.toLocaleString()}
-                    </span>
-                  </div>
-
-                  {/* Pay Button */}
-                  <div className="col-span-1 text-center">
-                    <button
-                      onClick={() => handlePayClick(service)}
-                      className="inline-flex items-center justify-center px-3 py-2 text-xs lg:text-sm font-semibold text-white rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                      style={{ backgroundColor: '#1E1E8C' }}
-                    >
-                      {t.studentServices.payButton}
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+          {/* Make Payment Button */}
+          <div className="text-center mb-10">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              style={{ backgroundColor: '#1E1E8C' }}
+            >
+              {t.studentServices.paymentForm.makePayment}
+              <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
           </div>
 
           {/* Note */}
-          <div className="mt-6 text-center">
+          <div className="text-center">
             <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -147,8 +85,6 @@ export function StudentServicesSection({ className = '' }: StudentServicesSectio
               <img src="/images/payment/mastercard-id-check-logo.svg" alt="MasterCard ID Check" className="h-10" />
             </div>
           </div>
-
-
 
           {/* Other Services Section */}
           <div className="mt-8">
@@ -199,11 +135,9 @@ export function StudentServicesSection({ className = '' }: StudentServicesSectio
 
           {/* Payment Modal */}
           <StudentServicePaymentModal
-            isOpen={selectedService !== null}
-            onClose={handleCloseModal}
-            serviceName={selectedService?.name || ''}
-            serviceId={selectedService?.id || ''}
-            amount={selectedService?.amount || 0}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            services={services}
             initialExchangeRate={exchangeRate}
           />
         </div>

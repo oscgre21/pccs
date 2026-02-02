@@ -601,12 +601,19 @@ export interface Translations {
       andThe: string;
       privacyPolicy: string;
       securityNote: string;
+      selectService: string;
+      amountToPay: string;
+      suggested: string;
+      equivalent: string;
+      makePayment: string;
       errors: {
         studentNameRequired: string;
         parentNameRequired: string;
         emailRequired: string;
         emailInvalid: string;
         termsRequired: string;
+        serviceRequired: string;
+        amountMinError: string;
       };
     };
   };
