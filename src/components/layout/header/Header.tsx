@@ -54,8 +54,7 @@ export function Header({ className = '' }: HeaderProps) {
           <div className="flex justify-between items-center">
             <ContactInfo />
             <div className="flex items-center gap-4">
-              <LanguageSelector />
-              <SocialLinks />
+              <LanguageSelector /> 
             </div>
           </div>
         </div>

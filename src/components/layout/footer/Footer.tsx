@@ -70,10 +70,7 @@ export function Footer() {
               <p className="text-gray-300 mb-6 leading-relaxed">
                 {t.footer.description}
               </p>
-              <div className="mb-6">
-                <h4 className="text-white font-semibold mb-4">{t.footer.followUs}</h4>
-                <SocialLinks />
-              </div>
+ 
             </div>
 
             {/* Footer Navigation */}
