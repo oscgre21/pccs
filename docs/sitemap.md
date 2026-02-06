@@ -31,7 +31,7 @@
 - **Componentes utilizados**:
   - `AdmissionsSection` - Sección completa de admisiones
 - **Links externos**:
-  - WhatsApp (Agendar cita): `https://services.tochat.be/es/whatsapp-business-directory/person/573b8be9-543f-4cad-b00f-21fa720ac55b`
+  - WhatsApp (Agendar cita): `https://wa.me/18091234567?text=Hola%20quiero%20agendar%20una%20cita`
   - Formulario de Admisión (Google Forms): `https://docs.google.com/forms/d/e/1FAIpQLSew3PwL6kkulsLr0Ayyfy36DuUxZhVI9arzjV1XA6zvWhuFqw/viewform`
   - Solicitud de Beca (Google Forms): `https://docs.google.com/forms/d/e/1FAIpQLScydBLqzdD9XPQYdMCWLAIg8cNMC1UV5p9d98hZw21JaNetvQ/viewform`
   - Consultas (Google Forms): `https://docs.google.com/forms/d/e/1FAIpQLScO1ts3uRkswZxvGm3QFC7-fYgyCysE7qZEKDSAvx5OnFCB3g/viewform`
@@ -334,7 +334,7 @@ Estas rutas están en `src/app/sitemap.ts` pero no tienen páginas correspondien
 ### Formularios de Admisión
 | Descripción | URL | Componente |
 |-------------|-----|------------|
-| Agendar Cita (WhatsApp) | `https://services.tochat.be/es/whatsapp-business-directory/person/573b8be9-543f-4cad-b00f-21fa720ac55b` | AdmissionsSection.tsx |
+| Agendar Cita (WhatsApp) | `https://wa.me/18091234567?text=Hola%20quiero%20agendar%20una%20cita` | AdmissionsSection.tsx |
 | Formulario de Admisión | `https://docs.google.com/forms/d/e/1FAIpQLSew3PwL6kkulsLr0Ayyfy36DuUxZhVI9arzjV1XA6zvWhuFqw/viewform` | AdmissionsSection.tsx |
 | Solicitud de Beca | `https://docs.google.com/forms/d/e/1FAIpQLScydBLqzdD9XPQYdMCWLAIg8cNMC1UV5p9d98hZw21JaNetvQ/viewform` | AdmissionsSection.tsx |
 | Consultas | `https://docs.google.com/forms/d/e/1FAIpQLScO1ts3uRkswZxvGm3QFC7-fYgyCysE7qZEKDSAvx5OnFCB3g/viewform` | AdmissionsSection.tsx |

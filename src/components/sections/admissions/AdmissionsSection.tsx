@@ -180,7 +180,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                   {/* Agenda tu cita */}
                   <a
-                    href="https://services.tochat.be/es/whatsapp-business-directory/person/573b8be9-543f-4cad-b00f-21fa720ac55b"
+                    href="https://wa.me/18091234567?text=Hola%20quiero%20agendar%20una%20cita"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center px-6 py-4 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl bg-pccs-primary hover:bg-opacity-90"
