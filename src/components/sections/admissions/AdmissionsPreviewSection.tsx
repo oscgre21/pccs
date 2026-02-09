@@ -28,7 +28,7 @@ export function AdmissionsPreviewSection({
           {/* Lado de la imagen */}
           <div className="relative w-full lg:w-1/2 h-[400px] lg:h-auto">
             <Image
-              src="/images/pic/PCCS-15.JPG"
+              src="/images/pic/PCCS-21.JPG"
               alt="PCCS Students"
               fill
               style={{ objectFit: 'cover' }}
@@ -94,7 +94,7 @@ export function AdmissionsPreviewSection({
     return (
       <section className={`relative py-20 lg:py-32 overflow-hidden ${className}`}>
         <Image
-          src="/images/pic/PCCS-15.JPG"
+          src="/images/pic/PCCS-21.JPG"
           alt="PCCS Students"
           fill
           style={{ objectFit: 'cover' }}
@@ -161,7 +161,7 @@ export function AdmissionsPreviewSection({
             <div className="grid grid-cols-1 lg:grid-cols-5">
               {/* Imagen */}
               <div className="lg:col-span-2 relative min-h-[300px] lg:min-h-full">
-                <Image src="/images/pic/PCCS-15.JPG" alt="Students" fill style={{ objectFit: 'cover' }} />
+                <Image src="/images/pic/PCCS-21.JPG" alt="Students" fill style={{ objectFit: 'cover' }} />
               </div>
 
               {/* Contenido */}

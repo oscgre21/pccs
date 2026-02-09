@@ -34,7 +34,7 @@ export function AdmissionsHeroSection({ className = '' }: AdmissionsHeroSectionP
     >
       {/* Background Image */}
       <Image
-        src="/images/pic/PCCS-15.JPG"
+        src="/images/pic/PCCS-21.JPG"
         alt="PCCS Students"
         fill
         style={{ objectFit: 'cover' }}

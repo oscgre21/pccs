@@ -24,7 +24,7 @@ export function AdmissionsSection({ className = '' }: AdmissionsSectionProps) {
       {/* Full-Width Hero Section */}
       <section className="relative w-full h-[120vh] min-h-[900px] sm:min-h-[1000px] md:min-h-[1100px] lg:min-h-[1200px] overflow-hidden">
         <img
-          src="/images/pic/PCCS-15.JPG"
+          src="/images/pic/PCCS-21.JPG"
           alt="PCCS Students"
           className="absolute inset-0 w-full h-full object-cover"
         />
