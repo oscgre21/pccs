@@ -6,8 +6,8 @@ import { LanguageProvider } from '@/contexts/LanguageContext';
 import { GOOGLE_MAPS_URL, SCHOOL_COORDS } from './constant';
 import './globals.css';
 
-// Google Analytics — inlined at build time, so it must be set before `next build`
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '';
+// Google Analytics
+const GA_MEASUREMENT_ID = 'G-7WP1K18EFJ';
 
 // Font configurations
 const openSans = Open_Sans({
@@ -128,23 +128,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body className="font-sans antialiased bg-white text-gray-900 selection:bg-blue-100 selection:text-blue-900">
         {/* Google tag (gtag.js) */}
-        {GA_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-                gtag('config', '${GA_MEASUREMENT_ID}');
-              `}
-            </Script>
-          </>
-        )}
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
 
         <LanguageProvider>
           {/* Skip to main content for accessibility */}
