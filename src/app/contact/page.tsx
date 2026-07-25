@@ -3,6 +3,7 @@
 import React from 'react';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from '@/contexts/LanguageContext';
+import { GOOGLE_MAPS_URL, GOOGLE_MAPS_EMBED_URL } from '@/app/constant';
 
 export default function ContactPage() {
   const { t } = useTranslation();
@@ -61,10 +62,15 @@ export default function ContactPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{t.contact.visitUs}</h3>
               <p className="text-gray-600 mb-2">{t.contact.visitUsDesc}</p>
-              <p className="text-gray-700">
-                Av. Barcelo, Punta Cana<br />
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Av. Barceló, Punta Cana<br />
                 C. Edgar Allan Poe, No. 1
-              </p>
+              </a>
             </div>
           </div>
 
@@ -153,10 +159,10 @@ export default function ContactPage() {
               </form>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Map */}
             <div className="bg-gray-200 rounded-2xl overflow-hidden h-[600px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.234567890123!2d-68.40123456789012!3d18.56789012345678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDM0JzA0LjQiTiA2OMKwMjQnMDQuNCJX!5e0!3m2!1sen!2sdo!4v1234567890123!5m2!1sen!2sdo"
+                src={GOOGLE_MAPS_EMBED_URL}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

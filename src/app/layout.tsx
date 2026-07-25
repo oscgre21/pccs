@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
 import { Open_Sans, Fredoka, Roboto } from 'next/font/google';
+import Script from 'next/script';
 import { Header, Footer } from '@/components/layout';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import { GOOGLE_MAPS_URL, SCHOOL_COORDS } from './constant';
 import './globals.css';
+
+// Google Analytics — inlined at build time, so it must be set before `next build`
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '';
 
 // Font configurations
 const openSans = Open_Sans({
@@ -122,6 +127,25 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>
       <body className="font-sans antialiased bg-white text-gray-900 selection:bg-blue-100 selection:text-blue-900">
+        {/* Google tag (gtag.js) */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
+
         <LanguageProvider>
           {/* Skip to main content for accessibility */}
           <a
@@ -159,16 +183,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
               email: 'info@pccs.edu.do',
               address: {
                 '@type': 'PostalAddress',
+                streetAddress: 'Av. Barceló, C. Edgar Allan Poe, No. 1',
+                addressLocality: 'Punta Cana',
+                addressRegion: 'La Altagracia',
+                postalCode: '23000',
                 addressCountry: 'DO',
-                addressRegion: 'Dominican Republic',
               },
-              sameAs: [
-                'https://facebook.com/pccs.education',
-                'https://twitter.com/pccs_education',
-                'https://instagram.com/pccs.education',
-                'https://linkedin.com/company/pccs-education'
-              ],
-              areaServed: 'Dominican Republic',
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: SCHOOL_COORDS.lat,
+                longitude: SCHOOL_COORDS.lng,
+              },
+              hasMap: GOOGLE_MAPS_URL,
+              areaServed: 'Punta Cana, Dominican Republic',
               hasCredential: 'Educational Institution',
               audience: {
                 '@type': 'Audience',

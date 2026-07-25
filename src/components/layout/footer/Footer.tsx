@@ -4,6 +4,7 @@ import React from 'react';
 import { SocialLinks } from '../header/SocialLinks';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from '@/contexts/LanguageContext';
+import { GOOGLE_MAPS_URL, SCHOOL_ADDRESS } from '@/app/constant';
 
 interface FooterLink {
   titleKey: string;
@@ -140,9 +141,14 @@ export function Footer() {
               </div>
               <div>
                 <p className="text-purple-200 text-sm">{t.footer.location}</p>
-                <p className="text-white">
-                  Av. Barcelo, Punta Cana, C. Edgar Allan Poe, No. 1
-                </p>
+                <a
+                  href={GOOGLE_MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-purple-300 transition-colors"
+                >
+                  {SCHOOL_ADDRESS}
+                </a>
               </div>
             </div>
           </div>

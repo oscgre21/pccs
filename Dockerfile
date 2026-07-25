@@ -28,6 +28,11 @@ COPY . .
 # Generate Prisma Client
 RUN npx prisma generate
 
+# Public build-time vars: Next.js inlines NEXT_PUBLIC_* into the client bundle
+# during `next build`, so they must be present here, not only at runtime.
+ARG NEXT_PUBLIC_GA_MEASUREMENT_ID
+ENV NEXT_PUBLIC_GA_MEASUREMENT_ID=$NEXT_PUBLIC_GA_MEASUREMENT_ID
+
 # Build the application
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
